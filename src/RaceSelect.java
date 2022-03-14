@@ -42,10 +42,10 @@ public class RaceSelect  extends JFrame implements ActionListener {
             mainpanel = new JPanel(new GridLayout(2,2,20,20));
 
 
-            iconhuman = new ImageIcon("human.png");
-            iconorc = new ImageIcon( "orc.png");
+            iconhuman = new ImageIcon("human.jpg");
+            iconorc = new ImageIcon( "orc.jpg");
             iconelf = new ImageIcon("elf.jpg");
-            icondwarf = new ImageIcon("dwarf.png");
+            icondwarf = new ImageIcon("dwarf.jpg");
 
             human = new JButton("Humain", iconhuman );
             orc = new JButton("Orc",iconorc);

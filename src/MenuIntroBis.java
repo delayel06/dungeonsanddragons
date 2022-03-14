@@ -48,7 +48,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         helpPanel.setLocation( 0,0 );
         helpPanel.setBackground( Color.WHITE );
 
-        helpLabel = new JLabel("Voici comment marche le jeu bla bla bla");
+        helpLabel = new JLabel("Voici comment marche le jeu bla bla bla", SwingConstants.CENTER);
 
 
         btnback = new JButton("Retourner au menu principal!");

@@ -30,7 +30,7 @@ public class CharSelect extends JFrame implements ActionListener {
 
     public Font font;
 
-
+    public Personnage perso;
 
 
 
@@ -85,19 +85,10 @@ public class CharSelect extends JFrame implements ActionListener {
         back.addActionListener(this);
         confirm.addActionListener(this);
 
-
-
-
-
-
         mainpanel.add(mage);
         mainpanel.add(archer);
         mainpanel.add(paladin);
         mainpanel.add(guerrier);
-
-
-
-
 
         this.add(mainpanel);
 
@@ -157,7 +148,16 @@ public class CharSelect extends JFrame implements ActionListener {
             new CharSelect();
             this.dispose();
         }else if(e.getSource() == confirm){
-            Personnage perso = new Personnage(classchosen);
+            if(classchosen == "paladin"){
+                perso = new Paladin();
+            }else if(classchosen == "mage"){
+                perso = new Mage();
+            }else if (classchosen == "archer"){
+                perso = new Archer();
+            }else{
+                perso = new Guerrier();
+            }
+
             new RaceSelect(perso);
             this.dispose();
         }
