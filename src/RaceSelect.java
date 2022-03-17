@@ -25,8 +25,18 @@ public class RaceSelect  extends JFrame implements ActionListener {
 
         public JLabel labelhuman = new JLabel("explication humain");
         public JLabel labelorc = new JLabel("explication orc");
-        public JLabel labelelf = new JLabel("explication elf");
-        public JLabel labeldwarf = new JLabel("explication nain");
+        public JLabel labelelf = new JLabel("Créature sans égale, vous ne supportez être en compagnie des races inférieurs (en particulier les nains). Etre immortel, vos connaissance sur le monde et sur ses peuples sont immenses. A cause de votre grand-âge vous n'aimez pas vous coucher trop tard.\n" +
+                "\n" +
+                "Bonus : \n" +
+                "\tconstitution -1\n" +
+                "\tintelligence +2\n" +
+                "\tdextérité +1");
+        public JLabel labeldwarf = new JLabel("Téméraires et robustes, les nains sont d'habiles guerriers. Aussi agile avec une hache en main qu'une peinte, ils ne ratent jamais une occasion de festoyer.Ce sont des être très rancuniers qui n'aiment pas qu'on se moque de leur ta...\n" +
+                "\n" +
+                "Bonus : \n" +
+                "\tconstitution +1\n" +
+                "\tintelligence +2\n" +
+                "\tdextérité -1");
 
         public String racechoisie;
         public Personnage personnage;

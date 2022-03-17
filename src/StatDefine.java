@@ -126,8 +126,10 @@ class StatDefine extends JFrame implements ActionListener {
             interruptedException.printStackTrace();
         }
         setStats();
+        personnage.raceAdd();
 
     }
+
 
 
     }

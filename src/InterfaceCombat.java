@@ -8,10 +8,10 @@ import java.io.*;
 import java.lang.Thread;
 import java.util.concurrent.TimeUnit;
 
-public class InterfaceCombat extends JFrame implements ActionListener{
-	
-	public int width = getWidth();
-	public int height = getHeight();
+public class InterfaceCombat extends JFrame implements ActionListener {
+
+	public int width = 800;
+	public int height = 400;
 
 
 	public JButton attaque1;
@@ -23,7 +23,7 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 	public JLabel ptSort;
 	public JLabel fond;
 	public JLabel descrMons;
-	public Personnage hero;
+	public Personnage personnage;
 	public Monstre m;
 
 
@@ -51,7 +51,10 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 	public JPanel NomPerso;
 	public JLabel Nom;
 
+	//description de l'attaque du monstre
 	public JPanel desAM;
+	public JLabel tourM;
+
 	public JPanel controle;
 	public JPanel cM;
 
@@ -59,28 +62,27 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 	public Font fontNOM;
 
 
-
-	public InterfaceCombat(Personnage hero, Monstre m){
+	public InterfaceCombat(Personnage personnage, Monstre m) {
 		super();
 		// this.m= m;    en pause pour l'instant (le monstre est choisi par la salle)
 		//this.m = Gobelin (20, 3);
-		this.hero = hero;
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setLocation(0,0);
+		this.personnage = personnage;
+		setSize(width, height);
+		//setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setLocation(0, 0);
 
 		// on change pour un beau texte
 
-		try{
+		try {
 			// on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
 			font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(60f);//taille ici
 			fontNOM = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(80f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")));
-		}
-		catch(IOException | FontFormatException e){
+		} catch (IOException | FontFormatException e) {
 			// ca devrait pas arriver ici
 		}
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		descrMons = new JLabel("Le monstre attaque ..."); // on peut imaginer changer le label selon l'attaque
@@ -92,116 +94,114 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 
 		Perso1 = new JPanel();
 		Perso1.setLayout(null);
-		Perso1.setSize(width,height);
-		Perso1.setLocation(getWidth()/2,getHeight()/2);
+		Perso1.setSize(width, height);
+		Perso1.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso1.setBackground(Color.blue);
 
 		Nom = new JLabel("Kevin "); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
-		Nom.setSize(width,height);
-		Nom.setLocation(getWidth()/2,getHeight()/2);
+		Nom.setSize(width, height);
+		Nom.setLocation(getWidth() / 2, getHeight() / 2);
 
 		BV = new JLabel((new ImageIcon("bv1.png")));
-		BV.setSize(width,height);
-		BV.setLocation(getWidth()/2,getHeight()/2);
+		BV.setSize(width, height);
+		BV.setLocation(getWidth() / 2, getHeight() / 2);
 
 		NomPerso = new JPanel();
 		NomPerso.setLayout(null);
 		NomPerso.add(Nom);
-		NomPerso.setSize(width,height);
-		NomPerso.setLocation(getWidth()/2,getHeight()/2);
+		NomPerso.setSize(width, height);
+		NomPerso.setLocation(getWidth() / 2, getHeight() / 2);
 		NomPerso.setBackground(Color.white);
 
 		BarreV = new JPanel();
 		BarreV.setLayout(null);
 		BarreV.add(BV);
-		BarreV.setSize(width,height);
-		BarreV.setLocation(getWidth()/2,getHeight()/2);
+		BarreV.setSize(width, height);
+		BarreV.setLocation(getWidth() / 2, getHeight() / 2);
 		BarreV.setBackground(Color.white);
 
-		Perso2 = new JPanel(new GridLayout(2,1,0,0));
+		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Perso2.add(NomPerso);
 		Perso2.add(BarreV);
-		Perso2.setSize(width,height);
-		Perso2.setLocation(getWidth()/2,getHeight()/2);
+		Perso2.setSize(width, height);
+		Perso2.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso2.setBackground(Color.white);
 
 		Perso3 = new JPanel();
 		Perso3.setLayout(null);
-		Perso3.setSize(width,height);
-		Perso3.setLocation(getWidth()/2,getHeight()/2);
+		Perso3.setSize(width, height);
+		Perso3.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso3.setBackground(Color.red);
 
-		Perso = new JPanel(new GridLayout(1,3,1,0));
+		Perso = new JPanel(new GridLayout(1, 3, 1, 0));
 		Perso.add(Perso1);
 		Perso.add(Perso2);
 		Perso.add(Perso3);
-		Perso.setSize(width,height);
-		Perso.setLocation(getWidth()/2,getHeight()/2);
+		Perso.setSize(width, height);
+		Perso.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso.setBackground(Color.black);
 
 
 		//MONSTRE : ---------------------------------------------
-			//fenetre monstre numéroté de 1 à 3 en
+		//fenetre monstre numéroté de 1 à 3 en
 		Monstre1 = new JPanel();
 		Monstre1.setLayout(null);
-		Monstre1.setSize(width,height);
-		Monstre1.setLocation(getWidth()/2,getHeight()/2);
+		Monstre1.setSize(width, height);
+		Monstre1.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre1.setBackground(Color.yellow);
 
 		NomM = new JLabel("Gobelin "); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
-		NomM.setSize(width,height);
-		NomM.setLocation(getWidth()/2,getHeight()/2);
+		NomM.setSize(width, height);
+		NomM.setLocation(getWidth() / 2, getHeight() / 2);
 		NomM.setFont(fontNOM);
 
 
 		BVM = new JLabel((new ImageIcon("bv5.png")));
-		BVM.setSize(width,height);
-		BVM.setLocation(getWidth()/2,getHeight()/2);
+		BVM.setSize(width, height);
+		BVM.setLocation(getWidth() / 2, getHeight() / 2);
 
 		NM = new JPanel();
 		NM.add(NomM);
-		NM.setSize(width,height);
-		NM.setLocation(getWidth()/2,getHeight()/2);
+		NM.setSize(width, height);
+		NM.setLocation(getWidth() / 2, getHeight() / 2);
 		NM.setBackground(Color.white);
 
 		BVmonstre = new JPanel();
 		BVmonstre.add(BVM);
-		BVmonstre.setSize(width,height);
-		BVmonstre.setLocation(getWidth()/2,getHeight()/2);
+		BVmonstre.setSize(width, height);
+		BVmonstre.setLocation(getWidth() / 2, getHeight() / 2);
 		BVmonstre.setBackground(Color.white);
 
-		Monstre2 = new JPanel(new GridLayout(2,1,0,0));
+		Monstre2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Monstre2.add(NM);
 		Monstre2.add(BVmonstre);
-		Monstre2.setSize(width,height);
-		Monstre2.setLocation(getWidth()/2,getHeight()/2);
+		Monstre2.setSize(width, height);
+		Monstre2.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre2.setBackground(Color.white);
 
 		ImMonstre = new JLabel((new ImageIcon("orc.png")));
-		ImMonstre.setSize(width,height);
-		ImMonstre.setLocation(getWidth()/2,getHeight()/2);
+		ImMonstre.setSize(width, height);
+		ImMonstre.setLocation(getWidth() / 2, getHeight() / 2);
 
 		Monstre3 = new JPanel(new BorderLayout());
 		Monstre3.add(ImMonstre);
-		Monstre3.setSize(width,height);
-		Monstre3.setLocation(getWidth()/2,getHeight()/2);
+		Monstre3.setSize(width, height);
+		Monstre3.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre3.setBackground(Color.white);
 
-		Monstre = new JPanel(new GridLayout(1,3,1,0));
+		Monstre = new JPanel(new GridLayout(1, 3, 1, 0));
 		Monstre.add(Monstre1);
 		Monstre.add(Monstre2);
 		Monstre.add(Monstre3);
-		Monstre.setSize(width,height);
-		Monstre.setLocation(getWidth()/2,getHeight()/2);
+		Monstre.setSize(width, height);
+		Monstre.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre.setBackground(Color.black);
 
 
-
-
-        //CONTROL : ------------------------------------------------------------------------------------------------
-		controle = new JPanel(new GridLayout(2,2,2,2));
-		controle.setSize(width,(height)/4);
-        controle.setLocation(getWidth()/2,getHeight()/2);
+		//CONTROL : ------------------------------------------------------------------------------------------------
+		controle = new JPanel(new GridLayout(2, 2, 2, 2));
+		controle.setSize(width, height);
+		controle.setLocation(getWidth() / 2, getHeight() / 2);
 		controle.setBackground(Color.black);
 
 
@@ -215,7 +215,6 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 		attaque4.setFont(font);
 
 
-
 		attaque1.addActionListener(this);
 		attaque2.addActionListener(this);
 		attaque3.addActionListener(this);
@@ -225,24 +224,32 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 		controle.add(attaque2);
 		controle.add(attaque3);
 		controle.add(attaque4);
-		//-------------------------------------------------------------------------------------------------------
 
-		/*
+
+		//TOUR DU MONSTRE -------------------------------------------------------------------------------------------------------
+
+
 		desAM = new JPanel();
 		desAM.setLayout(null);
-		desAM.setSize(width,(height));
-        desAM.setLocation(getWidth()/2,getHeight()/2);
+		desAM.setSize(width, (height));
+		desAM.setLocation(getWidth() / 2, getHeight() / 2);
 		desAM.setBackground(Color.blue);
-		*/
+
+		tourM = new JLabel(" Le monstre attaque !!! "); //A remplir avec des descriptions predéterminées pour chaque attaque
+		tourM.setSize(width, height);
+		tourM.setLocation(getWidth() / 2, getHeight() / 2);
+		tourM.setFont(fontNOM);
+		tourM.setBackground(Color.WHITE);
+		desAM.add(tourM);
 
 
 		// Panel Principal : -------------------------------------------------------------------
-		cM = new JPanel(new GridLayout(3,1,2,2));
+		cM = new JPanel(new GridLayout(3, 1, 2, 2));
 		cM.add(Monstre);
 		cM.add(Perso);
 		cM.add(controle);
-		cM.setSize(width,height);
-        cM.setLocation(0,0);
+		cM.setSize(width, height);
+		cM.setLocation(0, 0);
 		cM.setBackground(Color.black);
 		add(cM);
 		//-----------------------------------------------------------------------------------
@@ -251,39 +258,65 @@ public class InterfaceCombat extends JFrame implements ActionListener{
 
 	}
 
-/*
-	public void BarreVie(Personnage p){
-		if (p.HP >= (int)(p.HP_max*0.8)){
-
-		}
-	}
-*/
-	public void actionPerformed (ActionEvent e) {
-/*
-		if (e.getSource() == attaque1) {
-			//hero.a1(m);
-			controle.setVisible(false);
-		}
-
-			//desAM.setVisible(true);
-			//m.jouer(hero);
-
+	/*
+		public void BarreVie(Personnage p){
+			if (p.HP >= (int)(p.HP_max*0.8)){
 
 			}
-
 		}
-			//desAM.setVisible(null);
-/*
-		} else if (e.getSource() == attaque2){
-			hero.a2(m);
+	*/
+
+	public void actionPerformed(ActionEvent e) {
+
+		if (e.getSource() == attaque1) {
+
+			removeAttackButtons();
+			personnage.a1();
+			m.atk();
+			controle.revalidate();
+
+
+		}else if (e.getSource() == attaque2){
+			removeAttackButtons();
+			personnage.a2();
+			m.atk();
+			controle.revalidate();
+
 		} else if (e.getSource() == attaque3){
-			hero.a3(m);
+			removeAttackButtons();
+			personnage.a3();
+			m.atk();
+			controle.revalidate();
+
 		} else if (e.getSource() == attaque4){
-			hero.a4(m);
+			removeAttackButtons();
+			personnage.a4();
+			m.atk();
+			controle.revalidate();
 		} 
 
-*/
+
 	}
 
+	private void removeAttackButtons() {
+
+		controle.remove(attaque1);
+		controle.remove(attaque2);
+		controle.remove(attaque3);
+		controle.remove(attaque4);
+		controle.add(desAM);
+
+	}
+
+	private void addAttackButtons(){
+
+		controle.remove(desAM);
+		controle.add(attaque1);
+		controle.add(attaque2);
+		controle.add(attaque3);
+		controle.add(attaque4);
+
+	}
 }
+
 

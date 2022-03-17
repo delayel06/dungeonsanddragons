@@ -48,18 +48,22 @@ public void roll(){
 
 public void setDice(){
 
-        holder = switch(val) {
+        if(val == 1) {
 
-            case 1 -> one;
-            case 2 -> two;
-            case 3 -> three;
-            case 4 -> four;
-            case 5 -> five;
-            case 6 -> six;
+            holder = one;
 
+        }else if( val == 2) {
+            holder = two;
+        }else if (val == 3) {
+            holder = three;
+        }else if(val == 4) {
 
-            default -> throw new IllegalStateException( "Unexpected value: " + val );
-        };
+            holder = four;
+        }else if ( val == 5) {
+            holder = five;
+        }else if(val == 6) {
+            holder = six;
+        }
         repaint();
 
 
