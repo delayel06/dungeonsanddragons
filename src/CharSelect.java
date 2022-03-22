@@ -21,10 +21,25 @@ public class CharSelect extends JFrame implements ActionListener {
     public JButton confirm;
     public JButton back;
 
-    public JLabel labelmage = new JLabel("explication mage");
-    public JLabel labelguerrier = new JLabel("explication guerrier");
-    public JLabel labelpaladin = new JLabel("explication paladin");
-    public JLabel labelarcher = new JLabel("explication archer");
+    public JLabel labelmage = new JLabel("Vêtue d'une robe d'argent qui dénote son rang, un grand chapeau sur la tête, un grimoire dans une main\n" +
+            "et un bâton dans l'autre, les magiciens sont très puissants. S'appuyant sur la vague de magie qui se répand\n" +
+            "dans le cosmos ils sont capable de contrôler le feu, la foudre, et même la nature. \n" +
+            "Il est déconseillé de les sousestimer, ceux qui s'y aventure ont connu une fin atroce.");
+    public JLabel labelguerrier = new JLabel("Chevaliers menant une quête, seigneurs conquérants, champions royaux, fantassins d'élite,\n" +
+            "mercenaires endurcis et rois-bandits, tous partagent une maîtrise inégalée des armes et des \n" +
+            "armures ainsi qu'une connaissance approfondie des compétences de combat. Leur point commun ?\n" +
+            "Ce sont tous des guerriers et tous connaissent bien la mort, l'infligeant autant qu'ils lui font face.");
+    public JLabel labelpaladin = new JLabel("Quelles que soient leurs origines et leurs missions, les paladins sont unis par leur serment\n" +
+            "de s'opposer aux forces du mal. Le serment d'un paladin est un lien très puissant. \n" +
+            "Il est la source d'un pouvoir qui transforme un guerrier dévoué en un champion béni. Vêtue d'une\n" +
+            "armure étincelante sous le soleil, malgré la poussière et la crasse accumulées durant leurs voyages les\n" +
+            "Paladins sont de fier guerriers de la lumière.\n");
+    public JLabel labelarcher = new JLabel("Fier guerrier des bois et habile traqueur \n" +
+            ", vous êtes un maitre chasseur." +
+            " L'archer est la personnification \n" +
+            "même du talent pour le tir à l'arc. Il peut réussir tous les tirs réputés difficiles.\n" +
+            "Que sa cible soit exposée à de forts vents contraires, ou complètement dissimulée par des buissons,\n" +
+            "l'archer est certain de réussir son coup.");
 
     public String classchosen;
 
@@ -53,8 +68,21 @@ public class CharSelect extends JFrame implements ActionListener {
         guerrier = new JButton("Guerrier",iconguerrier);
         archer = new JButton("Archer",iconarcher);
         paladin = new JButton("Paladin",iconpaladin);
-        back = new JButton("Revenir !");
-        confirm = new JButton("Confirmer!");
+
+
+        ImageIcon backicon = new ImageIcon("exit.png");
+        back = new JButton(backicon);
+        back.setOpaque(false);
+        back.setContentAreaFilled(false);
+        back.setBorderPainted(false);
+
+
+        ImageIcon starticon = new ImageIcon("play.png");
+        confirm = new JButton(starticon);
+        confirm.setOpaque(false);
+        confirm.setContentAreaFilled(false);
+        confirm.setBorderPainted(false);
+
 
         try{
             // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS

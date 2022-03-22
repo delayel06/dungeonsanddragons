@@ -21,12 +21,6 @@ class StatDefine extends JFrame implements ActionListener {
     public JButton rollerchar = new JButton("Rouler CHAR !");
 
 
-
-
-
-
-
-
     public JPanel mainpanel ;
     public JButton start ;
     public JLabel label1;
@@ -113,23 +107,14 @@ class StatDefine extends JFrame implements ActionListener {
         mainpanel.revalidate();
 
     }else if(e.getSource() == rollerchar){
-        dice.manyroll();
+        dice.lastroll();
         mainpanel.revalidate();
         mainpanel.remove(rollerchar);
         mainpanel.revalidate();
 
-        // IL FAUT CE SLEEP SINON LE ROLL EST TROP LENT POUR LA BOUCLE EN DESSOUS ! DU COUP YA RIEN DEDANS
-        //augmenter le time si on veut plus de roulage de dé
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException interruptedException) {
-            interruptedException.printStackTrace();
-        }
         setStats();
-        personnage.raceAdd();
 
     }
-
 
 
     }
@@ -149,37 +134,5 @@ class StatDefine extends JFrame implements ActionListener {
     }
 
 
-/*
-
-    public int rollDie(JLabel a){
-        String s = "";
-        for(int i = 0 ; i < 22; i++){
-            int j = (int)(Math.random()*6);
-            a.setIcon( dicearray[j] );
-            dicepainted = dicearray[j];
-            
-
-        }
-
-        return   convertNumber(  a.getIcon().toString());
-
-    }
-
-
-    public int convertNumber(String s){
-
-
-        int a = switch (s) {
-            case "6.png" -> 6;
-            case "5.png" -> 5;
-            case "4.png" -> 4;
-            case "3.png" -> 3;
-            case "2.png" -> 2;
-            case "1.png" -> 1;
-            default -> 0;
-        };
-        return a;
-    }
-*/
 }
 

@@ -38,10 +38,10 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         // ca devrait pas arriver ici
         }
 
-        mainPanel = new JPanel(new BorderLayout(20,20));
+        mainPanel = new JPanel(new GridLayout(1,2,10,10));
         mainPanel.setSize(width,height);
         mainPanel.setLocation( 0,0 );
-        mainPanel.setBackground( Color.WHITE );
+        mainPanel.setBackground( new Color( 0xE3E3E3 ) );
 
         helpPanel = new JPanel(new BorderLayout(20,20));
         helpPanel.setSize(width,height);
@@ -56,22 +56,27 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         btnback.setBackground( Color.magenta );
         btnback.addActionListener( this );
 
-        btn1 = new JButton("Commencer !");
-        btn1.setFont(font);
+        ImageIcon starticon = new ImageIcon("start.png");
+        btn1 = new JButton( starticon);
+        btn1.setOpaque(false);
+        btn1.setContentAreaFilled(false);
+        btn1.setBorderPainted(false);
+
         btn1.setPreferredSize( new Dimension(200,100) );
-        btn1.setBackground( new Color(0,128,43) );
-        btn1.setForeground( Color.black);
+
         btn1.addActionListener(this);
 
-        btnhelp = new JButton("Aides et infos");
+
+        ImageIcon helpicon = new ImageIcon("help.png");
+        btnhelp = new JButton(helpicon);
         btnhelp.setPreferredSize(new Dimension(200,100)  );
-        btnhelp.setBackground( new Color(0,134,179) );
-        btnhelp.setForeground( Color.black);
-        btnhelp.setFont(font);
+        btnhelp.setOpaque(false);
+        btnhelp.setContentAreaFilled(false);
+        btnhelp.setBorderPainted(false);
         btnhelp.addActionListener(this);
 
-        mainPanel.add(btn1, BorderLayout.CENTER);
-        mainPanel.add(btnhelp, BorderLayout.LINE_END);
+        mainPanel.add(btn1);
+        mainPanel.add(btnhelp);
 
         helpPanel.add(helpLabel, BorderLayout.CENTER);
         helpPanel.add(btnback, BorderLayout.AFTER_LAST_LINE);
