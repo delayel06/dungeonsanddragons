@@ -1,15 +1,15 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 
-public class DessinPerso{
+public class DessinPerso extends Component {
 	int rayon = 20;
 	int posX =250;
 	int posY =350;
+	public ImageIcon icon = new ImageIcon("sprite.png");
 	public DessinPerso(){
 	}
 	public void dessine(Graphics g){
-		g.setColor(Color.red) ;
-		g.fillOval(posX,posY,rayon,rayon) ;
+		icon.paintIcon( this, g , posX,posY );
 	}
 	public void deplaceGauche(){
 		posX = posX - 50;
