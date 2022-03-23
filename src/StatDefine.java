@@ -119,8 +119,6 @@ class StatDefine extends JFrame implements ActionListener {
 
 
     }
-
-
     public void setStats() {
 
         for(int i = 0 ; i < 6 ; i++){

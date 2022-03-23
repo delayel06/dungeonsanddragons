@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 
 
 public class RaceSelect  extends JFrame implements ActionListener {
@@ -22,6 +24,7 @@ public class RaceSelect  extends JFrame implements ActionListener {
 
         public JButton confirm;
         public JButton back;
+        public Font font;
 
         public JLabel labelhuman = new JLabel("explication humain");
         public JLabel labelorc = new JLabel("explication orc");
@@ -40,7 +43,15 @@ public class RaceSelect  extends JFrame implements ActionListener {
             setVisible(true);
 
             mainpanel = new JPanel(new GridLayout(2,2,20,20));
-
+            try{
+                // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
+                font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(30f); //taille ici
+                GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")));
+            }
+            catch(IOException | FontFormatException e){
+                // ca devrait pas arriver ici
+            }
 
             ImageIcon backicon = new ImageIcon("exit.png");
 
@@ -60,42 +71,17 @@ public class RaceSelect  extends JFrame implements ActionListener {
             confirm = new JButton(starticon);
 
 
-            human.setOpaque(false);
-            human.setContentAreaFilled(false);
-            human.setBorderPainted(false);
+            setButton( human );
+            setButton( orc );
+            setButton( elf );
+            setButton( dwarf );
+            setButton( back );
+            setButton( confirm );
 
-            orc.setOpaque(false);
-            orc.setContentAreaFilled(false);
-            orc.setBorderPainted(false);
-
-            elf.setOpaque(false);
-            elf.setContentAreaFilled(false);
-            elf.setBorderPainted(false);
-
-            dwarf.setOpaque(false);
-            dwarf.setContentAreaFilled(false);
-            dwarf.setBorderPainted(false);
-
-
-            back.setOpaque(false);
-            back.setContentAreaFilled(false);
-            back.setBorderPainted(false);
-
-            confirm.setOpaque(false);
-            confirm.setContentAreaFilled(false);
-            confirm.setBorderPainted(false);
-
-
-            human.addActionListener(this);
-            orc.addActionListener(this);
-            elf.addActionListener(this);
-            dwarf.addActionListener(this);
-            back.addActionListener(this);
-            confirm.addActionListener(this);
-
-
-
-
+            human.setFont( font);
+            orc.setFont( font);
+            elf.setFont( font);
+            dwarf.setFont( font);
 
 
             mainpanel.add(human);
@@ -111,7 +97,12 @@ public class RaceSelect  extends JFrame implements ActionListener {
 
         }
 
-
+    public void setButton(JButton a){
+        a.setOpaque(false);
+        a.setContentAreaFilled(false);
+        a.setBorderPainted(false);
+        a.addActionListener(this);
+    }
 
         public void actionPerformed(ActionEvent e) {
             classchoose( e );

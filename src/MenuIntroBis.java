@@ -5,7 +5,8 @@ import java.awt.event.*;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serial;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MenuIntroBis extends JFrame implements ActionListener {
@@ -20,6 +21,8 @@ public class MenuIntroBis extends JFrame implements ActionListener {
     public JPanel bigpanel;
     public Font font;
     public ImageIcon image = new ImageIcon("background.png");
+    public int backgroundx;
+    public int backgroundy;
 
     public MenuIntroBis()  {
         setSize(width,height);
@@ -39,17 +42,19 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         catch(IOException | FontFormatException e){
         // ca devrait pas arriver ici
         }
-
+        backgroundx = 0;
+        backgroundy = -300;
         mainPanel = new JPanel(new GridLayout(1,2,10,10)){
-
-
             @Override
             public void paintComponent(Graphics g)
             {
-                g.drawImage(image.getImage(), -300, -300, null);
+                g.drawImage(image.getImage(), backgroundx, backgroundy, null);
             }
-//Comment mettre l'image en background
+            //Comment mettre l'image en background
+            // ici on doit faire ce { } dans la définition du panel car paint ne marche que dans un jpanel
+
         };
+
         mainPanel.setSize(width,height);
         mainPanel.setLocation( 0,0 );
 
@@ -105,7 +110,51 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
 
         setVisible(true);
+        panBack();
     }
+
+    private void panBack() {
+
+        Timer t = new Timer();
+        TimerTask task = new TimerTask() {
+            int i = 0;
+            public void run()
+            {
+                if(i < 400){
+                    backgroundx--;
+                    repaint();
+                    i++;
+                }else if ( i < 800){
+                    backgroundx++;
+                    repaint();
+                    i++;
+                }else if ( i < 1200){
+                    backgroundx--;
+                    repaint();
+                    i++;
+                }else if ( i < 1600){
+                    backgroundx++;
+                    repaint();
+                    i++;
+                }else if ( i < 2000){
+                    backgroundx--;
+                    repaint();
+                    i++;
+                }else if ( i < 2400){
+                    backgroundx++;
+                    repaint();
+                    i++;
+                }
+            }
+
+
+        };
+
+        t.schedule( task,0, 20 );
+    }
+
+
+
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnhelp){
