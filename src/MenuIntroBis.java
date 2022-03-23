@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serial;
 
 
 public class MenuIntroBis extends JFrame implements ActionListener {
@@ -18,13 +19,14 @@ public class MenuIntroBis extends JFrame implements ActionListener {
     public JButton btnback;
     public JPanel bigpanel;
     public Font font;
+    public ImageIcon image = new ImageIcon("background.png");
 
     public MenuIntroBis()  {
         setSize(width,height);
         setTitle("Menu Principal");
         setLocation(getWidth()/2,getHeight()/2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        this.setResizable( false );
 
         // on change pour un beau texte
 
@@ -38,10 +40,19 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         // ca devrait pas arriver ici
         }
 
-        mainPanel = new JPanel(new GridLayout(1,2,10,10));
+        mainPanel = new JPanel(new GridLayout(1,2,10,10)){
+
+
+            @Override
+            public void paintComponent(Graphics g)
+            {
+                g.drawImage(image.getImage(), -300, -300, null);
+            }
+//Comment mettre l'image en background
+        };
         mainPanel.setSize(width,height);
         mainPanel.setLocation( 0,0 );
-        mainPanel.setBackground( new Color( 0xE3E3E3 ) );
+
 
         helpPanel = new JPanel(new BorderLayout(20,20));
         helpPanel.setSize(width,height);
@@ -67,7 +78,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         btn1.addActionListener(this);
 
 
-        ImageIcon helpicon = new ImageIcon("help.png");
+        ImageIcon helpicon = new ImageIcon("info.png");
         btnhelp = new JButton(helpicon);
         btnhelp.setPreferredSize(new Dimension(200,100)  );
         btnhelp.setOpaque(false);

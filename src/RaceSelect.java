@@ -58,13 +58,23 @@ public class RaceSelect  extends JFrame implements ActionListener {
             dwarf = new JButton("Nain",icondwarf);
             back = new JButton(backicon);
             confirm = new JButton(starticon);
-/*
-            mage.setBackground(Color.WHITE);
-            guerrier.setBackground(Color.WHITE);
-            paladin.setBackground(Color.WHITE);
-            archer.setBackground(Color.WHITE);
 
- */
+
+            human.setOpaque(false);
+            human.setContentAreaFilled(false);
+            human.setBorderPainted(false);
+
+            orc.setOpaque(false);
+            orc.setContentAreaFilled(false);
+            orc.setBorderPainted(false);
+
+            elf.setOpaque(false);
+            elf.setContentAreaFilled(false);
+            elf.setBorderPainted(false);
+
+            dwarf.setOpaque(false);
+            dwarf.setContentAreaFilled(false);
+            dwarf.setBorderPainted(false);
 
 
             back.setOpaque(false);

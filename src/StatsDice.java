@@ -91,7 +91,7 @@ public void manyroll(){
         t.schedule( task,0, 125 );
 }
 
-public void lastroll(){
+public void lastroll(JFrame a){
 
 
     int vallastroll = (int)((Math.random()*6));
@@ -103,18 +103,21 @@ public void lastroll(){
     Timer t = new Timer();
     TimerTask task = new TimerTask() {
         int i = 0;
-        public void run()
-        {
+        public void run() {
 
-            if (i == 10){
+            if (i == 9) {
 
                 val = vallastroll;
                 setDice();
                 i++;
 
-            } else if (i == 11){
+            } else if (i == 10) {
 
                 t.cancel();
+
+                new DeplacementSalle();
+
+                a.dispose();
 
             }else{
                 roll();

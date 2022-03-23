@@ -11,14 +11,15 @@ class StatDefine extends JFrame implements ActionListener {
     public int width = 800;
     public int height = 400;
 
+    ImageIcon rollbutton = new ImageIcon("button_rouler.png");
 
     public StatsDice dice = new StatsDice();
-    public JButton rollerstr = new JButton("Rouler STR !");
-    public JButton rollerdex = new JButton("Rouler DEX !");
-    public JButton rollercons = new JButton("Rouler CONS !");
-    public JButton rollerintel = new JButton("Rouler INT !");
-    public JButton rollerwis = new JButton("Rouler WIS !");
-    public JButton rollerchar = new JButton("Rouler CHAR !");
+    public JButton rollerstr = new JButton(rollbutton);
+    public JButton rollerdex = new JButton(rollbutton);
+    public JButton rollercons = new JButton(rollbutton);
+    public JButton rollerintel = new JButton(rollbutton);
+    public JButton rollerwis = new JButton(rollbutton);
+    public JButton rollerchar = new JButton(rollbutton);
 
 
     public JPanel mainpanel ;
@@ -37,7 +38,6 @@ class StatDefine extends JFrame implements ActionListener {
 
         mainpanel = new JPanel(new BorderLayout());
 
-
         label1 = new JLabel("Vous allez maintenant déterminer vos stats avec un lancé de dés !", SwingConstants.CENTER);
 
         start = new JButton("Commencer le tirage!");
@@ -45,13 +45,12 @@ class StatDefine extends JFrame implements ActionListener {
         start.setPreferredSize( new Dimension(200,100) );
         start.addActionListener(this);
 
-
-        rollerstr.addActionListener(this);
-        rollerdex.addActionListener(this);
-        rollerintel.addActionListener(this);
-        rollercons.addActionListener(this);
-        rollerwis.addActionListener(this);
-        rollerchar.addActionListener(this);
+        setButton(rollerstr);
+        setButton(rollerchar);
+        setButton(rollerdex);
+        setButton(rollerintel);
+        setButton(rollerwis);
+        setButton(rollercons);
 
 
         mainpanel.add(start, BorderLayout.PAGE_END);
@@ -107,12 +106,14 @@ class StatDefine extends JFrame implements ActionListener {
         mainpanel.revalidate();
 
     }else if(e.getSource() == rollerchar){
-        dice.lastroll();
+        dice.lastroll(this);
         mainpanel.revalidate();
         mainpanel.remove(rollerchar);
         mainpanel.revalidate();
 
         setStats();
+
+
 
     }
 
@@ -132,7 +133,12 @@ class StatDefine extends JFrame implements ActionListener {
 
 
     }
-
+    public void setButton(JButton a){
+        a.setOpaque(false);
+        a.setContentAreaFilled(false);
+        a.setBorderPainted(false);
+        a.addActionListener(this);
+    }
 
 }
 
