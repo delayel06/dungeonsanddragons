@@ -159,6 +159,7 @@ public class RaceSelect  extends JFrame implements ActionListener {
                 personnage.setRace(racechoisie);
                 new StatDefine(personnage);
                 this.dispose();
+
             }
 
 
