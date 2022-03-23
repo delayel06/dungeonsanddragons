@@ -1,3 +1,5 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -31,7 +33,7 @@ public class CharSelect extends JFrame implements ActionListener {
     public Font font;
 
     public Personnage perso;
-
+    Clip clip;
 
 
     public CharSelect(){
@@ -40,6 +42,7 @@ public class CharSelect extends JFrame implements ActionListener {
         setLocation(getWidth()/2,getHeight()/2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        music( "othertheme.wav" );
 
         mainpanel = new JPanel(new GridLayout(2,2,20,20));
 
@@ -176,5 +179,17 @@ public class CharSelect extends JFrame implements ActionListener {
         }
 
 
+    }
+
+    public void music(String path){
+
+        File music = new File(path);
+        try {
+            clip = AudioSystem.getClip();
+            clip.open( AudioSystem.getAudioInputStream( music ) );
+            clip.start();
+        }catch(Exception e){
+            // :(((
+        }
     }
 }

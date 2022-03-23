@@ -1,8 +1,11 @@
 
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
@@ -23,6 +26,8 @@ public class MenuIntroBis extends JFrame implements ActionListener {
     public ImageIcon image = new ImageIcon("background.png");
     public int backgroundx;
     public int backgroundy;
+    Clip clip;
+
 
     public MenuIntroBis()  {
         setSize(width,height);
@@ -30,9 +35,13 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         setLocation(getWidth()/2,getHeight()/2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable( false );
+        music("introtheme.wav");
+
+
+
+
 
         // on change pour un beau texte
-
         try{
             // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
             font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(30f); //taille ici
@@ -186,10 +195,25 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
         }else if(e.getSource() == btn1){
             new CharSelect();
+            clip.stop();
 
             this.dispose();
 
 
+        }
+    }
+
+
+
+    public void music(String path){
+
+        File music = new File(path);
+        try {
+            clip = AudioSystem.getClip();
+            clip.open( AudioSystem.getAudioInputStream( music ) );
+            clip.start();
+        }catch(Exception e){
+            // :(((
         }
     }
 
