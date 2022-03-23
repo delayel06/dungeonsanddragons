@@ -24,9 +24,7 @@ public class Monstre {
         return (int) (n * Math.random());
     }
 
-    public void a1(){} //re définition dans chaque race de monstre
-    public void a2(){}
-    public void a3(){}
-    public void a4(){}
+    public void atk(){} //re définition dans chaque race de monstre
+
 
 }

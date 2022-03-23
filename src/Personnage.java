@@ -5,14 +5,14 @@ public class Personnage extends Figurine{
     // 1 str 2 dex 3 int 4 cons 5 wis 6 char
     public int HP;
     public int HP_max;
-    public int For;
-    public int Mod_For;
+    public int Str;
+    public int Mod_Str;
     public int Dex;
     public int Mod_Dex;
     public int Con;
     public int Mod_Con;
-    public int Sag;
-    public int Mod_Sag;
+    public int Wis;
+    public int Mod_Wis;
     public int Int;
     public int Mod_Int;
     public int Cha;
