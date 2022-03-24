@@ -117,16 +117,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		NomPerso.setLocation(getWidth() / 2, getHeight() / 2);
 		NomPerso.setBackground(Color.white);
 
-		BarreV = new JPanel();
-		BarreV.setLayout(null);
-		BarreV.setSize(width, height);
-		BarreV.setLocation(getWidth() / 2, getHeight() / 2);
-		BarreV.setBackground(Color.white);
-		BarreV.add(BV);
 
 		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Perso2.add(NomPerso);
-		Perso2.add(BarreV);
+		Perso2.add(BV);
+		Perso2.add(NomPerso);
 		Perso2.setSize(width, height);
 		Perso2.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso2.setBackground(Color.white);
@@ -311,31 +306,20 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == attaque1) {
 			personnage.a1(m);
-			compte+=1;
-			compteur();
-			BarreVieM(m);
 		}else if (e.getSource() == attaque2){
 			personnage.a2(m);
-			compte+=1;
-			compteur();
-			BarreVieM(m);
 		} else if (e.getSource() == attaque3){
 			personnage.a3(m);
-			compte+=1;
-			compteur();
-			BarreVieM(m);
 		} else if (e.getSource() == attaque4){
 			personnage.a4(m);
-			compte+=1;
-			compteur();
-			BarreVieM(m);
 		}
 		else if(e.getSource() == attaqueM){
 			m.atk(personnage);
-			compte+=1;
-			compteur();
-			BarreVieP(personnage);
 		}
+		compte+=1;
+		compteur();
+		BarreVieM(m);
+		BarreVieP(personnage);
 	}
 
 	private void removeAttackButtons() {
