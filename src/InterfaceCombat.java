@@ -106,7 +106,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Nom.setSize(width, height);
 		Nom.setLocation(getWidth() / 2, getHeight() / 2);
 
-		BV = new JLabel((new ImageIcon("bv1.png")));
+		BV = new JLabel(new ImageIcon("bv1.png"));
 		BV.setSize(width, height);
 		BV.setLocation(getWidth() / 2, getHeight() / 2);
 
@@ -283,21 +283,24 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			Monstre.repaint();
 		}
 
-		public void BarreVieP(Personnage p){
-			if ((p.HP >= (int)(p.HP_max*0.9))&&(m.HP >= (int)(p.HP_max*0.65))){
-				BV.setIcon(new ImageIcon("bv3.png"));
+		public void BarreVieP(Personnage p) {
+			if(p.HP == p.HP_max)
+			{
+				BV.setIcon(new ImageIcon("bv1.png"));
+			}else if ((p.HP >= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
+				BV.setIcon(new ImageIcon("bv2.png"));
 			}
 			else if ((p.HP > (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
 				BV.setIcon(new ImageIcon("bv3.png"));
 			}
 			else if ((p.HP > (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
-				BV.setIcon(new ImageIcon("bv3.png"));
+				BV.setIcon(new ImageIcon("bv4.png"));
 			}
-			else if ((p.HP >= (int)(p.HP_max*0.15))&&(m.HP > 0)){
-				BV.setIcon(new ImageIcon("bv3.png"));
+			else if ((p.HP >= (int)(p.HP_max*0.15))&&(p.HP > 0)){
+				BV.setIcon(new ImageIcon("bv5.png"));
 			}
 			else if (p.HP <= 0){
-				BV.setIcon(new ImageIcon("bv3.png"));
+				BV.setIcon(new ImageIcon("bv6.png"));
 			}
 		Perso.revalidate();
 		Perso.repaint();

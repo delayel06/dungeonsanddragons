@@ -23,7 +23,7 @@ public class Monstre {
 
 
     public int getRandomInt(int n) {
-        return (int) (n * Math.random());
+        return 2;
     }
 
     public void atk(Personnage p){
