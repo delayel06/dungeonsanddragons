@@ -11,7 +11,7 @@ public class Main{
         p.classe="guerrier";
         Monstre m = new Monstre(30,3);
         new InterfaceCombat(p, m);
-        //new MenuIntroBis();
+        new MenuIntroBis();
 
     }
 

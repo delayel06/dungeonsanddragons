@@ -1,22 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
 public class DessinPerso extends Component {
 	int rayon = 20;
 	int posX =250;
 	int posY =350;
-	public ImageIcon icon = new ImageIcon("knightidle.gif");
+
+	ImageIcon icon = new ImageIcon("knightidle.png");
+
 	public DessinPerso(){
 	}
 	public void dessine(Graphics g){
+
+
 		icon.paintIcon( this, g , posX,posY );
 	}
 	public void deplaceGauche(){
-		icon = new ImageIcon("knightrun2.gif");
+		icon = new ImageIcon("knightrun2.png");
 		posX = posX - 50;
 	}
 	public void deplaceDroite(){
-		icon = new ImageIcon("knightrun.gif");
+		icon = new ImageIcon("knightrun.png");
 		posX = posX + 50;
 	}
 	public void deplaceHaut(){

@@ -11,7 +11,7 @@ public class StatsDice extends JPanel {
     public int val;
     public int j = 0;
 
-    public ImageIcon zero = new ImageIcon("0.png");
+    public ImageIcon zero = new ImageIcon("1.png");
     public ImageIcon one = new ImageIcon("1.png");
     public ImageIcon two = new ImageIcon("2.png");
     public ImageIcon three = new ImageIcon("3.png");
@@ -94,7 +94,7 @@ public void manyroll(){
 public void lastroll(JFrame a){
 
 
-    int vallastroll = (int)((Math.random()*6));
+    int vallastroll = (int)((Math.random()*6) + 1);
     valeurs[5] = vallastroll;
     System.out.println(vallastroll);
 
