@@ -29,11 +29,17 @@ public class Personnage extends Figurine{
         this.race = race;
     }
 
-    public void a1(){}  //re défintion des attaques dans chaque classe
-    public void a2(){}
-    public void a3(){}
-    public void a4(){}
-    public void a5(){}
-    public void a6(){}
+    public void a1(Monstre m){
+        m.HP-=2;
+    }  //re défintion des attaques dans chaque classe
+    public void a2(Monstre m){
+        m.HP-=5;
+    }
+    public void a3(Monstre m){
+        m.HP-=8;
+    }
+    public void a4(Monstre m){
+        m.HP-=12;
+    }
 
 }

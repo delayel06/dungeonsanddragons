@@ -8,14 +8,16 @@ import java.io.IOException;
 
 public class Monstre {
 
-    public int PV;
+    public int HP;
     public int CA;
+    public int HPmax;
     public Icon monstre;
 
 
     public Monstre(int PV, int CA){
-        this.PV = PV;
+        this.HP = PV;
         this.CA = CA;
+        this.HPmax=PV;
 
     }
 
@@ -24,7 +26,9 @@ public class Monstre {
         return (int) (n * Math.random());
     }
 
-    public void atk(){} //re définition dans chaque race de monstre
+    public void atk(Personnage p){
+        p.HP -= getRandomInt(6);
+    }
 
 
 }
