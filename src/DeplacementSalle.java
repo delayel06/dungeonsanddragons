@@ -6,11 +6,11 @@ import java.util.LinkedList;
 
 public class DeplacementSalle  extends JFrame implements KeyListener{
 	int width = 500;
-	int heigth= 500;
+	int height= 500;
 	DessinPerso p = new DessinPerso();
 	public DeplacementSalle(){
 		setTitle( " La carte du jeu ");
-        setSize(width,heigth);
+        setSize(width,height);
         setLocation(200,0);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unPanel pan= new unPanel();//La on va creer toutes les salles et les mettre and la Jframe tour a tour
@@ -43,7 +43,7 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 	
 	public void paint(Graphics g){
 		g.setColor(Color.blue);
-		g.fillRect(0,0,width,heigth);
+		g.fillRect(0,0,getWidth(),getHeight());
 		p.dessine(g);
 	}
 	
