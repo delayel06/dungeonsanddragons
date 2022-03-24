@@ -18,18 +18,25 @@ public class DessinPerso extends Component {
 		icon.paintIcon( this, g , posX,posY );
 	}
 	public void deplaceGauche(){
+		posX = posX - 2;
 		icon = new ImageIcon("knightrun2.png");
-		posX = posX - 50;
 	}
 	public void deplaceDroite(){
+		posX = posX + 2;
 		icon = new ImageIcon("knightrun.png");
-		posX = posX + 50;
+
 	}
 	public void deplaceHaut(){
-		posY = posY - 50;
+		posY = posY - 2;
+		icon = new ImageIcon("knightup.png");
+
 	}
 	public void deplaceBas(){
-		posY = posY + 50;
+		posY = posY + 2;
+		icon = new ImageIcon("knightdown.png");
+
 	}
+
+
 	
 }

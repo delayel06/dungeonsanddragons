@@ -19,26 +19,35 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 	}
 	
 	public void keyPressed(KeyEvent e) {
-		int code = e.getKeyCode();
+
 		//	System.out.print("Code clavier "+code+" appuye. ");
 		if(e.getKeyCode() == 37){
 			p.deplaceGauche();
-			repaint();
+
 		}
 		if(e.getKeyCode() == 38){
 			p.deplaceHaut();
-			repaint();
+
 		}
 		if(e.getKeyCode() == 39){
 			p.deplaceDroite();
-			repaint();
+
 		}
 		if(e.getKeyCode() == 40){
 			p.deplaceBas();
-			repaint();
+
+
 		}
+		repaint();
+
 	}
-	public void keyReleased(KeyEvent e) {  }
+	public void keyReleased(KeyEvent e) {
+
+			p.icon = new ImageIcon("knightidle.png");
+			repaint();
+
+
+	}
 	public void keyTyped(KeyEvent e) {  }
 	
 	public void paint(Graphics g){
