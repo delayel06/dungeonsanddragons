@@ -7,9 +7,22 @@ import java.io.IOException;
 
  class Gobelin extends Monstre {
 
-    public Gobelin (int PV, int CA){
-        super(PV, CA);
-        Icon Monstre = new ImageIcon("gobelin.jpg");
+    public Gobelin (){
+
+        super(7,15,"gobelin");
+
+
 
     }
-}
+
+     public void atk(Personnage p){
+         int j = getRandomInt(6)+3;
+         p.HP -=j;
+
+     }
+
+     public int getRandomInt(int n) {
+         return (int)(Math.random() * n);
+     }
+
+ }

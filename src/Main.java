@@ -9,9 +9,9 @@ public class Main{
         p.HP=20;
         p.HP_max=20;
         p.classe="guerrier";
-        Monstre m = new Monstre(30,3);
+        Monstre m = new Monstre(30,3,"gobelin");
         new InterfaceCombat(p, m);
-        new MenuIntroBis();
+        //new MenuIntroBis();
 
     }
 

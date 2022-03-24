@@ -14,17 +14,16 @@ public class Monstre {
     public Icon monstre;
 
 
-    public Monstre(int PV, int CA){
+    public Monstre(int PV, int CA, String nom){
         this.HP = PV;
         this.CA = CA;
         this.HPmax=PV;
+        this.monstre = new ImageIcon(nom);
 
     }
 
 
-    public int getRandomInt(int n) {
-        return 2;
-    }
+
 
     public void atk(Personnage p){
         p.HP -= 2;
