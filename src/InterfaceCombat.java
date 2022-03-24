@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import java.beans.JavaBean;
 import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -204,16 +205,19 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.setBackground(Color.black);
 
 
+		attaque1 = new JButton();
+		attaque2 = new JButton();
+		attaque3 = new JButton();
+		attaque4 = new JButton();
 
-		attaque1.setFont(font);
-		attaque2.setFont(font);
-		attaque3.setFont(font);
-		attaque4.setFont(font);
+		choixImage();
 
 		setButton(attaque1);
 		setButton(attaque2);
 		setButton(attaque3);
 		setButton(attaque4);
+
+
 
 		controle.add(attaque1);
 		controle.add(attaque2);
@@ -360,5 +364,26 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		a.addActionListener(this);
 	}
 
+
+	public void choixImage(){
+		if(personnage.classe=="mage"){
+			attaque1 = new JButton(new ImageIcon("m1.png"));
+			attaque2 = new JButton(new ImageIcon("m2.png"));
+			attaque3 = new JButton(new ImageIcon("m3.png"));
+			attaque4 = new JButton(new ImageIcon("m4.png"));
+		}
+		else if(personnage.classe=="guerrier"){
+			attaque1 = new JButton(new ImageIcon("g1.png"));
+			attaque2 = new JButton(new ImageIcon("g2.png"));
+			attaque3 = new JButton(new ImageIcon("g3.png"));
+			attaque4 = new JButton(new ImageIcon("g4.png"));
+		}
+		else if(personnage.classe=="archer"){
+
+		}
+		else if(personnage.classe=="paladin"){
+
+		}
+	}
 
 }

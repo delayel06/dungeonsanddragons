@@ -8,6 +8,7 @@ public class Main{
         Personnage p = new Personnage();
         p.HP=20;
         p.HP_max=20;
+        p.classe="guerrier";
         Monstre m = new Monstre(30,3);
         new InterfaceCombat(p, m);
         //new MenuIntroBis();

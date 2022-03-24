@@ -1,6 +1,6 @@
 public class Personnage extends Figurine{
     public String classe;
-     public String race;
+    public String race;
     public int[] stats = new int[6];
     // 1 str 2 dex 3 int 4 cons 5 wis 6 char
     public int HP;
