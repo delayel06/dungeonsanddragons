@@ -27,7 +27,7 @@ public class Monstre {
     }
 
     public void atk(Personnage p){
-        p.HP -= getRandomInt(6);
+        p.HP -= 2;
     }
 
 

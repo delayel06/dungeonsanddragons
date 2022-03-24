@@ -204,20 +204,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.setBackground(Color.black);
 
 
-		attaque1 = new JButton("Attaque 1");
-		attaque2 = new JButton("Attaque 2");
-		attaque3 = new JButton("Attaque 3");
-		attaque4 = new JButton("Attaque 4");
+
 		attaque1.setFont(font);
 		attaque2.setFont(font);
 		attaque3.setFont(font);
 		attaque4.setFont(font);
 
-
-		attaque1.addActionListener(this);
-		attaque2.addActionListener(this);
-		attaque3.addActionListener(this);
-		attaque4.addActionListener(this);
+		setButton(attaque1);
+		setButton(attaque2);
+		setButton(attaque3);
+		setButton(attaque4);
 
 		controle.add(attaque1);
 		controle.add(attaque2);
@@ -235,8 +231,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		desAM.setBackground(Color.blue);
 
 		attaqueM = new JButton("Suite");
+		setButton(attaqueM);
 		attaqueM.setFont(font);
-		attaqueM.addActionListener(this);
 		desAM.add(attaqueM);
 
 		tourM = new JLabel(" Le monstre attaque !!! "); //A remplir avec des descriptions predéterminées pour chaque attaque
@@ -263,48 +259,48 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	}
 
 
-		public void BarreVieM(Monstre m){
-			if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
-				BVM.setIcon(new ImageIcon("bv2.png"));
-			}
-			else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
-				BVM.setIcon(new ImageIcon("bv3.png"));
-			}
-			else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
-				BVM.setIcon(new ImageIcon("bv4.png"));
-			}
-			else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
-				BVM.setIcon(new ImageIcon("bv5.png"));
-			}
-			else if (m.HP <= 0){
-				BVM.setIcon(new ImageIcon("bv6.png"));
-			}
-			Monstre.revalidate();
-			Monstre.repaint();
+	public void BarreVieM(Monstre m){
+		if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
+			BVM.setIcon(new ImageIcon("bv2.png"));
 		}
+		else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
+			BVM.setIcon(new ImageIcon("bv3.png"));
+		}
+		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
+			BVM.setIcon(new ImageIcon("bv4.png"));
+		}
+		else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
+			BVM.setIcon(new ImageIcon("bv5.png"));
+		}
+		else if (m.HP <= 0){
+			BVM.setIcon(new ImageIcon("bv6.png"));
+		}
+		Monstre.revalidate();
+		Monstre.repaint();
+	}
 
-		public void BarreVieP(Personnage p) {
-			if(p.HP == p.HP_max)
-			{
-				BV.setIcon(new ImageIcon("bv1.png"));
-			}else if ((p.HP >= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
-				BV.setIcon(new ImageIcon("bv2.png"));
-			}
-			else if ((p.HP > (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
-				BV.setIcon(new ImageIcon("bv3.png"));
-			}
-			else if ((p.HP > (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
-				BV.setIcon(new ImageIcon("bv4.png"));
-			}
-			else if ((p.HP >= (int)(p.HP_max*0.15))&&(p.HP > 0)){
-				BV.setIcon(new ImageIcon("bv5.png"));
-			}
-			else if (p.HP <= 0){
-				BV.setIcon(new ImageIcon("bv6.png"));
-			}
+	public void BarreVieP(Personnage p) {
+		if(p.HP == p.HP_max)
+		{
+			BV.setIcon(new ImageIcon("bv1.png"));
+		}else if ((p.HP >= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
+			BV.setIcon(new ImageIcon("bv2.png"));
+		}
+		else if ((p.HP > (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
+			BV.setIcon(new ImageIcon("bv3.png"));
+		}
+		else if ((p.HP > (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
+			BV.setIcon(new ImageIcon("bv4.png"));
+		}
+		else if ((p.HP >= (int)(p.HP_max*0.15))&&(p.HP > 0)){
+			BV.setIcon(new ImageIcon("bv5.png"));
+		}
+		else if (p.HP <= 0){
+			BV.setIcon(new ImageIcon("bv6.png"));
+		}
 		Perso.revalidate();
 		Perso.repaint();
-		}
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == attaque1) {
@@ -357,7 +353,12 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		}
 	}
 
+	public void setButton(JButton a){
+		a.setOpaque(false);
+		a.setContentAreaFilled(false);
+		a.setBorderPainted(false);
+		a.addActionListener(this);
+	}
+
 
 }
-
-

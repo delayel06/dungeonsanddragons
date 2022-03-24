@@ -28,10 +28,10 @@ public class Personnage extends Figurine{
     public void setRace(String race){
         this.race = race;
     }
-
+    //re défintion des attaques dans chaque classe
     public void a1(Monstre m){
         m.HP-=2;
-    }  //re défintion des attaques dans chaque classe
+    }
     public void a2(Monstre m){
         m.HP-=5;
     }
