@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,6 +25,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
     public JPanel bigpanel;
     public Font font;
     public ImageIcon image = new ImageIcon("background.png");
+    public ImageIcon titlescreen = new ImageIcon("title.png");
     public int backgroundx;
     public int backgroundy;
     Clip clip;
@@ -34,9 +36,9 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         setTitle("Menu Principal");
         setLocation(getWidth()/2,getHeight()/2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable( false );
+        setResizable( false );
         music("introtheme.wav");
-
+        setIconImage( new ImageIcon("logo.png").getImage() );
 
 
 
@@ -58,6 +60,8 @@ public class MenuIntroBis extends JFrame implements ActionListener {
             public void paintComponent(Graphics g)
             {
                 g.drawImage(image.getImage(), backgroundx, backgroundy, null);
+                g.drawImage( titlescreen.getImage(), 00,-50,null);
+
             }
             //Comment mettre l'image en background
             // ici on doit faire ce { } dans la définition du panel car paint ne marche que dans un jpanel

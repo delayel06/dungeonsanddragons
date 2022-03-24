@@ -35,6 +35,8 @@ class StatDefine extends JFrame implements ActionListener {
         setLocation(getWidth()/2,getHeight()/2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        setIconImage( new ImageIcon("logo.png").getImage() );
+
 
         mainpanel = new JPanel(new BorderLayout());
 

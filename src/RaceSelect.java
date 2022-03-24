@@ -41,8 +41,10 @@ public class RaceSelect  extends JFrame implements ActionListener {
             setLocation(getWidth()/2,getHeight()/2);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             setVisible(true);
+            setIconImage( new ImageIcon("logo.png").getImage() );
 
-            mainpanel = new JPanel(new GridLayout(2,2,20,20));
+
+        mainpanel = new JPanel(new GridLayout(2,2,20,20));
             try{
                 // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
                 font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(30f); //taille ici

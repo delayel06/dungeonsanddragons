@@ -43,6 +43,8 @@ public class CharSelect extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         music( "othertheme.wav" );
+        setIconImage( new ImageIcon("logo.png").getImage() );
+
 
         mainpanel = new JPanel(new GridLayout(2,2,20,20));
 
