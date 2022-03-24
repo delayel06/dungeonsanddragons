@@ -1,4 +1,6 @@
 import java.awt.*;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.beans.JavaBean;
@@ -7,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.lang.Thread;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class InterfaceCombat extends JFrame implements ActionListener {
@@ -69,6 +73,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JButton bVic;
 
 
+	Clip clip;
+
 	public InterfaceCombat(Personnage personnage, Monstre m) {
 		super();
 		// FAIRE UNE INITIALISATION DU MONSTRE EN FONCTION DE LA SALLE
@@ -77,6 +83,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		setSize(width, height);
 		//setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocation(0, 0);
+		setIconImage( new ImageIcon("logo.png").getImage() );
+		music("battletheme.wav");
+
 
 		// on change pour un beau texte
 
@@ -181,7 +190,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Monstre2.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre2.setBackground(Color.white);
 
-		ImMonstre = new JLabel((new ImageIcon("orc.png")));
+
+		//j'ai ajouté le gif pour le personnage en haut a droit  -- lilian
+
+		Icon icon = new ImageIcon("goblin.gif");
+		ImMonstre = new JLabel(icon);
 		ImMonstre.setSize(width, height);
 		ImMonstre.setLocation(getWidth() / 2, getHeight() / 2);
 
@@ -204,7 +217,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle = new JPanel(new GridLayout(2, 2, 2, 2));
 		controle.setSize(width, height);
 		controle.setLocation(getWidth() / 2, getHeight() / 2);
-		controle.setBackground(Color.black);
+		controle.setBackground(Color.white);
 
 
 		attaque1 = new JButton();
@@ -415,4 +428,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	}
 
+
+	public void music(String path){
+
+		File music = new File(path);
+		try {
+			clip = AudioSystem.getClip();
+			clip.open( AudioSystem.getAudioInputStream( music ) );
+			clip.start();
+		}catch(Exception e){
+			// :(((
+		}
+	}
 }
