@@ -45,6 +45,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JPanel Perso1;
 	public JPanel Perso2;
 	public JPanel Perso3;
+
 	//CASE PERSO 2
 	public JPanel BarreV;
 	public JLabel BV;
@@ -67,8 +68,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	public InterfaceCombat(Personnage personnage, Monstre m) {
 		super();
-		// this.m= m;    en pause pour l'instant (le monstre est choisi par la salle)
-		//this.m = Gobelin (20, 3);
+		// FAIRE UNE INITIALISATION DU MONSTRE EN FONCTION DE LA SALLE
+		this.m=m;
 		this.personnage = personnage;
 		setSize(width, height);
 		//setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -118,10 +119,10 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		BarreV = new JPanel();
 		BarreV.setLayout(null);
-		BarreV.add(BV);
 		BarreV.setSize(width, height);
 		BarreV.setLocation(getWidth() / 2, getHeight() / 2);
 		BarreV.setBackground(Color.white);
+		BarreV.add(BV);
 
 		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Perso2.add(NomPerso);
@@ -159,7 +160,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		NomM.setFont(fontNOM);
 
 
-		BVM = new JLabel((new ImageIcon("bv5.png")));
+		BVM = new JLabel((new ImageIcon("bv1.png")));
 		BVM.setSize(width, height);
 		BVM.setLocation(getWidth() / 2, getHeight() / 2);
 
@@ -266,36 +267,74 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	}
 
-	/*
-		public void BarreVie(Personnage p){
-			if (p.HP >= (int)(p.HP_max*0.8)){
 
+		public void BarreVieM(Monstre m){
+			if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
+				BVM.setIcon(new ImageIcon("bv2.png"));
 			}
+			else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
+				BVM.setIcon(new ImageIcon("bv3.png"));
+			}
+			else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
+				BVM.setIcon(new ImageIcon("bv4.png"));
+			}
+			else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
+				BVM.setIcon(new ImageIcon("bv5.png"));
+			}
+			else if (m.HP <= 0){
+				BVM.setIcon(new ImageIcon("bv6.png"));
+			}
+			Monstre.revalidate();
+			Monstre.repaint();
 		}
-	*/
+
+		public void BarreVieP(Personnage p){
+			if ((p.HP >= (int)(p.HP_max*0.9))&&(m.HP >= (int)(p.HP_max*0.65))){
+				BV.setIcon(new ImageIcon("bv3.png"));
+			}
+			else if ((p.HP > (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
+				BV.setIcon(new ImageIcon("bv3.png"));
+			}
+			else if ((p.HP > (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
+				BV.setIcon(new ImageIcon("bv3.png"));
+			}
+			else if ((p.HP >= (int)(p.HP_max*0.15))&&(m.HP > 0)){
+				BV.setIcon(new ImageIcon("bv3.png"));
+			}
+			else if (p.HP <= 0){
+				BV.setIcon(new ImageIcon("bv3.png"));
+			}
+		Perso.revalidate();
+		Perso.repaint();
+		}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == attaque1) {
-			personnage.a1();
+			personnage.a1(m);
 			compte+=1;
 			compteur();
+			BarreVieM(m);
 		}else if (e.getSource() == attaque2){
-			personnage.a2();
+			personnage.a2(m);
 			compte+=1;
 			compteur();
+			BarreVieM(m);
 		} else if (e.getSource() == attaque3){
-			personnage.a3();
+			personnage.a3(m);
 			compte+=1;
 			compteur();
+			BarreVieM(m);
 		} else if (e.getSource() == attaque4){
-			personnage.a4();
+			personnage.a4(m);
 			compte+=1;
 			compteur();
+			BarreVieM(m);
 		}
 		else if(e.getSource() == attaqueM){
-			//m.atk(); ca fait buger jsp pq
+			m.atk(personnage);
 			compte+=1;
 			compteur();
+			BarreVieP(personnage);
 		}
 	}
 
