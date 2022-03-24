@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class InterfaceCombat extends JFrame implements ActionListener {
 
-	public int width = 1400;
+	public int width = 1200;
 	public int height = 800;
 
 
@@ -66,6 +66,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	//compteur
 	public int compte = 1;
+	public JButton bVic;
+
 
 	public InterfaceCombat(Personnage personnage, Monstre m) {
 		super();
@@ -232,7 +234,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		desAM.setLayout(null);
 		desAM.setSize(width, (height));
 		desAM.setLocation(getWidth() / 2, getHeight() / 2);
-		desAM.setBackground(Color.blue);
+		desAM.setBackground(Color.white);
 
 		attaqueM = new JButton("Suite");
 		setButton(attaqueM);
@@ -319,10 +321,14 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		else if(e.getSource() == attaqueM){
 			m.atk(personnage);
 		}
+		else if(e.getSource()==bVic){
+			//trouver et ajouter la commande qui ferme la fenêtre
+		}
 		compte+=1;
 		compteur();
 		BarreVieM(m);
 		BarreVieP(personnage);
+		combatTerminé();
 	}
 
 	private void removeAttackButtons() {
@@ -371,6 +377,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			attaque2 = new JButton(new ImageIcon("m2.png"));
 			attaque3 = new JButton(new ImageIcon("m3.png"));
 			attaque4 = new JButton(new ImageIcon("m4.png"));
+			attaque1.setForeground(new Color(92, 36, 218, 255));
 		}
 		else if(personnage.classe=="guerrier"){
 			attaque1 = new JButton(new ImageIcon("g1.png"));
@@ -382,8 +389,30 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		}
 		else if(personnage.classe=="paladin"){
+			attaque1 = new JButton(new ImageIcon("p1.png"));
+			attaque2 = new JButton(new ImageIcon("p2.png"));
+			attaque3 = new JButton(new ImageIcon("p3.png"));
+			attaque4 = new JButton(new ImageIcon("p4.png"));
+		}
+	}
+
+	public void combatTerminé(){
+		if (m.HP<=0){
+			controle.removeAll();
+			controle.revalidate();
+			controle.repaint();
+			JButton bVic = new JButton("Vous avez vaincu le monstre ! Cliquez ici pour revenir sur la salle");
+			bVic.addActionListener(this);
+			controle.add(bVic);
 
 		}
+		else if (personnage.HP<=0){
+			controle.removeAll();
+			controle.revalidate();
+			controle.repaint();
+
+		}
+
 	}
 
 }
