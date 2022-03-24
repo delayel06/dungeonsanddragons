@@ -18,6 +18,8 @@ public class StatsDice extends JPanel {
     public ImageIcon four = new ImageIcon("4.png");
     public ImageIcon five = new ImageIcon("5.png");
     public ImageIcon six = new ImageIcon("6.png");
+    String[] Stats = {"STR", "DEX", "CON", "INT", "WIS", "CHAR"};
+    String stat = " ";
 
     int[] valeurs = new int[8];
 
@@ -35,7 +37,7 @@ public StatsDice(){
 public void paintComponent(Graphics g) {
         super.paintComponent(g);
         holder.paintIcon(this, g, 330,100 );
-        g.drawString("Vous avez roulé un "+ String.valueOf( val ), 335, 80);
+        g.drawString(stat + ": Vous avez roulé un "+ String.valueOf( val ), 325, 80);
 
 
             }
@@ -73,6 +75,7 @@ public void manyroll(){
         public void run()
         {
            roll();
+           stat = Stats[j];
 
             System.out.print(""+j);
            i++;
@@ -120,6 +123,7 @@ public void lastroll(JFrame a){
                 a.dispose();
 
             }else{
+                stat = Stats[j];
                 roll();
 
                 i++;
