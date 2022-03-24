@@ -5,7 +5,10 @@ public class Main{
 
     public static void main(String[] args){
 
-      new MenuIntroBis();
+        Personnage p = new Personnage();
+        Monstre m = new Monstre(30,3);
+        new InterfaceCombat(p, m);
+        //new MenuIntroBis();
 
     }
 

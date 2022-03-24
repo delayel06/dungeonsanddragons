@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class InterfaceCombat extends JFrame implements ActionListener {
 
-	public int width = 800;
-	public int height = 400;
+	public int width = 1400;
+	public int height = 800;
 
 
 	public JButton attaque1;
@@ -54,6 +54,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	//description de l'attaque du monstre
 	public JPanel desAM;
 	public JLabel tourM;
+	public JButton attaqueM;
 
 	public JPanel controle;
 	public JPanel cM;
@@ -61,6 +62,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public Font font;
 	public Font fontNOM;
 
+	//compteur
+	public int compte = 1;
 
 	public InterfaceCombat(Personnage personnage, Monstre m) {
 		super();
@@ -235,6 +238,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		desAM.setLocation(getWidth() / 2, getHeight() / 2);
 		desAM.setBackground(Color.blue);
 
+		attaqueM = new JButton("Suite");
+		attaqueM.setFont(font);
+		attaqueM.addActionListener(this);
+		desAM.add(attaqueM);
+
 		tourM = new JLabel(" Le monstre attaque !!! "); //A remplir avec des descriptions predéterminées pour chaque attaque
 		tourM.setSize(width, height);
 		tourM.setLocation(getWidth() / 2, getHeight() / 2);
@@ -267,56 +275,63 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	*/
 
 	public void actionPerformed(ActionEvent e) {
-
 		if (e.getSource() == attaque1) {
-
-			removeAttackButtons();
 			personnage.a1();
-			m.atk();
-			controle.revalidate();
-
-
+			compte+=1;
+			compteur();
 		}else if (e.getSource() == attaque2){
-			removeAttackButtons();
 			personnage.a2();
-			m.atk();
-			controle.revalidate();
-
+			compte+=1;
+			compteur();
 		} else if (e.getSource() == attaque3){
-			removeAttackButtons();
 			personnage.a3();
-			m.atk();
-			controle.revalidate();
-
+			compte+=1;
+			compteur();
 		} else if (e.getSource() == attaque4){
-			removeAttackButtons();
 			personnage.a4();
-			m.atk();
-			controle.revalidate();
-		} 
-
-
+			compte+=1;
+			compteur();
+		}
+		else if(e.getSource() == attaqueM){
+			//m.atk(); ca fait buger jsp pq
+			compte+=1;
+			compteur();
+		}
 	}
 
 	private void removeAttackButtons() {
-
 		controle.remove(attaque1);
 		controle.remove(attaque2);
 		controle.remove(attaque3);
 		controle.remove(attaque4);
 		controle.add(desAM);
-
+		controle.add(attaqueM);
 	}
 
 	private void addAttackButtons(){
-
 		controle.remove(desAM);
+		controle.remove(attaqueM);
 		controle.add(attaque1);
 		controle.add(attaque2);
 		controle.add(attaque3);
 		controle.add(attaque4);
-
 	}
+
+
+	private void compteur(){
+		if(compte%2==0){
+			removeAttackButtons();
+			controle.revalidate();
+			controle.repaint();
+		}
+		else if (compte%2==1){
+			addAttackButtons();
+			controle.revalidate();
+			controle.repaint();
+		}
+	}
+
+
 }
 
 
