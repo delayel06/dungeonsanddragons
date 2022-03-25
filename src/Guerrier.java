@@ -12,4 +12,6 @@ public class Guerrier extends Personnage {
         this.Cha = 8 + this.stats[5];
 
     }
+
+
 }
