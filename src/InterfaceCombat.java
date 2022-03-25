@@ -140,8 +140,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Perso2.setBackground(Color.white);
 
 		Perso3 = new JPanel();
-		Perso3.setLayout(null);
-		Perso3.setBackground(Color.red);
+		Perso3.setBackground(Color.white);
 
 		Perso = new JPanel(new GridLayout(1, 3, 1, 0));
 		Perso.add(Perso1);
@@ -197,12 +196,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle = new JPanel(new GridLayout(2, 2, 2, 2));
 		controle.setBackground(Color.white);
 
-
-		attaque1 = new JButton();
-		attaque2 = new JButton();
-		attaque3 = new JButton();
-		attaque4 = new JButton();
-
 		choixImage();
 
 		setButton(attaque1);
@@ -210,17 +203,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		setButton(attaque3);
 		setButton(attaque4);
 
-
-
 		controle.add(attaque1);
 		controle.add(attaque2);
 		controle.add(attaque3);
 		controle.add(attaque4);
 
 		//UTILITAIRE --------------------------------------------------------------------
-		potionVie = new JButton();
+		potionVie = new JButton(new ImageIcon("potionVie.png"));
 		setButton(potionVie);
 		Perso3.add(potionVie);
+
 
 		//TOUR DU MONSTRE -------------------------------------------------------------------------------------------------------
 
@@ -256,41 +248,45 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	}
 
-
+//y a une couille ici faut que je fasse ca ce soir
 	public void BarreVieM(Monstre m){
 		if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
 			BVM.setIcon(new ImageIcon("bv2.png"));
+			System.out.print(2);
 		}
 		else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
 			BVM.setIcon(new ImageIcon("bv3.png"));
+			System.out.print(3);
 		}
-		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
+		else if ((m.HP < (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
 			BVM.setIcon(new ImageIcon("bv4.png"));
+			System.out.print(4);
 		}
-		else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
+		else if ((m.HP <= (int)(m.HPmax*0.15))&&(m.HP > 0)){
 			BVM.setIcon(new ImageIcon("bv5.png"));
+			System.out.print(5);
 		}
 		else if (m.HP <= 0){
 			BVM.setIcon(new ImageIcon("bv6.png"));
+			System.out.print(6);
 		}
 		Monstre.revalidate();
 		Monstre.repaint();
 	}
 
 	public void BarreVieP(Personnage p) {
-		if(p.HP == p.HP_max)
-		{
+		if((p.HP >= (int)(p.HP_max*0.9))) {
 			BV.setIcon(new ImageIcon("bv1.png"));
-		}else if ((p.HP >= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
+		}else if ((p.HP <= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
 			BV.setIcon(new ImageIcon("bv2.png"));
 		}
-		else if ((p.HP > (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
+		else if ((p.HP < (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
 			BV.setIcon(new ImageIcon("bv3.png"));
 		}
-		else if ((p.HP > (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
+		else if ((p.HP < (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
 			BV.setIcon(new ImageIcon("bv4.png"));
 		}
-		else if ((p.HP >= (int)(p.HP_max*0.15))&&(p.HP > 0)){
+		else if ((p.HP <= (int)(p.HP_max*0.15))&&(p.HP > 0)){
 			BV.setIcon(new ImageIcon("bv5.png"));
 		}
 		else if (p.HP <= 0){
@@ -313,12 +309,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		else if(e.getSource() == attaqueM){
 			m.atk(personnage);
 		}
-		else if(e.getSource()==bVic){
-			this.dispose();
-			//relancer la salle
-		}
-		else if(e.getSource()==bDef){
-			this.dispose();
+		else if(e.getSource() == potionVie){
+			personnage.HP+=4; //à voir en fonction
 		}
 		compte+=1;
 		compteur();
@@ -332,6 +324,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.remove(attaque2);
 		controle.remove(attaque3);
 		controle.remove(attaque4);
+		Perso3.remove(potionVie);
 		controle.add(desAM);
 		controle.add(attaqueM);
 	}
@@ -343,6 +336,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.add(attaque2);
 		controle.add(attaque3);
 		controle.add(attaque4);
+		Perso3.add(potionVie);
 	}
 
 
