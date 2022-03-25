@@ -1,5 +1,7 @@
 public class Guerrier extends Personnage {
     public Guerrier(){
+        super();
+        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
 
     }
 

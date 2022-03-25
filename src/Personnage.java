@@ -17,10 +17,10 @@ public class Personnage extends Figurine{
     public int Mod_Int;
     public int Cha;
     public int Mod_Cha;
+    public String[] texteA;
 
 
     public Personnage(){
-        
     }
 
 
@@ -75,5 +75,4 @@ public class Personnage extends Figurine{
         this.HP_max = (10+Mod_Con)*3;
         this.HP = this.HP_max;
     }
-
 }

@@ -66,6 +66,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JPanel controle;
 	public JPanel cM;
 
+	public JTextField chatC;
+
 	public Font font;
 	public Font fontNOM;
 	//Utilitaires
@@ -205,32 +207,28 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		controle.add(attaque1);
 		controle.add(attaque2);
-		controle.add(attaque3);
-		controle.add(attaque4);
+
 
 		//UTILITAIRE --------------------------------------------------------------------
 		potionVie = new JButton(new ImageIcon("potionVie.png"));
 		setButton(potionVie);
-		Perso3.add(potionVie);
-
+		controle.add(potionVie);
+		controle.add(attaque3);
+		controle.add(attaque4);
 
 		//TOUR DU MONSTRE -------------------------------------------------------------------------------------------------------
 
 
-		desAM = new JPanel();
-		desAM.setLayout(null);
-		desAM.setSize(width, (height));
-
 
 		attaqueM = new JButton("Suite");
-		setButton(attaqueM);
+		attaqueM.setBackground(Color.gray);
 		attaqueM.setFont(font);
-		desAM.add(attaqueM);
+		attaqueM.addActionListener(this);
 
-		tourM = new JLabel(" Le monstre attaque !!! "); //A remplir avec des descriptions predéterminées pour chaque attaque
-		tourM.setFont(fontNOM);
-		tourM.setBackground(Color.WHITE);
-		desAM.add(tourM);
+
+		tourM = new JLabel(" Le monstre attaque !!! ", SwingConstants.CENTER); //A remplir avec des descriptions predéterminées pour chaque attaque
+		tourM.setFont(font);
+
 
 
 		// Panel Principal : -------------------------------------------------------------------
@@ -243,6 +241,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		cM.setBackground(Color.black);
 		add(cM);
 		//-----------------------------------------------------------------------------------
+		chatC = new JTextField();
+		chatC.setFont(font);
+		Perso3.add(chatC);
 
 		setVisible(true);
 
@@ -252,23 +253,18 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public void BarreVieM(Monstre m){
 		if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
 			BVM.setIcon(new ImageIcon("bv2.png"));
-			System.out.print(2);
 		}
 		else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
 			BVM.setIcon(new ImageIcon("bv3.png"));
-			System.out.print(3);
 		}
 		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
 			BVM.setIcon(new ImageIcon("bv4.png"));
-			System.out.print(4);
 		}
 		else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
 			BVM.setIcon(new ImageIcon("bv5.png"));
-			System.out.print(5);
 		}
 		else if (m.HP <= 0){
 			BVM.setIcon(new ImageIcon("bv6.png"));
-			System.out.print(6);
 		}
 		Monstre.revalidate();
 		Monstre.repaint();
@@ -299,6 +295,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == attaque1) {
 			personnage.a1(m);
+			chatC.setText(" lance attaque 1"); // à remplacer par personnage.texteA[3] mais marche pas me dit que c'est null
 		}else if (e.getSource() == attaque2){
 			personnage.a2(m);
 		} else if (e.getSource() == attaque3){
@@ -311,6 +308,10 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		}
 		else if(e.getSource() == potionVie){
 			personnage.HP+=4; //à voir en fonction
+			if(personnage.HP> personnage.HP_max){
+				personnage.HP=personnage.HP_max;
+			}
+			chatC.setText("Cette potion vous soigne de 4 point  de vie");
 		}
 		compte+=1;
 		compteur();
@@ -324,19 +325,20 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.remove(attaque2);
 		controle.remove(attaque3);
 		controle.remove(attaque4);
-		Perso3.remove(potionVie);
-		controle.add(desAM);
+		controle.remove(potionVie);
+		controle.add(tourM);
 		controle.add(attaqueM);
 	}
 
 	private void addAttackButtons(){
-		controle.remove(desAM);
+		controle.remove(tourM);
 		controle.remove(attaqueM);
 		controle.add(attaque1);
 		controle.add(attaque2);
+		controle.add(potionVie);
 		controle.add(attaque3);
 		controle.add(attaque4);
-		Perso3.add(potionVie);
+
 	}
 
 

@@ -12,7 +12,8 @@ public class Mage extends Personnage{
 
 
     public Mage(){
-
+        super();
+        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
 
     }
 
@@ -23,6 +24,8 @@ public class Mage extends Personnage{
         this.Int = 14 + this.stats[3];
         this.Wis = 13 + this.stats[4];
         this.Cha = 8 + this.stats[5];
+
+
 
     }
 
