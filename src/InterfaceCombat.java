@@ -417,6 +417,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			JButton bVic = new JButton("Vous avez vaincu le monstre ! Cliquez ici pour revenir sur la salle");
 			bVic.addActionListener(this);
 			controle.add(bVic);
+			music("victory.wav");
 
 		}
 		else if (personnage.HP<=0){
@@ -430,7 +431,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 
 	public void music(String path){
-
+		if(clip != null){
+			clip.stop();
+		}
 		File music = new File(path);
 		try {
 			clip = AudioSystem.getClip();
