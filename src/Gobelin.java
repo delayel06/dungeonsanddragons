@@ -9,14 +9,17 @@ import java.io.IOException;
 
     public Gobelin (){
 
-        super(7,15,"gobelin");
-
+        super();
+        this.nom = "Gobelin";
+        this.HP = 20;
+        this.CA = 2;
+        this.icon = new ImageIcon("goblin.gif");
 
 
     }
 
      public void atk(Personnage p){
-         int j = getRandomInt(6)+3;
+         int j = 2;
          p.HP -=j;
 
      }

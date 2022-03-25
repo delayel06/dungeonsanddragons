@@ -161,7 +161,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Monstre1.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre1.setBackground(Color.yellow);
 
-		NomM = new JLabel("Gobelin "); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
+		NomM = new JLabel(m.nom); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
 		NomM.setSize(width, height);
 		NomM.setLocation(getWidth() / 2, getHeight() / 2);
 		NomM.setFont(fontNOM);
@@ -193,7 +193,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		//j'ai ajouté le gif pour le personnage en haut a droit  -- lilian
 
-		Icon icon = new ImageIcon("goblin.gif");
+		Icon icon = m.icon;
 		ImMonstre = new JLabel(icon);
 		ImMonstre.setSize(width, height);
 		ImMonstre.setLocation(getWidth() / 2, getHeight() / 2);

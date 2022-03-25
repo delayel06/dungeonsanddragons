@@ -1,7 +1,7 @@
 public class Squelette extends Monstre {
     public Squelette (){
 
-        super(13,13,"squelette");
+        super();
 
 
 

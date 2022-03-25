@@ -1,7 +1,7 @@
 public class AraignéeGéante extends Monstre{
     public AraignéeGéante(){
 
-        super(26,12,"AraignéeGéante");
+        super();
 
 
 

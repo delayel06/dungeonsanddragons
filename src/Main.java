@@ -5,13 +5,13 @@ public class Main{
 
     public static void main(String[] args){
 
-       /* Personnage p = new Personnage();
+        Personnage p = new Personnage();
         p.HP=20;
         p.HP_max=20;
         p.classe="mage";
-        Monstre m = new Monstre(30,3,"gobelin");
-        new InterfaceCombat(p, m);*/
-        new MenuIntroBis();
+        Gobelin m = new Gobelin();
+        new InterfaceCombat(p, m);
+        //new MenuIntroBis();
 
     }
 

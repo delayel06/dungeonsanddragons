@@ -11,14 +11,14 @@ public class Monstre {
     public int HP;
     public int CA;
     public int HPmax;
-    public Icon monstre;
+    public Icon icon;
+    public String nom;
 
 
-    public Monstre(int PV, int CA, String nom){
-        this.HP = PV;
-        this.CA = CA;
-        this.HPmax=PV;
-        this.monstre = new ImageIcon(nom);
+
+
+    public Monstre(){
+
 
     }
 
