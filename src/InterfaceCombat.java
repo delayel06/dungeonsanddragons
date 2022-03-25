@@ -111,8 +111,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		Perso1 = new JPanel();
 		Perso1.setLayout(null);
-		Perso1.setSize(width, height);
-		Perso1.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso1.setBackground(Color.blue);
 
 		Nom = new JLabel("Kevin ", SwingConstants.CENTER); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
@@ -121,14 +119,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Nom.setFont(fontNOM);
 
 		BV = new JLabel(new ImageIcon("bv1.png"));
-		BV.setSize(width, height);
-		BV.setLocation(getWidth() / 2, getHeight() / 2);
+
 
 		NomPerso = new JPanel();
 		NomPerso.setLayout(null);
 		NomPerso.add(Nom);
-
-
 		NomPerso.setBackground(Color.white);
 
 		BVpanel = new JPanel();
@@ -140,22 +135,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Perso2.add(BVpanel);
 		Perso2.add(NomPerso);
-		Perso2.setSize(width, height);
-		Perso2.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso2.setBackground(Color.white);
 
 		Perso3 = new JPanel();
 		Perso3.setLayout(null);
-		Perso3.setSize(width, height);
-		Perso3.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso3.setBackground(Color.red);
 
 		Perso = new JPanel(new GridLayout(1, 3, 1, 0));
 		Perso.add(Perso1);
 		Perso.add(Perso2);
 		Perso.add(Perso3);
-		Perso.setSize(width, height);
-		Perso.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso.setBackground(Color.black);
 
 
@@ -163,37 +152,25 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		//fenetre monstre numéroté de 1 à 3 en
 		Monstre1 = new JPanel();
 		Monstre1.setLayout(null);
-		Monstre1.setSize(width, height);
-		Monstre1.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre1.setBackground(Color.yellow);
 
 		NomM = new JLabel(m.nom); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
-		NomM.setSize(width, height);
-		NomM.setLocation(getWidth() / 2, getHeight() / 2);
 		NomM.setFont(fontNOM);
 
 
 		BVM = new JLabel((new ImageIcon("bv1.png")));
-		BVM.setSize(width, height);
-		BVM.setLocation(getWidth() / 2, getHeight() / 2);
 
 		NM = new JPanel();
 		NM.add(NomM);
-		NM.setSize(width, height);
-		NM.setLocation(getWidth() / 2, getHeight() / 2);
 		NM.setBackground(Color.white);
 
 		BVmonstre = new JPanel();
 		BVmonstre.add(BVM);
-		BVmonstre.setSize(width, height);
-		BVmonstre.setLocation(getWidth() / 2, getHeight() / 2);
 		BVmonstre.setBackground(Color.white);
 
 		Monstre2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Monstre2.add(NM);
 		Monstre2.add(BVmonstre);
-		Monstre2.setSize(width, height);
-		Monstre2.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre2.setBackground(Color.white);
 
 
@@ -201,28 +178,21 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		Icon icon = m.icon;
 		ImMonstre = new JLabel(icon);
-		ImMonstre.setSize(width, height);
-		ImMonstre.setLocation(getWidth() / 2, getHeight() / 2);
+
 
 		Monstre3 = new JPanel(new BorderLayout());
 		Monstre3.add(ImMonstre);
-		Monstre3.setSize(width, height);
-		Monstre3.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre3.setBackground(Color.white);
 
 		Monstre = new JPanel(new GridLayout(1, 3, 1, 0));
 		Monstre.add(Monstre1);
 		Monstre.add(Monstre2);
 		Monstre.add(Monstre3);
-		Monstre.setSize(width, height);
-		Monstre.setLocation(getWidth() / 2, getHeight() / 2);
 		Monstre.setBackground(Color.black);
 
 
 		//CONTROL : ------------------------------------------------------------------------------------------------
 		controle = new JPanel(new GridLayout(2, 2, 2, 2));
-		controle.setSize(width, height);
-		controle.setLocation(getWidth() / 2, getHeight() / 2);
 		controle.setBackground(Color.white);
 
 
@@ -252,8 +222,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		desAM = new JPanel();
 		desAM.setLayout(null);
 		desAM.setSize(width, (height));
-		desAM.setLocation(getWidth() / 2, getHeight() / 2);
-		desAM.setBackground(Color.white);
+
 
 		attaqueM = new JButton("Suite");
 		setButton(attaqueM);
@@ -261,8 +230,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		desAM.add(attaqueM);
 
 		tourM = new JLabel(" Le monstre attaque !!! "); //A remplir avec des descriptions predéterminées pour chaque attaque
-		tourM.setSize(width, height);
-		tourM.setLocation(getWidth() / 2, getHeight() / 2);
 		tourM.setFont(fontNOM);
 		tourM.setBackground(Color.WHITE);
 		desAM.add(tourM);
