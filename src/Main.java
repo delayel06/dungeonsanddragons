@@ -11,7 +11,7 @@ public class Main{
         p.classe="mage";
         Gobelin m = new Gobelin();
         new InterfaceCombat(p, m);
-        //new MenuIntroBis();
+        new MenuIntroBis();
 
     }
 

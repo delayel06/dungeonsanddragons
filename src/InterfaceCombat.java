@@ -68,10 +68,12 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	public Font font;
 	public Font fontNOM;
-
-	//compteur
+	//Utilitaires
+	public JButton potionVie;
+	//compteur+boutton de fin
 	public int compte = 1;
 	public JButton bVic;
+	public JButton bDef;
 
 
 	Clip clip;
@@ -215,6 +217,10 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.add(attaque3);
 		controle.add(attaque4);
 
+		//UTILITAIRE --------------------------------------------------------------------
+		potionVie = new JButton();
+		setButton(potionVie);
+		Perso3.add(potionVie);
 
 		//TOUR DU MONSTRE -------------------------------------------------------------------------------------------------------
 
@@ -308,7 +314,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			m.atk(personnage);
 		}
 		else if(e.getSource()==bVic){
-			//trouver et ajouter la commande qui ferme la fenêtre
+			this.dispose();
+			//relancer la salle
+		}
+		else if(e.getSource()==bDef){
+			this.dispose();
 		}
 		compte+=1;
 		compteur();
@@ -372,7 +382,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			attaque4 = new JButton(new ImageIcon("g4.png"));
 		}
 		else if(personnage.classe=="archer"){
-
+			//à remplir
 		}
 		else if(personnage.classe=="paladin"){
 			attaque1 = new JButton(new ImageIcon("p1.png"));
@@ -388,7 +398,10 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			controle.revalidate();
 			controle.repaint();
 			JButton bVic = new JButton("Vous avez vaincu le monstre ! Cliquez ici pour revenir sur la salle");
-			bVic.addActionListener(this);
+			bVic.addActionListener(e -> {
+				this.dispose();
+				//relance sa salle
+			});
 			controle.add(bVic);
 			music("victory.wav");
 
@@ -397,7 +410,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			controle.removeAll();
 			controle.revalidate();
 			controle.repaint();
-
+			JButton bDef = new JButton("La partie s'arrête ici pour vous,... Ce monstre a eu raison du puissant guerrier que vous étiez ! ");
+			bDef.addActionListener(e -> {this.dispose();});
+			controle.add(bDef);
 		}
 
 	}
