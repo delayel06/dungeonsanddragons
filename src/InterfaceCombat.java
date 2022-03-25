@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class InterfaceCombat extends JFrame implements ActionListener {
 
+	private JPanel BVpanel;
 	public int width = 1200;
 	public int height = 800;
 
@@ -114,9 +115,10 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Perso1.setLocation(getWidth() / 2, getHeight() / 2);
 		Perso1.setBackground(Color.blue);
 
-		Nom = new JLabel("Kevin "); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
-		Nom.setSize(width, height);
-		Nom.setLocation(getWidth() / 2, getHeight() / 2);
+		Nom = new JLabel("Kevin ", SwingConstants.CENTER); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
+		Nom.setSize(400, 100);
+
+		Nom.setFont(fontNOM);
 
 		BV = new JLabel(new ImageIcon("bv1.png"));
 		BV.setSize(width, height);
@@ -125,14 +127,18 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		NomPerso = new JPanel();
 		NomPerso.setLayout(null);
 		NomPerso.add(Nom);
-		NomPerso.setSize(width, height);
-		NomPerso.setLocation(getWidth() / 2, getHeight() / 2);
+
+
 		NomPerso.setBackground(Color.white);
 
+		BVpanel = new JPanel();
+		BVpanel.add(BV);
+
+
+		BVpanel.setBackground(Color.white);
 
 		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
-		Perso2.add(NomPerso);
-		Perso2.add(BV);
+		Perso2.add(BVpanel);
 		Perso2.add(NomPerso);
 		Perso2.setSize(width, height);
 		Perso2.setLocation(getWidth() / 2, getHeight() / 2);
