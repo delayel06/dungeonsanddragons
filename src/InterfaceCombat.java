@@ -258,11 +258,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			BVM.setIcon(new ImageIcon("bv3.png"));
 			System.out.print(3);
 		}
-		else if ((m.HP < (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
+		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
 			BVM.setIcon(new ImageIcon("bv4.png"));
 			System.out.print(4);
 		}
-		else if ((m.HP <= (int)(m.HPmax*0.15))&&(m.HP > 0)){
+		else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
 			BVM.setIcon(new ImageIcon("bv5.png"));
 			System.out.print(5);
 		}

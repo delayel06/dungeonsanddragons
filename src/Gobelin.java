@@ -14,6 +14,7 @@ import java.io.IOException;
         this.HP = 20;
         this.CA = 2;
         this.icon = new ImageIcon("goblin.gif");
+        this.HPmax = 20;
 
 
     }
