@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class DessinPerso extends Component {
-	int rayon = 20;
 	int posX =250;
 	int posY =350;
 
@@ -18,21 +17,21 @@ public class DessinPerso extends Component {
 		icon.paintIcon( this, g , posX,posY );
 	}
 	public void deplaceGauche(){
-		posX = posX - 2;
+		posX = posX - 5;
 		icon = new ImageIcon("knightrun2.png");
 	}
 	public void deplaceDroite(){
-		posX = posX + 2;
+		posX = posX + 5;
 		icon = new ImageIcon("knightrun.png");
 
 	}
 	public void deplaceHaut(){
-		posY = posY - 2;
+		posY = posY - 5;
 		icon = new ImageIcon("knightup.png");
 
 	}
 	public void deplaceBas(){
-		posY = posY + 2;
+		posY = posY + 5;
 		icon = new ImageIcon("knightdown.png");
 
 	}

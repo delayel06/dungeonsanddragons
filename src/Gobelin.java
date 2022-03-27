@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
- class Gobelin extends Monstre {
+class Gobelin extends Monstre {
 
     public Gobelin (){
 
@@ -14,19 +14,23 @@ import java.io.IOException;
         this.HP = 20;
         this.CA = 2;
         this.icon = new ImageIcon("goblin.gif");
-        this.HPmax = 20;
-
+        couleurMonstre=Color.green;
 
     }
 
-     public void atk(Personnage p){
-         int j = 2;
-         p.HP -=j;
+    public void atk(Personnage p){
 
-     }
+        p.HP -=2;
 
-     public int getRandomInt(int n) {
-         return (int)(Math.random() * n);
-     }
+    }
 
- }
+    public int getRandomInt(int n) {
+        return (int)(Math.random() * n);
+    }
+
+    public void dessineMonstre(Graphics g){
+        g.setColor(couleurMonstre);
+        g.fillOval(posMonX,posMonY,rayonMon,rayonMon);
+    }
+
+}

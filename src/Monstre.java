@@ -13,7 +13,10 @@ public class Monstre {
     public int HPmax;
     public Icon icon;
     public String nom;
-
+    Color couleurMonstre;
+    int rayonMon = 20;
+    int posMonX =400;
+    int posMonY =100;
 
 
 
@@ -21,7 +24,10 @@ public class Monstre {
 
 
     }
-
+    public void dessineMonstre(Graphics g){
+        g.setColor(couleurMonstre);
+        g.fillOval(posMonX,posMonY,rayonMon,rayonMon);
+    }
 
 
 
