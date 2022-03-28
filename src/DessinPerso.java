@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class DessinPerso extends Component {
-	int posX =250;
-	int posY =350;
+	int posX =380;
+	int posY =50;
 
 	ImageIcon icon = new ImageIcon("knightidle.png");
 

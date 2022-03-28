@@ -20,8 +20,8 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 		setLocation((tailleMoniteur.width - getSize().width)/2,(tailleMoniteur.height - getSize().height)/2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		leMonstre = new Gobelin();
-		salle1= new unPanel(width, heigth,1,Color.blue,width-50,50,50,100,leMonstre);//La on va creer toutes les salles et les mettre and la Jframe tour a tour
-		salle2= new unPanel(width, heigth,2,Color.green,450,50,50,100,leMonstre);
+		salle1= new unPanel(width, heigth,1,Color.blue,width-50,50,50,100,0,50,50,100,leMonstre);//La on va creer toutes les salles et les mettre and la Jframe tour a tour
+		salle2= new unPanel(width, heigth,2,Color.green,0,50,50,100,width-50,50,50,100,leMonstre);
 
 		this.setContentPane(this.salle1);
 		addKeyListener(this);
@@ -31,6 +31,9 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 	public void keyPressed(KeyEvent e) {
 		//int code = e.getKeyCode();
 		//	System.out.print("Code clavier "+code+" appuye. ");
+		if(e.getKeyChar() == 'p'){
+			System.out.println("X : " + salle1.p.posX +"Y: "+ salle1.p.posY);
+		}
 		if(getContentPane()==salle1){
 			if(e.getKeyCode() == 37){
 				salle1.p.deplaceGauche();
@@ -48,11 +51,11 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 				salle1.p.deplaceBas();
 				repaint();
 			}
-			if(salle1.p.posX >=(salle1.monstre1.posMonX-3)&& salle1.p.posX <=(salle1.monstre1.posMonX+3 /*salle1.monstre1.rayonMon*/)
-					&&salle1.p.posY >=(salle1.monstre1.posMonY-3)&& salle1.p.posY <=(salle1.monstre1.posMonY +3/*salle1.monstre1.rayonMon*/)){
+			if(salle1.p.posX >=(salle1.monstre1.posMonX-40)&& salle1.p.posX <=(salle1.monstre1.posMonX-10 )
+					&&salle1.p.posY >=(salle1.monstre1.posMonY-40)&& salle1.p.posY <=(salle1.monstre1.posMonY - 10)){
 				System.out.print("CA MARCHE");
 			}
-			if(salle1.p.posX >=salle1.porte1posX && (salle1.p.posY>salle1.porte1posY && salle1.p.posY<(salle1.porte1posY+100))){
+			if(salle1.p.posX >=salle1.porte1posX && (salle1.p.posY>salle1.porte1posY-50 && salle1.p.posY<(salle1.porte1posY+100))){
 				this.setContentPane(this.salle2);
 				this.revalidate();
 			}
@@ -74,7 +77,7 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 				salle2.p.deplaceBas();
 				repaint();
 			}
-			if(salle2.p.posX >450){
+			if(salle2.p.posX <=salle2.porte1posX && (salle2.p.posY>salle2.porte1posY-50 && salle2.p.posY<(salle2.porte1posY+100))){
 				this.setContentPane(this.salle1);
 				this.revalidate();
 			}
