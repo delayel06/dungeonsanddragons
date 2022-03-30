@@ -17,7 +17,7 @@ public class Monstre {
     int rayonMon = 20;
     int posMonX =400;
     int posMonY =100;
-
+    String texteAM; //description attaque + dégats
 
 
     public Monstre(){
@@ -31,9 +31,7 @@ public class Monstre {
 
 
 
-    public void atk(Personnage p){
-        p.HP -= 2;
-    }
+    public void atk(Personnage p){}
 
 
 }

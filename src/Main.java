@@ -10,8 +10,8 @@ public class Main{
         p.HP_max=20;
 
         Gobelin m = new Gobelin();
-        //new InterfaceCombat(p, m);
-        new MenuIntroBis();
+        new InterfaceCombat(p, m);
+        //new MenuIntroBis();
 
     }
 

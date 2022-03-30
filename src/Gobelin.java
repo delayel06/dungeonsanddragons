@@ -12,6 +12,7 @@ class Gobelin extends Monstre {
         super();
         this.nom = "Gobelin";
         this.HP = 20;
+        this.HPmax=20;
         this.CA = 2;
         this.icon = new ImageIcon("goblin.gif");
         couleurMonstre=Color.green;
@@ -19,7 +20,7 @@ class Gobelin extends Monstre {
     }
 
     public void atk(Personnage p){
-
+        texteRandom();
         p.HP -=2;
 
     }
@@ -33,4 +34,14 @@ class Gobelin extends Monstre {
         g.fillOval(posMonX,posMonY,rayonMon,rayonMon);
     }
 
+    public void texteRandom(){
+        double n = Math.random();
+        if(n>0.5){
+            texteAM = "Il vous donne un coup de couteau";
+        } else if((0.5>n)||(n>0.25)){
+            texteAM = "Il vous donne un coup de pied";
+        } else if(n<=0.25) {
+            texteAM = "Il vous mord";
+        }
+    }
 }

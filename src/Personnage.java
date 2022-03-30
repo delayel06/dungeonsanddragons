@@ -19,7 +19,7 @@ public class Personnage extends Figurine{
     public int Mod_Int;
     public int Cha;
     public int Mod_Cha;
-    public String[] texteA;
+    public String texteA; //description de l'attaque
 
     public Icon icon;
 
@@ -34,18 +34,10 @@ public class Personnage extends Figurine{
     }
 
     //re défintion des attaques dans chaque classe
-    public void a1(Monstre m){
-        m.HP-=2;
-    }
-    public void a2(Monstre m){
-        m.HP-=5;
-    }
-    public void a3(Monstre m){
-        m.HP-=8;
-    }
-    public void a4(Monstre m){
-        m.HP-=12;
-    }
+    public void a1(Monstre m){}
+    public void a2(Monstre m){}
+    public void a3(Monstre m){}
+    public void a4(Monstre m){}
 
     public int Mod(int Stat){
         int Mod;
@@ -78,5 +70,11 @@ public class Personnage extends Figurine{
         this.Mod_Cha = Mod(this.Cha);
         this.HP_max = (10+Mod_Con)*3;
         this.HP = this.HP_max;
+    }
+
+    //permet de change la description de l'attaque
+
+    public void changeTexte(String t){
+        texteA=t;
     }
 }
