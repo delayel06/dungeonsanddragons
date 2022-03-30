@@ -14,7 +14,8 @@ public class Mage extends Personnage{
     public Mage(){
         super();
         String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
-
+        this.classe = "mage";
+    this.icon = new ImageIcon("wizard.gif");
     }
 
     public void setStats(){

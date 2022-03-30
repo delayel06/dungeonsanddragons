@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Personnage extends Figurine{
     public String classe;
     public String race;
@@ -18,6 +20,8 @@ public class Personnage extends Figurine{
     public int Cha;
     public int Mod_Cha;
     public String[] texteA;
+
+    public Icon icon;
 
 
     public Personnage(){

@@ -8,10 +8,10 @@ public class Main{
         Mage p = new Mage();
         p.HP=20;
         p.HP_max=20;
-        p.classe="mage";
+
         Gobelin m = new Gobelin();
-        new InterfaceCombat(p, m);
-        //new MenuIntroBis();
+        //new InterfaceCombat(p, m);
+        new MenuIntroBis();
 
     }
 

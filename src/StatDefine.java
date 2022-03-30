@@ -13,7 +13,7 @@ class StatDefine extends JFrame implements ActionListener {
 
     ImageIcon rollbutton = new ImageIcon("button_rouler.png");
 
-    public StatsDice dice = new StatsDice();
+    public StatsDice dice = new StatsDice(this);
     public JButton rollerstr = new JButton(rollbutton);
     public JButton rollerdex = new JButton(rollbutton);
     public JButton rollercons = new JButton(rollbutton);
@@ -138,6 +138,11 @@ class StatDefine extends JFrame implements ActionListener {
         a.setContentAreaFilled(false);
         a.setBorderPainted(false);
         a.addActionListener(this);
+    }
+
+    public void startgame(){
+        new DeplacementSalle( personnage );
+
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.Timer;
 
 public class StatsDice extends JPanel {
 
-
+    public StatDefine main ;
     public int val;
     public int j = 0;
 
@@ -27,11 +27,12 @@ public class StatsDice extends JPanel {
 
 
 
-public StatsDice(){
+public StatsDice(StatDefine t){
         setPreferredSize(new Dimension(100,100));
         setBackground(new Color( 120, 104, 161 ));
         holder = zero;
         setLayout(null);
+        main = t;
     }
 
 public void paintComponent(Graphics g) {
@@ -118,7 +119,7 @@ public void lastroll(JFrame a){
 
                 t.cancel();
 
-                new DeplacementSalle();
+                main.startgame();
 
                 a.dispose();
 

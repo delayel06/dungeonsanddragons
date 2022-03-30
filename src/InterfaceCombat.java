@@ -76,6 +76,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public int compte = 1;
 	public JButton bVic;
 	public JButton bDef;
+	public JLabel PERSO_ICON;
 
 
 	Clip clip;
@@ -113,10 +114,12 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		//NOUS : -------------------------------------------
 
+		Icon iconperso = personnage.icon;
+		PERSO_ICON = new JLabel(iconperso);
 		Perso1 = new JPanel();
 		Perso1.setLayout(null);
-		Perso1.setBackground(Color.blue);
-
+		Perso1.setBackground(Color.white);
+		Perso1.add(PERSO_ICON, SwingConstants.CENTER);
 		Nom = new JLabel("Kevin ", SwingConstants.CENTER); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
 		Nom.setSize(400, 100);
 
@@ -142,6 +145,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Perso2.setBackground(Color.white);
 
 		Perso3 = new JPanel();
+
 		Perso3.setBackground(Color.white);
 
 		Perso = new JPanel(new GridLayout(1, 3, 1, 0));
@@ -198,12 +202,15 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle = new JPanel(new GridLayout(2, 2, 2, 2));
 		controle.setBackground(Color.white);
 
+
 		choixImage();
+//CHOIX IMAGE AVANT SETBUTTON
 
 		setButton(attaque1);
 		setButton(attaque2);
 		setButton(attaque3);
 		setButton(attaque4);
+
 
 		controle.add(attaque1);
 		controle.add(attaque2);

@@ -1,7 +1,10 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.*;
+import java.io.File;
 import java.util.LinkedList;
 
 public class DeplacementSalle  extends JFrame implements KeyListener{
@@ -10,8 +13,10 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 	unPanel salle1;
 	unPanel salle2;
 	Gobelin leMonstre;
+	Personnage personnage;
+	Clip clip;
 	//DessinPerso p = new DessinPerso();
-	public DeplacementSalle(){
+	public DeplacementSalle(Personnage perso){
 		setTitle( " La carte du jeu ");
 		Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
 		width = tailleMoniteur.width * 2/3;
@@ -22,7 +27,7 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 		leMonstre = new Gobelin();
 		salle1= new unPanel(width, heigth,1,Color.blue,width-50,50,50,100,0,50,50,100,leMonstre);//La on va creer toutes les salles et les mettre and la Jframe tour a tour
 		salle2= new unPanel(width, heigth,2,Color.green,0,50,50,100,width-50,50,50,100,leMonstre);
-
+		this.personnage = perso;
 		this.setContentPane(this.salle1);
 		addKeyListener(this);
 		setVisible(true);
@@ -54,6 +59,13 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 			if(salle1.p.posX >=(salle1.monstre1.posMonX-40)&& salle1.p.posX <=(salle1.monstre1.posMonX-10 )
 					&&salle1.p.posY >=(salle1.monstre1.posMonY-40)&& salle1.p.posY <=(salle1.monstre1.posMonY - 10)){
 				System.out.print("CA MARCHE");
+				//touche monstre vert
+				Gobelin gob = new Gobelin();
+				new InterfaceCombat(personnage, gob);
+				salle1.p.posX += 100;
+				salle1.p.posY += 100;
+
+				this.setVisible(false);
 			}
 			if(salle1.p.posX >=salle1.porte1posX && (salle1.p.posY>salle1.porte1posY-50 && salle1.p.posY<(salle1.porte1posY+100))){
 				this.setContentPane(this.salle2);
@@ -96,6 +108,18 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 	}*/
 
 	public static void main (String[] args) {
-		DeplacementSalle c = new DeplacementSalle();}
+		DeplacementSalle c = new DeplacementSalle(new Mage());}
 
+
+	public void music(String path){
+
+		File music = new File(path);
+		try {
+			clip = AudioSystem.getClip();
+			clip.open( AudioSystem.getAudioInputStream( music ) );
+			clip.start();
+		}catch(Exception e){
+			// :(((
+		}
+	}
 }
