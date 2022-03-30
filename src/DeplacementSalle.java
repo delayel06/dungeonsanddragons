@@ -61,7 +61,8 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 				System.out.print("CA MARCHE");
 				//touche monstre vert
 				Gobelin gob = new Gobelin();
-				new InterfaceCombat(personnage, gob);
+				//new InterfaceCombat(personnage, gob);
+				LancementCombat a =new LancementCombat(personnage, gob);
 				salle1.p.posX += 100;
 				salle1.p.posY += 100;
 
