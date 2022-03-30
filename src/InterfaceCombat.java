@@ -249,14 +249,13 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		add(cM);
 		//-----------------------------------------------------------------------------------
 		chatC = new JTextField();
-		chatC.setFont(font);
 		Perso3.add(chatC);
 
 		setVisible(true);
 
 	}
 
-//y a une couille ici faut que je fasse ca ce soir
+
 	public void BarreVieM(Monstre m){
 		if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
 			BVM.setIcon(new ImageIcon("bv2.png"));
@@ -302,16 +301,20 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == attaque1) {
 			personnage.a1(m);
-			chatC.setText(" lance attaque 1"); // à remplacer par personnage.texteA[3] mais marche pas me dit que c'est null
+			chatC.setText(personnage.texteA);
 		}else if (e.getSource() == attaque2){
 			personnage.a2(m);
+			chatC.setText(personnage.texteA);
 		} else if (e.getSource() == attaque3){
 			personnage.a3(m);
+			chatC.setText(personnage.texteA);
 		} else if (e.getSource() == attaque4){
 			personnage.a4(m);
+			chatC.setText(personnage.texteA);
 		}
 		else if(e.getSource() == attaqueM){
 			m.atk(personnage);
+			chatC.setText(m.texteAM);
 		}
 		else if(e.getSource() == potionVie){
 			personnage.HP+=4; //à voir en fonction

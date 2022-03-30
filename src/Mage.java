@@ -1,4 +1,5 @@
 import java.awt.*;
+import javax.print.DocFlavor;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.io.*;
@@ -11,11 +12,12 @@ import java.util.concurrent.TimeUnit;
 public class Mage extends Personnage{
 
 
+
     public Mage(){
         super();
-        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
         this.classe = "mage";
-    this.icon = new ImageIcon("wizard.gif");
+        this.icon = new ImageIcon("wizard.gif");
+
     }
 
     public void setStats(){
@@ -28,6 +30,26 @@ public class Mage extends Personnage{
 
 
 
+    }
+    public void a1(Monstre m){
+        int n = 2;
+        texteA="Lance un crâne enflamé. Inflige "+n+" dégats";
+        m.HP-=n;
+    }
+    public void a2(Monstre m){
+        int n = 3;
+        texteA="Lance une pluie de météores. Inflige "+n+" dégats";
+        m.HP-=n;
+    }
+    public void a3(Monstre m){
+        int n = 3;
+        texteA="Lance une pluie des flammes. Inflige "+n+" dégats";
+        m.HP-=n;
+    }
+    public void a4(Monstre m){
+        int n = 10;
+        texteA="Vous vous enflammez. Inflige "+n+" dégats";
+        m.HP-=n;
     }
 
 
