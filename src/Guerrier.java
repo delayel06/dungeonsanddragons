@@ -16,5 +16,21 @@ public class Guerrier extends Personnage {
 
     }
 
+    public void a1(Monstre m){
+        m.HP += (2+this.Mod_Str);
+    }
+
+    public void a2(Monstre m){
+        m.HP += (4+this.Mod_Str);
+    }
+    public void a3(Monstre m){
+        m.HP += (6+this.Mod_Str);
+    }
+    public void a4(Monstre m){
+        m.HP += (8+this.Mod_Str);
+    }
+
+
+
 
 }

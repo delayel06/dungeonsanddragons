@@ -12,4 +12,24 @@ public class Archer extends Personnage {
         this.Cha = 8 + this.stats[5];
 
     }
+    public void a1(Monstre m){
+        int n = (2+this.Mod_Dex);
+        texteA="Vous etes en symbiose avec la nature, récuperez "+n+" de vie";
+        this.HP+=n;
+    }
+    public void a2(Monstre m){
+        int n = (4+this.Mod_Dex);
+        texteA="Vous lancez un couteau dans le flan de la créature qui subit "+n+" points de vie";
+        m.HP-=n;
+    }
+    public void a3(Monstre m){
+        int n = (6+this.Mod_Dex));
+        texteA="Vous effectuez une faite feinte et attaquez à la dague et infligez "+n+" dégats";
+        m.HP-=n;
+    }
+    public void a4(Monstre m){
+        int n = (8+this.Mod_Dex);
+        texteA="Vous décochez une flèche qui touche et inflige "+n+" dégats";
+        m.HP-=n;
+    }
 }

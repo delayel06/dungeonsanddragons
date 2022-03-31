@@ -11,17 +11,18 @@ class Gobelin extends Monstre {
 
         super();
         this.nom = "Gobelin";
-        this.HP = 20;
-        this.HPmax=20;
+        this.HPmax= (int)(10 + Math.random()*5);
+        this.HP = this.HPmax;
         this.CA = 2;
         this.icon = new ImageIcon("goblin.gif");
+        this.DMG = (this.HPmax)%4;
         couleurMonstre=Color.green;
 
     }
 
     public void atk(Personnage p){
         texteRandom();
-        p.HP -=2;
+        p.HP -= this.DMG;
 
     }
 
@@ -37,11 +38,11 @@ class Gobelin extends Monstre {
     public void texteRandom(){
         double n = Math.random();
         if(n>0.5){
-            texteAM = "Il vous donne un coup de couteau";
+            texteAM = "Le Gobelin prend son élan et vous mord !";
         } else if((0.5>n)||(n>0.25)){
-            texteAM = "Il vous donne un coup de pied";
+            texteAM = "La créature prend sa massue et assène un coup !";
         } else if(n<=0.25) {
-            texteAM = "Il vous mord";
+            texteAM = "Vous recevez un coup de couteau !";
         }
     }
 }
