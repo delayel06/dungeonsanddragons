@@ -5,7 +5,6 @@ import java.awt.event.*;
 public class LancementCombat extends JFrame implements ActionListener{
     JLabel description;
     JButton combattre;
-    JButton fuire;
     Personnage personnage;
     Monstre monstre;
     public LancementCombat (Personnage p, Monstre m){
@@ -35,11 +34,8 @@ public class LancementCombat extends JFrame implements ActionListener{
         combattre = new JButton("Combattre");
         combattre.addActionListener(this);
 
-        fuire = new JButton("Fuire");
-        fuire.addActionListener(this);
 
         panelAccepeterOuPas.add(combattre);
-        panelAccepeterOuPas.add(fuire);
         panelDesccription.add(description);
 
         panelLancementCombat.add(panelDesccription);
@@ -52,9 +48,7 @@ public class LancementCombat extends JFrame implements ActionListener{
             //Gobelin gob = new Gobelin();
             new InterfaceCombat( personnage, monstre);
         }
-        if (e.getSource()==fuire){
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }
+
     }
 }
 // on ne peut pas fuire parce que des qu'on cree une nouvelle fenetre l'ancienne se ferme
