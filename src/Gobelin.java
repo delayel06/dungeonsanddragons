@@ -22,7 +22,6 @@ class Gobelin extends Monstre {
     public void atk(Personnage p){
         texteRandom();
         p.HP -=2;
-
     }
 
     public int getRandomInt(int n) {

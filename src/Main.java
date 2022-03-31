@@ -11,7 +11,7 @@ public class Main{
 
         Gobelin m = new Gobelin();
         new InterfaceCombat(p, m);
-        //new MenuIntroBis();
+        new MenuIntroBis();
 
     }
 
