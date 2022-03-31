@@ -26,7 +26,7 @@ public class Paladin extends Personnage {
         m.HP-=n;
     }
     public void a3(Monstre m){
-        int n = (6+this.Mod_Str));
+        int n = (6+this.Mod_Str);
         texteA="Lancez une tempète de flammes, le monstre prend "+n+" dégats";
         m.HP-=n;
     }

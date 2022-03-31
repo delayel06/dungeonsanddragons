@@ -23,7 +23,7 @@ public class Archer extends Personnage {
         m.HP-=n;
     }
     public void a3(Monstre m){
-        int n = (6+this.Mod_Dex));
+        int n = (6+this.Mod_Dex);
         texteA="Vous effectuez une faite feinte et attaquez à la dague et infligez "+n+" dégats";
         m.HP-=n;
     }

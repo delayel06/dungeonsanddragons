@@ -42,7 +42,7 @@ public class Mage extends Personnage{
         this.HP+=n;
     }
     public void a3(Monstre m){
-        int n = (6+this.Mod_Int));
+        int n = (6+this.Mod_Int);
         texteA="Lancez une tempète de flammes, le monstre prend "+n+" dégats";
         m.HP-=n;
     }

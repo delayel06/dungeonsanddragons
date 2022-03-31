@@ -233,8 +233,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		// Panel Principal : -------------------------------------------------------------------
 		cM = new JPanel(new GridLayout(3, 1, 0, 0)){
 			public void paintComponent(Graphics g){
-				ImageIcon image = new ImageIcon("title.png");
-				g.drawImage(image.getImage(),0, 0, null);
+				ImageIcon image = new ImageIcon("grotte.png");
+				g.drawImage(image.getImage(),100, 100, null);
 			}
 		};
 		cM.add(Monstre);
@@ -369,12 +369,14 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			attaque2 = new JButton(new ImageIcon("m2.png"));
 			attaque3 = new JButton(new ImageIcon("m3.png"));
 			attaque4 = new JButton(new ImageIcon("m4.png"));
+			controle.setBackground(new Color(82, 14, 213));
 		}
 		else if(personnage.classe=="guerrier"){
 			attaque1 = new JButton(new ImageIcon("g1.png"));
 			attaque2 = new JButton(new ImageIcon("g2.png"));
 			attaque3 = new JButton(new ImageIcon("g3.png"));
 			attaque4 = new JButton(new ImageIcon("g4.png"));
+			controle.setBackground(new Color(211, 27, 51));
 		}
 		else if(personnage.classe=="archer"){
 			//à remplir
@@ -384,6 +386,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			attaque2 = new JButton(new ImageIcon("p2.png"));
 			attaque3 = new JButton(new ImageIcon("p3.png"));
 			attaque4 = new JButton(new ImageIcon("p4.png"));
+			controle.setBackground(new Color(220, 161, 4));
 		}
 	}
 
