@@ -90,7 +90,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		music("battletheme.wav");
 
 
-		// on change pour un beau texte
+
 
 		try {
 			// on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
@@ -104,19 +104,21 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		descrMons = new JLabel("Le monstre attaque ..."); // on peut imaginer changer le label selon l'attaque
+		descrMons = new JLabel("Le monstre attaque ...");
 
 
 		// Interface de combat:----------------------------------------
 
 		//NOUS : -------------------------------------------
 
-		Icon iconperso = personnage.icon;
-		PERSO_ICON = new JLabel(iconperso);
+
+		PERSO_ICON = new JLabel(personnage.icon);
 		Perso1 = new JPanel();
-		Perso1.setLayout(null);
 		Perso1.setBackground(null);
-		Perso1.add(PERSO_ICON, SwingConstants.CENTER);
+		Perso1.add(PERSO_ICON);
+
+
+
 		Nom = new JLabel("Kevin ", SwingConstants.CENTER); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
 		Nom.setSize(400, 100);
 
@@ -153,22 +155,20 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 
 		//MONSTRE : ---------------------------------------------
-		//fenetre monstre numéroté de 1 à 3 en
+		//fenetre monstre numéroté de 1 à 3 de gauche ) droite
+		//-----
 		Monstre1 = new JPanel();
 		Monstre1.setLayout(null);
 		Monstre1.setBackground(null);
-
-		NomM = new JLabel(m.nom); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
+		//-----
+		NomM = new JLabel(m.nom);
 		NomM.setFont(fontNOM);
 		NomM.setBackground(null);
-
-
-		BVM = new JLabel((new ImageIcon("bv1.png")));
-
 		NM = new JPanel();
 		NM.add(NomM);
 		NM.setBackground(null);
 
+		BVM = new JLabel((new ImageIcon("bv1.png")));
 		BVmonstre = new JPanel();
 		BVmonstre.add(BVM);
 		BVmonstre.setBackground(null);
@@ -177,7 +177,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Monstre2.add(NM);
 		Monstre2.add(BVmonstre);
 		Monstre2.setBackground(null);
-
+		//-----
 
 		//j'ai ajouté le gif pour le personnage en haut a droit  -- lilian
 
@@ -232,11 +232,13 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		// Panel Principal : -------------------------------------------------------------------
 		cM = new JPanel(new GridLayout(3, 1, 0, 0)){
+			@Override
 			public void paintComponent(Graphics g){
 				ImageIcon image = new ImageIcon("grotte.png");
-				g.drawImage(image.getImage(),100, 100, null);
+				g.drawImage(image.getImage(),0, 0,null);
 			}
 		};
+		paintComponents(cM.getGraphics());
 		cM.add(Monstre);
 		cM.add(Perso);
 		cM.add(controle);
@@ -246,8 +248,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		//-----------------------------------------------------------------------------------
 		chatC = new JTextField();
 		Perso3.add(chatC);
-		choixPlayerImage();
-		Perso1.add(PERSO_ICON);
+
+
 
 		setVisible(true);
 
@@ -430,20 +432,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		}
 	}
 
-	public void choixPlayerImage(){
-		if(personnage.classe=="mage"){
-			PERSO_ICON = new JLabel(personnage.icon);
-		}
-		else if(personnage.classe=="guerrier"){
-			//
-		}
-		else if(personnage.classe=="archer"){
-			//
-		}
-		else if(personnage.classe=="paladin"){
-			//
-		}
-	}
+
 
 
 }
