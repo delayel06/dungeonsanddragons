@@ -1,17 +1,14 @@
-import java.awt.*;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import java.beans.JavaBean;
-import java.io.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.lang.Thread;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class InterfaceCombat extends JFrame implements ActionListener {
 
@@ -70,8 +67,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	public Font font;
 	public Font fontNOM;
-	//Utilitaires
-	public JButton potionVie;
+
+
 	//compteur+boutton de fin
 	public int compte = 1;
 	public JButton bVic;
@@ -118,7 +115,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		PERSO_ICON = new JLabel(iconperso);
 		Perso1 = new JPanel();
 		Perso1.setLayout(null);
-		Perso1.setBackground(Color.white);
+		Perso1.setBackground(null);
 		Perso1.add(PERSO_ICON, SwingConstants.CENTER);
 		Nom = new JLabel("Kevin ", SwingConstants.CENTER); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
 		Nom.setSize(400, 100);
@@ -131,54 +128,55 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		NomPerso = new JPanel();
 		NomPerso.setLayout(null);
 		NomPerso.add(Nom);
-		NomPerso.setBackground(Color.white);
+		NomPerso.setBackground(null);
 
 		BVpanel = new JPanel();
 		BVpanel.add(BV);
 
 
-		BVpanel.setBackground(Color.white);
+		BVpanel.setBackground(null);
 
 		Perso2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Perso2.add(BVpanel);
 		Perso2.add(NomPerso);
-		Perso2.setBackground(Color.white);
+		Perso2.setBackground(null);
 
 		Perso3 = new JPanel();
 
-		Perso3.setBackground(Color.white);
+		Perso3.setBackground(null);
 
-		Perso = new JPanel(new GridLayout(1, 3, 1, 0));
+		Perso = new JPanel(new GridLayout(1, 3, 0, 0));
 		Perso.add(Perso1);
 		Perso.add(Perso2);
 		Perso.add(Perso3);
-		Perso.setBackground(Color.black);
+		Perso.setBackground(null);
 
 
 		//MONSTRE : ---------------------------------------------
 		//fenetre monstre numéroté de 1 à 3 en
 		Monstre1 = new JPanel();
 		Monstre1.setLayout(null);
-		Monstre1.setBackground(Color.yellow);
+		Monstre1.setBackground(null);
 
 		NomM = new JLabel(m.nom); //A VOIR JE PENSE QUE CA VA DEPENDRE DE LA SALLE
 		NomM.setFont(fontNOM);
+		NomM.setBackground(null);
 
 
 		BVM = new JLabel((new ImageIcon("bv1.png")));
 
 		NM = new JPanel();
 		NM.add(NomM);
-		NM.setBackground(Color.white);
+		NM.setBackground(null);
 
 		BVmonstre = new JPanel();
 		BVmonstre.add(BVM);
-		BVmonstre.setBackground(Color.white);
+		BVmonstre.setBackground(null);
 
 		Monstre2 = new JPanel(new GridLayout(2, 1, 0, 0));
 		Monstre2.add(NM);
 		Monstre2.add(BVmonstre);
-		Monstre2.setBackground(Color.white);
+		Monstre2.setBackground(null);
 
 
 		//j'ai ajouté le gif pour le personnage en haut a droit  -- lilian
@@ -189,22 +187,21 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		Monstre3 = new JPanel(new BorderLayout());
 		Monstre3.add(ImMonstre);
-		Monstre3.setBackground(Color.white);
+		Monstre3.setBackground(null);
 
-		Monstre = new JPanel(new GridLayout(1, 3, 1, 0));
+		Monstre = new JPanel(new GridLayout(1, 3, 0, 0));
 		Monstre.add(Monstre1);
 		Monstre.add(Monstre2);
 		Monstre.add(Monstre3);
-		Monstre.setBackground(Color.black);
+		Monstre.setBackground(null);
 
 
 		//CONTROL : ------------------------------------------------------------------------------------------------
 		controle = new JPanel(new GridLayout(2, 2, 2, 2));
-		controle.setBackground(Color.white);
-
-
+		controle.setBackground(null);
 		choixImage();
-//CHOIX IMAGE AVANT SETBUTTON
+
+		//CHOIX IMAGE AVANT SETBUTTON
 
 		setButton(attaque1);
 		setButton(attaque2);
@@ -214,14 +211,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		controle.add(attaque1);
 		controle.add(attaque2);
-
-
-		//UTILITAIRE --------------------------------------------------------------------
-		potionVie = new JButton(new ImageIcon("potionVie.png"));
-		setButton(potionVie);
-		controle.add(potionVie);
 		controle.add(attaque3);
 		controle.add(attaque4);
+
 
 		//TOUR DU MONSTRE -------------------------------------------------------------------------------------------------------
 
@@ -233,23 +225,29 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		attaqueM.addActionListener(this);
 
 
-		tourM = new JLabel(" Le monstre attaque !!! ", SwingConstants.CENTER); //A remplir avec des descriptions predéterminées pour chaque attaque
+		tourM = new JLabel(" Le monstre attaque !!! ", SwingConstants.CENTER);
 		tourM.setFont(font);
 
 
 
 		// Panel Principal : -------------------------------------------------------------------
-		cM = new JPanel(new GridLayout(3, 1, 2, 2));
+		cM = new JPanel(new GridLayout(3, 1, 0, 0)){
+			public void paintComponent(Graphics g){
+				ImageIcon image = new ImageIcon("title.png");
+				g.drawImage(image.getImage(),0, 0, null);
+			}
+		};
 		cM.add(Monstre);
 		cM.add(Perso);
 		cM.add(controle);
 		cM.setSize(width, height);
 		cM.setLocation(0, 0);
-		cM.setBackground(Color.black);
 		add(cM);
 		//-----------------------------------------------------------------------------------
 		chatC = new JTextField();
 		Perso3.add(chatC);
+		choixPlayerImage();
+		Perso1.add(PERSO_ICON);
 
 		setVisible(true);
 
@@ -316,13 +314,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			m.atk(personnage);
 			chatC.setText(m.texteAM);
 		}
-		else if(e.getSource() == potionVie){
-			personnage.HP+=4; //à voir en fonction
-			if(personnage.HP> personnage.HP_max){
-				personnage.HP=personnage.HP_max;
-			}
-			chatC.setText("Cette potion vous soigne de 4 point  de vie");
-		}
+
 		compte+=1;
 		compteur();
 		BarreVieM(m);
@@ -335,7 +327,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.remove(attaque2);
 		controle.remove(attaque3);
 		controle.remove(attaque4);
-		controle.remove(potionVie);
 		controle.add(tourM);
 		controle.add(attaqueM);
 	}
@@ -345,7 +336,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		controle.remove(attaqueM);
 		controle.add(attaque1);
 		controle.add(attaque2);
-		controle.add(potionVie);
 		controle.add(attaque3);
 		controle.add(attaque4);
 
@@ -379,7 +369,6 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			attaque2 = new JButton(new ImageIcon("m2.png"));
 			attaque3 = new JButton(new ImageIcon("m3.png"));
 			attaque4 = new JButton(new ImageIcon("m4.png"));
-			attaque1.setForeground(new Color(92, 36, 218, 255));
 		}
 		else if(personnage.classe=="guerrier"){
 			attaque1 = new JButton(new ImageIcon("g1.png"));
@@ -437,4 +426,21 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			// :(((
 		}
 	}
+
+	public void choixPlayerImage(){
+		if(personnage.classe=="mage"){
+			PERSO_ICON = new JLabel(personnage.icon);
+		}
+		else if(personnage.classe=="guerrier"){
+			//
+		}
+		else if(personnage.classe=="archer"){
+			//
+		}
+		else if(personnage.classe=="paladin"){
+			//
+		}
+	}
+
+
 }
