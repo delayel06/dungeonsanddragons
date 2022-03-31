@@ -13,6 +13,7 @@ public class Monstre {
     public int HPmax;
     public Icon icon;
     public String nom;
+    public int DMG;
     Color couleurMonstre;
     int rayonMon = 20;
     int posMonX =400;
