@@ -1,7 +1,7 @@
 public class Paladin extends Personnage {
     public Paladin() {
         super();
-        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
+        this.classe = "paladin";
     }
 
     public void setStats(){
@@ -17,17 +17,17 @@ public class Paladin extends Personnage {
 
     public void a1(Monstre m){
         int n = (2+this.Mod_Str);
-        texteA="Vous lancez un crâne enflamé et infligez "+n+" dégats";
+        texteA="Vous prenez votre élan et infligez un coup de point destructeur infligeant "+n+" dégats";
         m.HP-=n;
     }
     public void a2(Monstre m){
         int n = (4+this.Mod_Str);
-        texteA="Vous puisez dans vos ressources magiques et vous vous soignez "+n+" points de vie";
+        texteA="Vous assénez un coup de votre arme bénite et faites "+n+" points de vie";
         m.HP-=n;
     }
     public void a3(Monstre m){
         int n = (6+this.Mod_Str);
-        texteA="Lancez une tempète de flammes, le monstre prend "+n+" dégats";
+        texteA="Vous projetez une colone de flammes sacrée, les créatures prissent dans les flammes subissent "+n+" dégats";
         m.HP-=n;
     }
     public void a4(Monstre m){

@@ -1,7 +1,7 @@
 public class Archer extends Personnage {
     public Archer(){
         super();
-        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
+        this.classe = "archer";
     }
     public void setStats(){
         this.Str = 10 + this.stats[0];

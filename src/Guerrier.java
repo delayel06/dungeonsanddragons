@@ -1,7 +1,7 @@
 public class Guerrier extends Personnage {
     public Guerrier(){
         super();
-        String texteA[]= {"Lance sort 1","lance sort 2", "lance sort 3", "lance sort4"};
+
         this.classe = "guerrier";
 
     }
@@ -17,17 +17,24 @@ public class Guerrier extends Personnage {
     }
 
     public void a1(Monstre m){
-        m.HP += (2+this.Mod_Str);
+        int n = (2+this.Mod_Str);
+        texteA="Coup d'estoc : Vous infligez "+n+" dégats";
+        m.HP-=n;
     }
-
     public void a2(Monstre m){
-        m.HP += (4+this.Mod_Str);
+        int n = (4+this.Mod_Str);
+        texteA="Feinte imparable : Vous trompez le monstre à monter sa garde et en profitez pour lui asséner un coup direct, lui faisant subir "+n+" points de vie";
+        m.HP-=n;
     }
     public void a3(Monstre m){
-        m.HP += (6+this.Mod_Str);
+        int n = (6+this.Mod_Str);
+        texteA="Attaques multiples : la créature se retrouve prise dans un deluge de coups et prend "+n+" dégats";
+        m.HP-=n;
     }
     public void a4(Monstre m){
-        m.HP += (8+this.Mod_Str);
+        int n = (8+this.Mod_Str);
+        texteA="Frappe surpuissante : Vous mobilisez votre force et mettez toute votre puissante dans ce coup qui fait "+n+" points de vie au monstre";
+        m.HP-=n;
     }
 
 
