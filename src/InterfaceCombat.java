@@ -381,7 +381,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			controle.setBackground(new Color(211, 27, 51));
 		}
 		else if(personnage.classe=="archer"){
-			//à remplir
+		/*	attaque1 = new JButton(new ImageIcon("a1.png"));
+			attaque2 = new JButton(new ImageIcon("a2.png"));
+			attaque3 = new JButton(new ImageIcon("a3.png"));
+			attaque4 = new JButton(new ImageIcon("a4.png"));
+			controle.setBackground(new Color(51, 211, 51));*/
 		}
 		else if(personnage.classe=="paladin"){
 			attaque1 = new JButton(new ImageIcon("p1.png"));
