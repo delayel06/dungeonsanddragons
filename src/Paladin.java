@@ -17,22 +17,22 @@ public class Paladin extends Personnage {
 
     public void a1(Monstre m){
         int n = (2+this.Mod_Str);
-        texteA="Vous prenez votre élan et infligez un coup de point destructeur infligeant "+n+" dégats";
+        texteA="Point de justice : Vous prenez votre élan et infligez un coup de point destructeur et faites "+n+" dégats";
         m.HP-=n;
     }
     public void a2(Monstre m){
         int n = (4+this.Mod_Str);
-        texteA="Vous assénez un coup de votre arme bénite et faites "+n+" points de vie";
+        texteA="Coup de justice : Vous assénez un coup de votre arme bénite et faites "+n+" points de vie";
         m.HP-=n;
     }
     public void a3(Monstre m){
         int n = (6+this.Mod_Str);
-        texteA="Vous projetez une colone de flammes sacrée, les créatures prissent dans les flammes subissent "+n+" dégats";
+        texteA="Feu sacré : Vous projetez une colone de flammes, les créatures prissent dedans subissent "+n+" dégats";
         m.HP-=n;
     }
     public void a4(Monstre m){
         int n = (8+this.Mod_Str);
-        texteA="Votre dieu vous accorde sa bénédiction: récuperez "+n+" points de vie";
+        texteA="Restauration supérieure : Votre dieu vous accorde sa bénédiction: récuperez "+n+" points de vie";
         this.HP+=n;
     }
 }

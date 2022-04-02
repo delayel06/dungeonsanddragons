@@ -33,22 +33,22 @@ public class Mage extends Personnage{
     }
     public void a1(Monstre m){
         int n = (2+this.Mod_Int);
-        texteA="Vous lancez un crâne enflamé et infligez "+n+" dégats";
+        texteA="Main de pouvoir : De la magie pure sort de votre main et inflige "+n+" dégats";
         m.HP-=n;
     }
     public void a2(Monstre m){
         int n = (4+this.Mod_Int);
-        texteA="Vous puisez dans vos ressources magiques et vous vous soignez "+n+" points de vie";
+        texteA="Mot de guérison : Vous puisez dans vos ressources magiques et vous vous soignez "+n+" points de vie";
         this.HP+=n;
     }
     public void a3(Monstre m){
         int n = (6+this.Mod_Int);
-        texteA="Lancez une tempète de flammes, le monstre prend "+n+" dégats";
+        texteA="Déluge de feu : Lancez une pluie de flammes, le monstre prend "+n+" dégats";
         m.HP-=n;
     }
     public void a4(Monstre m){
         int n = (8+this.Mod_Int);
-        texteA="Vous vous créez une explosion de feu, les créatures ciblées subissent "+n+" dégats";
+        texteA="Combustion spontanée : vous vous entourez d'un halo de flammes magiques et infligez "+n+" dégats à vos cibles";
         m.HP-=n;
     }
 
