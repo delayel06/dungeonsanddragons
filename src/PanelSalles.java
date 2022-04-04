@@ -4,8 +4,9 @@ import java.awt.*;
 public class PanelSalles extends JPanel {
     int[][]laSalle;
     int longueur;
-    int posX=4;
-    int posY=4;
+
+    int posX;
+    int posY;
 
     public PanelSalles(int [][]s, int l){
         laSalle=s;
@@ -20,28 +21,68 @@ public class PanelSalles extends JPanel {
             for (int j=0;j<laSalle.length; j++){
                 if(laSalle[i][j]==1){
                     g.setColor(Color.black);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==2){
                     g.setColor(Color.blue);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==9){
                     g.setColor(Color.red);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
-                    System.out.println("eazeadz");
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    posX = i;
+                    posY = j;
                 }
-                evolutionX=evolutionX+(longueur/10);
+                evolutionX=evolutionX+(longueur/20);
             }
             evolutionX=0;
-            evolutionY=evolutionY+(longueur/10);
+            evolutionY=evolutionY+(longueur/20);
         }
 
     }
 
     public void right(){
+        if(laSalle[posX][posY+1] != 2){
 
-        laSalle[4][4] = 9;
+            laSalle[posX][posY+1] = 9;
+            laSalle[posX][posY] = 1;
+            posX += 1;
+
+
+        }
+        repaint();
+    }
+    public void left(){
+        if(laSalle[posX][posY-1] != 2){
+
+            laSalle[posX][posY-1] = 9;
+            laSalle[posX][posY] = 1;
+            posY -= 1;
+
+
+        }
+        repaint();
+    }
+    public void up(){
+        if(laSalle[posX-1][posY] != 2){
+
+            laSalle[posX-1][posY] = 9;
+            laSalle[posX][posY] = 1;
+            posX -= 1;
+
+
+        }
+        repaint();
+    }
+    public void down(){
+        if(laSalle[posX+1][posY] != 2){
+
+            laSalle[posX+1][posY] = 9;
+            laSalle[posX][posY] = 1;
+            posX += 1;
+
+
+        }
         repaint();
     }
 }

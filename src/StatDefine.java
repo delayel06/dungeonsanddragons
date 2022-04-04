@@ -143,7 +143,7 @@ class StatDefine extends JFrame implements ActionListener {
     }
 
     public void startgame(){
-        new DeplacementSalle( personnage );
+        new Salles(personnage);
 
     }
 
