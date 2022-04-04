@@ -2,12 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import static java.awt.event.KeyEvent.VK_RIGHT;
 
 public class Salles extends JFrame implements KeyListener {
     int width ;
     int heigth;
     PanelSalles salle1;
+
     public Salles(){
         setTitle( " La carte du jeu ");
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,6 +37,7 @@ public class Salles extends JFrame implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         System.out.println(e.getKeyCode());
+
         if(getContentPane()==salle1) {
             if (e.getKeyCode() == 39) {
                 salle1.right();
