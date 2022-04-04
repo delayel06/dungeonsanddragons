@@ -257,16 +257,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 
 	public void BarreVieM(Monstre m){
-		if ((m.HP >= (int)(m.HPmax*0.9))&&(m.HP >= (int)(m.HPmax*0.65))){
+		if ((m.HP >= (int)(m.HPmax*0.8))&&(m.HP >= (int)(m.HPmax*0.6))){
 			BVM.setIcon(new ImageIcon("bv2.png"));
 		}
-		else if ((m.HP > (int)(m.HPmax*0.65))&&(m.HP >= (int)(m.HPmax*0.4))){
+		else if ((m.HP > (int)(m.HPmax*0.6))&&(m.HP >= (int)(m.HPmax*0.4))){
 			BVM.setIcon(new ImageIcon("bv3.png"));
 		}
-		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.15))){
+		else if ((m.HP > (int)(m.HPmax*0.4))&&(m.HP >= (int)(m.HPmax*0.20))){
 			BVM.setIcon(new ImageIcon("bv4.png"));
 		}
-		else if ((m.HP >= (int)(m.HPmax*0.15))&&(m.HP > 0)){
+		else if ((m.HP >= (int)(m.HPmax*0.2))&&(m.HP > 0)){
 			BVM.setIcon(new ImageIcon("bv5.png"));
 		}
 		else if (m.HP <= 0){
@@ -279,16 +279,16 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public void BarreVieP(Personnage p) {
 		if((p.HP >= (int)(p.HP_max*0.9))) {
 			BV.setIcon(new ImageIcon("bv1.png"));
-		}else if ((p.HP <= (int)(p.HP_max*0.9))&&(p.HP >= (int)(p.HP_max*0.65))){
+		}else if ((p.HP <= (int)(p.HP_max*0.8))&&(p.HP >= (int)(p.HP_max*0.6))){
 			BV.setIcon(new ImageIcon("bv2.png"));
 		}
-		else if ((p.HP < (int)(p.HP_max*0.65))&&(p.HP >= (int)(p.HP_max*0.4))){
+		else if ((p.HP < (int)(p.HP_max*0.6))&&(p.HP >= (int)(p.HP_max*0.4))){
 			BV.setIcon(new ImageIcon("bv3.png"));
 		}
-		else if ((p.HP < (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.15))){
+		else if ((p.HP < (int)(p.HP_max*0.4))&&(p.HP >= (int)(p.HP_max*0.2))){
 			BV.setIcon(new ImageIcon("bv4.png"));
 		}
-		else if ((p.HP <= (int)(p.HP_max*0.15))&&(p.HP > 0)){
+		else if ((p.HP <= (int)(p.HP_max*0.2))&&(p.HP > 0)){
 			BV.setIcon(new ImageIcon("bv5.png"));
 		}
 		else if (p.HP <= 0){
