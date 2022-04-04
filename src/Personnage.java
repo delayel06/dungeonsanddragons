@@ -4,7 +4,7 @@ public class Personnage{
     public String classe;
     public String race;
     public int[] stats = new int[6];
-    // 1 str 2 dex 3 int 4 cons 5 wis 6 char
+    // 1 str 2 dex 3 cons 4 int 5 wis 6 char
     public int HP;
     public int HP_max;
     public int Str;
@@ -25,13 +25,6 @@ public class Personnage{
 
 
     public Personnage(){
-        this.Str =1;
-        this.Dex =1;
-        this.Con =1;
-        this.Int =1;
-        this.Wis =1;
-        this.Cha =1;
-
 
     }
 
@@ -72,6 +65,12 @@ public class Personnage{
     }
 
     public void setPerso(){
+        this.Str = this.stats[0];
+        this.Dex = this.stats[1];
+        this.Con = this.stats[2];
+        this.Int = this.stats[3];
+        this.Wis = this.stats[4];
+        this.Cha = this.stats[5];
         this.Mod_Str = Mod(this.Str);
         this.Mod_Dex = Mod(this.Dex);
         this.Mod_Con = Mod(this.Con);
