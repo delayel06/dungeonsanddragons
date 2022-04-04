@@ -244,6 +244,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		cM.add(controle);
 		cM.setSize(width, height);
 		cM.setLocation(0, 0);
+
 		add(cM);
 		//-----------------------------------------------------------------------------------
 		chatC = new JTextField();

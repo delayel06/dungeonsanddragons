@@ -43,16 +43,13 @@ public class Salles extends JFrame implements KeyListener {
                 salle1.right();
             }
             if (e.getKeyCode() == 38) {
-
-                repaint();
+                salle1.up();
             }
             if (e.getKeyCode() == 37) {
-
-                repaint();
+                salle1.left();
             }
             if (e.getKeyCode() == 40) {
-
-                repaint();
+                salle1.down();
             }
         }
     }

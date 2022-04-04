@@ -4,8 +4,9 @@ import java.awt.*;
 public class PanelSalles extends JPanel {
     int[][]laSalle;
     int longueur;
-    int posX=4;
-    int posY=4;
+
+    int posX;
+    int posY;
 
     public PanelSalles(int [][]s, int l){
         laSalle=s;
@@ -20,28 +21,39 @@ public class PanelSalles extends JPanel {
             for (int j=0;j<laSalle.length; j++){
                 if(laSalle[i][j]==1){
                     g.setColor(Color.black);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==2){
                     g.setColor(Color.blue);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==9){
                     g.setColor(Color.red);
-                    g.fillRect(evolutionX,evolutionY,longueur/10,longueur/10);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                     System.out.println("eazeadz");
                 }
-                evolutionX=evolutionX+(longueur/10);
+                evolutionX=evolutionX+(longueur/20);
             }
             evolutionX=0;
-            evolutionY=evolutionY+(longueur/10);
+            evolutionY=evolutionY+(longueur/20);
         }
 
     }
 
     public void right(){
 
-        laSalle[4][4] = 9;
+        repaint();
+    }
+    public void left(){
+
+        repaint();
+    }
+    public void up(){
+
+        repaint();
+    }
+    public void down(){
+
         repaint();
     }
 }

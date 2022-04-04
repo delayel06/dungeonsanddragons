@@ -108,8 +108,7 @@ public class DeplacementSalle  extends JFrame implements KeyListener{
 		p.dessine(g);
 	}*/
 
-	public static void main (String[] args) {
-		DeplacementSalle c = new DeplacementSalle(new Mage());}
+
 
 
 	public void music(String path){
