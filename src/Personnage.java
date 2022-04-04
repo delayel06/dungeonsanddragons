@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class Personnage{
+public abstract class Personnage{
     public String classe;
     public String race;
     public int[] stats = new int[6];
@@ -25,6 +25,20 @@ public class Personnage{
 
 
     public Personnage(){
+        this.Str = this.stats[0];
+        this.Dex = this.stats[1];
+        this.Con = this.stats[2];
+        this.Int = this.stats[3];
+        this.Wis = this.stats[4];
+        this.Cha = this.stats[5];
+        this.Mod_Str = Mod(this.Str);
+        this.Mod_Dex = Mod(this.Dex);
+        this.Mod_Con = Mod(this.Con);
+        this.Mod_Int = Mod(this.Int);
+        this.Mod_Wis = Mod(this.Wis);
+        this.Mod_Cha = Mod(this.Cha);
+        this.HP_max = (10+Mod_Con)*3;
+        this.HP = this.HP_max;
 
     }
 
@@ -65,12 +79,6 @@ public class Personnage{
     }
 
     public void setPerso(){
-        this.Str = this.stats[0];
-        this.Dex = this.stats[1];
-        this.Con = this.stats[2];
-        this.Int = this.stats[3];
-        this.Wis = this.stats[4];
-        this.Cha = this.stats[5];
         this.Mod_Str = Mod(this.Str);
         this.Mod_Dex = Mod(this.Dex);
         this.Mod_Con = Mod(this.Con);
@@ -86,4 +94,9 @@ public class Personnage{
     public void changeTexte(String t){
         texteA=t;
     }
+
+    public abstract void setStats();
+
+
+
 }

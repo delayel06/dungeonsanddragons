@@ -128,6 +128,8 @@ class StatDefine extends JFrame implements ActionListener {
             personnage.stats[i] = dice.valeurs[i];
             System.out.println(" ");
             System.out.println(personnage.stats[i]);
+            personnage.setStats();
+            personnage.setPerso();
         }
 
 
