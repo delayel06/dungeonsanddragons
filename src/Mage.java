@@ -26,6 +26,7 @@ public class Mage extends Personnage{
         this.Wis = 13 + this.stats[4];
         this.Cha = 8 + this.stats[5];
 
+
     }
 
     public void a1(Monstre m){

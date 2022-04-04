@@ -46,6 +46,7 @@ public abstract class Personnage{
 
     public void setRace(String race){
         this.race = race;
+
     }
 
     //re défintion des attaques dans chaque classe
@@ -55,7 +56,7 @@ public abstract class Personnage{
     public void a4(Monstre m){}
 
     public int Mod(int Stat){
-        int Mod =0;
+        int Mod;
         if (Stat == 21 || Stat ==22){
             Mod = 6;
         } else if (Stat == 19 || Stat == 20){
@@ -87,6 +88,31 @@ public abstract class Personnage{
         this.Mod_Cha = Mod(this.Cha);
         this.HP_max = (10+Mod_Con)*3;
         this.HP = this.HP_max;
+    }
+
+    public void BonusRace(){
+        if(this.race.equals("human")){
+            this.stats[0] = 1;
+            this.stats[1] = 1;
+            this.stats[2] = -1;
+            this.stats[3] = 1;
+            this.stats[4] = -1;
+            this.stats[5] = 1;
+
+        } else if(this.race.equals("orc")){
+            this.stats[0] += 2;
+            this.stats[2] += 1;
+            this.stats[3] += -1;
+
+        } else if(this.race.equals("dwarf")){
+            this.stats[2] += 2;
+            this.stats[3] += 1;
+            this.stats[5] += -1;
+        } else if(this.race.equals("elf")){
+            this.stats[1] += 2;
+            this.stats[2] += -1;
+            this.stats[3] += 1;
+        }
     }
 
     //permet de change la description de l'attaque
