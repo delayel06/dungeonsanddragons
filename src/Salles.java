@@ -7,8 +7,10 @@ public class Salles extends JFrame implements KeyListener {
     int width ;
     int heigth;
     PanelSalles salle1;
+    Personnage perso;
 
-    public Salles(){
+    public Salles(Personnage perso){
+        this.perso = perso;
         setTitle( " La carte du jeu ");
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
         width = tailleMoniteur.width * 1/2;
@@ -60,6 +62,7 @@ public class Salles extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent e) {  }
  
     public static void main (String[] args) {
-        Salles s = new Salles();}
+        Mage a = new Mage();
+        Salles s = new Salles(a);}
 
 }
