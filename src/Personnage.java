@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class Personnage extends Figurine{
+public class Personnage{
     public String classe;
     public String race;
     public int[] stats = new int[6];
@@ -25,6 +25,14 @@ public class Personnage extends Figurine{
 
 
     public Personnage(){
+        this.Str =1;
+        this.Dex =1;
+        this.Con =1;
+        this.Int =1;
+        this.Wis =1;
+        this.Cha =1;
+
+
     }
 
 
@@ -40,8 +48,10 @@ public class Personnage extends Figurine{
     public void a4(Monstre m){}
 
     public int Mod(int Stat){
-        int Mod;
-        if (Stat == 19 || Stat == 20){
+        int Mod =0;
+        if (Stat == 21 || Stat ==22){
+            Mod = 6;
+        } else if (Stat == 19 || Stat == 20){
             Mod = 5;
         } else if (Stat == 17 || Stat == 18){
             Mod = 4;

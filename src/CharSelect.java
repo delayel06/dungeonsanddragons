@@ -177,6 +177,7 @@ public class CharSelect extends JFrame implements ActionListener {
             }
 
             new RaceSelect(perso);
+            perso.setPerso();
             this.dispose();
         }
 
