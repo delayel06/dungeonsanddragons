@@ -4,9 +4,8 @@ import java.awt.*;
 public class PanelSalles extends JPanel {
     int[][]laSalle;
     int longueur;
-    int positionPerso;
-    int posX;
-    int posY;
+    int posX=4;
+    int posY=4;
 
     public PanelSalles(int [][]s, int l){
         laSalle=s;
