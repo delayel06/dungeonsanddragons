@@ -30,7 +30,8 @@ public class PanelSalles extends JPanel {
                 if(laSalle[i][j]==9){
                     g.setColor(Color.red);
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    System.out.println("eazeadz");
+                    posX = i;
+                    posY = j;
                 }
                 evolutionX=evolutionX+(longueur/20);
             }
@@ -41,19 +42,47 @@ public class PanelSalles extends JPanel {
     }
 
     public void right(){
+        if(laSalle[posX][posY+1] != 2){
 
+            laSalle[posX][posY+1] = 9;
+            laSalle[posX][posY] = 1;
+            posX += 1;
+
+
+        }
         repaint();
     }
     public void left(){
+        if(laSalle[posX][posY-1] != 2){
 
+            laSalle[posX][posY-1] = 9;
+            laSalle[posX][posY] = 1;
+            posY -= 1;
+
+
+        }
         repaint();
     }
     public void up(){
+        if(laSalle[posX-1][posY] != 2){
 
+            laSalle[posX-1][posY] = 9;
+            laSalle[posX][posY] = 1;
+            posX -= 1;
+
+
+        }
         repaint();
     }
     public void down(){
+        if(laSalle[posX+1][posY] != 2){
 
+            laSalle[posX+1][posY] = 9;
+            laSalle[posX][posY] = 1;
+            posX += 1;
+
+
+        }
         repaint();
     }
 }
