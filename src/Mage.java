@@ -17,9 +17,7 @@ public class Mage extends Personnage{
         super();
         this.classe = "mage";
         this.icon = new ImageIcon("wizard.gif");
-
     }
-
     public void setStats(){
         this.Str = 8 + this.stats[0];
         this.Dex = 11 + this.stats[1];
@@ -28,9 +26,8 @@ public class Mage extends Personnage{
         this.Wis = 13 + this.stats[4];
         this.Cha = 8 + this.stats[5];
 
-
-
     }
+
     public void a1(Monstre m){
         int n = (2+this.Mod_Int);
         texteA="Main de pouvoir : De la magie pure sort de votre main et inflige "+n+" dégats";
