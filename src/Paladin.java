@@ -1,7 +1,10 @@
+import javax.swing.*;
+
 public class Paladin extends Personnage {
     public Paladin() {
         super();
         this.classe = "paladin";
+        this.icon = new ImageIcon("paladin.gif");
     }
 
     public void setStats(){

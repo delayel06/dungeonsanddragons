@@ -63,7 +63,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JPanel controle;
 	public JPanel cM;
 
-	public JTextField chatC;
+	public JLabel chatC;
 
 	public Font font;
 	public Font fontNOM;
@@ -247,7 +247,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		add(cM);
 		//-----------------------------------------------------------------------------------
-		chatC = new JTextField();
+		chatC = new JLabel();
 		Perso3.add(chatC);
 
 
@@ -255,6 +255,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		setVisible(true);
 
 	}
+
 
 
 	public void BarreVieM(Monstre m){
@@ -326,6 +327,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	}
 
 	private void removeAttackButtons() {
+		PERSO_ICON.setIcon(personnage.aIcon);
 		controle.remove(attaque1);
 		controle.remove(attaque2);
 		controle.remove(attaque3);
@@ -335,6 +337,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	}
 
 	private void addAttackButtons(){
+		PERSO_ICON.setIcon(personnage.icon);
 		controle.remove(tourM);
 		controle.remove(attaqueM);
 		controle.add(attaque1);
@@ -412,12 +415,14 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		}
 		else if (personnage.HP<=0){
+			PERSO_ICON.setIcon(personnage.d1Icon);
 			controle.removeAll();
 			controle.revalidate();
 			controle.repaint();
 			JButton bDef = new JButton("La partie s'arrête ici pour vous,... Ce monstre a eu raison du puissant guerrier que vous étiez ! ");
 			bDef.addActionListener(e -> {this.dispose();});
 			controle.add(bDef);
+			PERSO_ICON.setIcon(personnage.d2Icon);
 		}
 
 	}

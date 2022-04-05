@@ -1,9 +1,13 @@
+import javax.swing.*;
+
 public class Guerrier extends Personnage {
     public Guerrier(){
         super();
-
         this.classe = "guerrier";
-
+        this.icon = new ImageIcon("warriors.gif");
+        this.aIcon = new ImageIcon("warriorAt.gif");
+        this.d1Icon = new ImageIcon("warriorD1.gif");
+        this.d2Icon = new ImageIcon("warriorD2.gif");
     }
 
     public void setStats(){

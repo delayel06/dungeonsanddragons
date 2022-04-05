@@ -1,7 +1,10 @@
+import javax.swing.*;
+
 public class Archer extends Personnage {
     public Archer(){
         super();
         this.classe = "archer";
+        this.icon = new ImageIcon("archer.gif");
     }
     public void setStats(){
         this.Str = 10 + this.stats[0];

@@ -20,8 +20,10 @@ public abstract class Personnage{
     public int Cha;
     public int Mod_Cha;
     public String texteA; //description de l'attaque
-
     public Icon icon;
+    public Icon aIcon;
+    public Icon d1Icon;
+    public Icon d2Icon;
 
 
     public Personnage(){
