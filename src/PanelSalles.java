@@ -6,14 +6,19 @@ public class PanelSalles extends JPanel {
     int longueur;
     int posX;
     int posY;
+    Salles main;
     ImageIcon icon = new ImageIcon("knightidle.png");
     ImageIcon stone = new ImageIcon("stone.jpg");
     ImageIcon stonefloor = new ImageIcon("stonefloor.jpg");
 
 
-    public PanelSalles(int [][]s, int l){
+    public PanelSalles(int [][]s, int l, Salles salle){
         laSalle=s;
         longueur= l;
+        main = salle;
+
+
+
 
     }
 
@@ -31,9 +36,11 @@ public class PanelSalles extends JPanel {
                     stone.paintIcon( this, g, evolutionX, evolutionY );
                 }
                 if(laSalle[i][j]==2){
-                    stonefloor.paintIcon(this, g, evolutionX, evolutionY);
+                    g.setColor(new Color( 145, 107, 100 ));
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+
                 }
-                if(laSalle[i][j]>100){
+                if(laSalle[i][j]>=100){
                     g.setColor(Color.yellow);
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
@@ -42,9 +49,12 @@ public class PanelSalles extends JPanel {
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==9){
+                    g.setColor(new Color( 145, 107, 100 ));
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                     icon.paintIcon( this, g, evolutionX, evolutionY );
                     posX = i;
                     posY = j;
+
                 }
                 evolutionX=evolutionX+(longueur/20);
             }
@@ -52,20 +62,22 @@ public class PanelSalles extends JPanel {
             evolutionY=evolutionY+(longueur/20);
         }
 
+
+
     }
 
     public void right(){
         icon = new ImageIcon("knightrun.png");
-        if(laSalle[posX][posY+1] != 1 && laSalle[posX][posY+1] < 100 && laSalle[posX][posY+1] != 4){
+        if(laSalle[posX][posY+1] == 2){
 
             laSalle[posX][posY+1] = 9;
             laSalle[posX][posY] = 2;
-            posX += 1;
+            posY += 1;
 
 
-        }
-
-        if(laSalle[posX][posY+1] == 4){
+            }
+        else if(laSalle[posX][posY+1] >= 100){
+            main.changeSalle( laSalle[posX][posY+1] -100  );
 
         }
         repaint();
@@ -73,33 +85,32 @@ public class PanelSalles extends JPanel {
     public void left(){
         icon = new ImageIcon("knightrun2.png");
 
-        if(laSalle[posX][posY-1] != 1 && laSalle[posX][posY-1] != 3 && laSalle[posX][posY-1] != 4){
+        if(laSalle[posX][posY-1] == 2){
 
             laSalle[posX][posY-1] = 9;
             laSalle[posX][posY] = 2;
             posY -= 1;
         }
-        if(laSalle[posX][posY-1] == 3){
+        else if(laSalle[posX][posY-1] >= 100){
+            main.changeSalle( laSalle[posX][posY-1] -100  );
 
         }
-        if(laSalle[posX][posY-1] == 4){
 
-        }
+
         repaint();
     }
     public void up(){
         icon = new ImageIcon("knightup.png");
-
-        if(laSalle[posX-1][posY] != 1 && laSalle[posX-1][posY] != 3 && laSalle[posX-1][posY] != 4){
+        System.out.println(posX);
+        if(laSalle[posX-1][posY] == 2){
 
             laSalle[posX-1][posY] = 9;
             laSalle[posX][posY] = 2;
             posX -= 1;
+            System.out.println("apres: "+posX);
         }
-        if(laSalle[posX-1][posY] == 3){
-
-        }
-        if(laSalle[posX-1][posY] == 4){
+             else if(laSalle[posX-1][posY] >= 100){
+                main.changeSalle( laSalle[posX-1][posY] -100  );
 
         }
         repaint();
@@ -107,16 +118,14 @@ public class PanelSalles extends JPanel {
     public void down(){
         icon = new ImageIcon("knightdown.png");
 
-        if(laSalle[posX+1][posY] != 1 && laSalle[posX+1][posY] != 3 && laSalle[posX+1][posY] != 4){
+        if(laSalle[posX+1][posY] == 2){
 
             laSalle[posX+1][posY] = 9;
             laSalle[posX][posY] = 2;
             posX += 1;
         }
-        if(laSalle[posX+1][posY] == 3){
-
-        }
-        if(laSalle[posX+1][posY] == 4){
+        else if(laSalle[posX+1][posY] >= 100){
+            main.changeSalle( laSalle[posX+1][posY] -100  );
 
         }
         repaint();
