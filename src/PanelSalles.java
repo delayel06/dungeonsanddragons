@@ -10,10 +10,12 @@ public class PanelSalles extends JPanel {
     ImageIcon icon = new ImageIcon("knightidle.png");
 
 
+
     public PanelSalles(int [][]s, int l, Salles salle){
         laSalle=s;
         longueur= l;
         main = salle;
+
 
 
 
@@ -45,6 +47,12 @@ public class PanelSalles extends JPanel {
                 if(laSalle[i][j]==4){
                     g.setColor(Color.green);
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
+
+                }
+                if(laSalle[i][j]==3){
+                    g.setColor(Color.red);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }if(laSalle[i][j] == 6){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
@@ -59,7 +67,7 @@ public class PanelSalles extends JPanel {
                 if(laSalle[i][j]==9){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    icon.paintIcon( this, g, evolutionX, evolutionY );
+                    icon.paintIcon( this, g, evolutionX-20, evolutionY-10 );
                     posX = i;
                     posY = j;
 
@@ -93,6 +101,12 @@ public class PanelSalles extends JPanel {
                 laSalle[posX][posY+1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
+            }else if(laSalle[posX][posY+2] == 3){
+                laSalle[posX][posY+2] = 4;
+                laSalle[posX][posY+1] = 9;
+                laSalle[posX][posY] = 2;
+                posY += 1;
+                checkPuzzle1();
             }
         }
         repaint();
@@ -115,6 +129,13 @@ public class PanelSalles extends JPanel {
                 laSalle[posX][posY-1] = 9;
                 laSalle[posX][posY] = 2;
                 posY -= 1;
+            }else if(laSalle[posX][posY-2] == 3){
+                laSalle[posX][posY-2] = 4;
+                laSalle[posX][posY-1] = 9;
+                laSalle[posX][posY] = 2;
+                posY -= 1;
+                checkPuzzle1();
+
             }
         }
 
@@ -140,6 +161,13 @@ public class PanelSalles extends JPanel {
                 laSalle[posX-1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX -= 1;
+            }else if(laSalle[posX-2][posY] == 3){
+                laSalle[posX-2][posY] = 4;
+                laSalle[posX-1][posY] = 9;
+                laSalle[posX][posY] = 2;
+                posX -= 1;
+                checkPuzzle1();
+
             }
         }
         repaint();
@@ -162,6 +190,13 @@ public class PanelSalles extends JPanel {
                 laSalle[posX+1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX += 1;
+            }else if(laSalle[posX+2][posY] == 3){
+                laSalle[posX+2][posY] = 4;
+                laSalle[posX+1][posY] = 9;
+                laSalle[posX][posY] = 2;
+                posX += 1;
+                checkPuzzle1();
+
             }
         }
         repaint();
@@ -169,5 +204,22 @@ public class PanelSalles extends JPanel {
     public void idle(){
         icon = new ImageIcon("knightidle.png");
         repaint();
+    }
+
+    public void checkPuzzle1() {
+        boolean b = true;
+
+            for (int i = 0; i < laSalle.length; i++) {
+                for (int j = 0; j < 20; j++) {
+                    if(laSalle[i][j] == 3){
+                        b = false;
+                        break;
+                    }
+                }
+            }
+            if(b){
+                laSalle[18][3] = 102;
+            }
+
     }
 }
