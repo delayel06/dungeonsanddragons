@@ -8,6 +8,9 @@ public class Salles extends JFrame implements KeyListener {
     int heigth;
     PanelSalles salle1;
     PanelSalles salle2;
+    PanelSalles[] tabsalles;
+
+    int i = 0;
     Personnage perso;
 
     public Salles(Personnage perso){
@@ -67,6 +70,7 @@ public class Salles extends JFrame implements KeyListener {
 
         salle1 =new PanelSalles(caseSalle1,width) ;
         salle2 =new PanelSalles(caseSalle2,width) ;
+        tabsalles = new PanelSalles[]{salle1, salle2};
         this.setContentPane(this.salle1);
         addKeyListener(this);
         setVisible(true);
@@ -80,6 +84,7 @@ public class Salles extends JFrame implements KeyListener {
                 salle1.right();
                 if(salle1.laSalle[salle1.posX][salle1.posY+1] >= 100){
                     this.setContentPane(salle2);
+                    i++;
                 }
             }
             if (e.getKeyCode() == 38) {
@@ -109,6 +114,7 @@ public class Salles extends JFrame implements KeyListener {
     }
 
     public void keyReleased(KeyEvent e) {
+        tabsalles[i].idle();
 	}
 
 	public void keyTyped(KeyEvent e) {  }

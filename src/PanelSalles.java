@@ -4,13 +4,17 @@ import java.awt.*;
 public class PanelSalles extends JPanel {
     int[][]laSalle;
     int longueur;
-
     int posX;
     int posY;
+    ImageIcon icon = new ImageIcon("knightidle.png");
+    ImageIcon stone = new ImageIcon("stone.jpg");
+    ImageIcon stonefloor = new ImageIcon("stonefloor.jpg");
+
 
     public PanelSalles(int [][]s, int l){
         laSalle=s;
         longueur= l;
+
     }
 
     public  void paintComponent(Graphics g) {
@@ -24,15 +28,13 @@ public class PanelSalles extends JPanel {
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==1){
-                    g.setColor(Color.gray);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    stone.paintIcon( this, g, evolutionX, evolutionY );
                 }
                 if(laSalle[i][j]==2){
-                    g.setColor(Color.white);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    stonefloor.paintIcon(this, g, evolutionX, evolutionY);
                 }
                 if(laSalle[i][j]>100){
-                    g.setColor(Color.black);
+                    g.setColor(Color.yellow);
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==4){
@@ -40,8 +42,7 @@ public class PanelSalles extends JPanel {
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==9){
-                    g.setColor(Color.red);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    icon.paintIcon( this, g, evolutionX, evolutionY );
                     posX = i;
                     posY = j;
                 }
@@ -54,6 +55,7 @@ public class PanelSalles extends JPanel {
     }
 
     public void right(){
+        icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] != 1 && laSalle[posX][posY+1] < 100 && laSalle[posX][posY+1] != 4){
 
             laSalle[posX][posY+1] = 9;
@@ -69,6 +71,8 @@ public class PanelSalles extends JPanel {
         repaint();
     }
     public void left(){
+        icon = new ImageIcon("knightrun2.png");
+
         if(laSalle[posX][posY-1] != 1 && laSalle[posX][posY-1] != 3 && laSalle[posX][posY-1] != 4){
 
             laSalle[posX][posY-1] = 9;
@@ -84,6 +88,8 @@ public class PanelSalles extends JPanel {
         repaint();
     }
     public void up(){
+        icon = new ImageIcon("knightup.png");
+
         if(laSalle[posX-1][posY] != 1 && laSalle[posX-1][posY] != 3 && laSalle[posX-1][posY] != 4){
 
             laSalle[posX-1][posY] = 9;
@@ -99,6 +105,8 @@ public class PanelSalles extends JPanel {
         repaint();
     }
     public void down(){
+        icon = new ImageIcon("knightdown.png");
+
         if(laSalle[posX+1][posY] != 1 && laSalle[posX+1][posY] != 3 && laSalle[posX+1][posY] != 4){
 
             laSalle[posX+1][posY] = 9;
@@ -111,6 +119,10 @@ public class PanelSalles extends JPanel {
         if(laSalle[posX+1][posY] == 4){
 
         }
+        repaint();
+    }
+    public void idle(){
+        icon = new ImageIcon("knightidle.png");
         repaint();
     }
 }
