@@ -6,8 +6,8 @@ import java.awt.event.*;
 public class Salles extends JFrame implements KeyListener {
     int width ;
     int heigth;
-    PanelSalles salle1;
-    PanelSalles salle2;
+    PanelSalles salle1, salle2, salle3, salle4, salle5, salle6;
+
     PanelSalles[] tabsalles;
 
     int i = 0;
@@ -77,8 +77,8 @@ public class Salles extends JFrame implements KeyListener {
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 0},
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 0},
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1, 0},
-                               { 0, 1, 9, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 104, 1, 0},
-                               { 0, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 104, 1, 0},
+                               { 0, 1, 2, 9, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 103, 1, 0},
+                               { 0, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 101, 1, 0},
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1, 0},
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 0},
                                { 0, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 0},
@@ -99,11 +99,11 @@ public class Salles extends JFrame implements KeyListener {
                                 { 0, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 1, 0},
                                 { 0, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
                                 { 0, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 104, 1, 0},
-                                { 0, 0, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 104, 1, 0},
-                                { 0, 0, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 0},
+                                { 0, 0, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 102, 1, 0},
+                                { 0, 0, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 9, 2, 2, 2, 1, 0},
                                 { 0, 0, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1, 0},
                                 { 0, 0, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
-                                { 0, 0, 2, 2, 1, 2, 2, 1 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 0},
+                                { 0, 0, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 0},
                                 { 0, 0, 2, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0, 0},
                                 { 0, 0, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 0, 0},
                                 { 0, 0, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 0, 0},
@@ -111,9 +111,36 @@ public class Salles extends JFrame implements KeyListener {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
 
+        int [][] caseSalle5={   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                                { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 101, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 9, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 10, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 100, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                        };
+
+
         salle1 =new PanelSalles(caseSalle1,width, this) ;
         salle2 =new PanelSalles(caseSalle2,width, this) ;
-        tabsalles = new PanelSalles[]{salle1, salle2};
+        salle3 = new PanelSalles(caseSalle3, width, this);
+        salle4 = new PanelSalles(caseSalle4, width, this);
+        salle5 = new PanelSalles(caseSalle5, width, this);
+
+        tabsalles = new PanelSalles[]{salle1, salle2,salle3, salle4, salle5};
         this.setContentPane(this.salle1);
         addKeyListener(this);
         setVisible(true);
@@ -121,34 +148,21 @@ public class Salles extends JFrame implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
 
-        if(getContentPane()==salle1) {
-            if (e.getKeyCode() == 39) {
-                salle1.right();
-            }
-            if (e.getKeyCode() == 38) {
-                salle1.up();
-            }
-            if (e.getKeyCode() == 37) {
-                salle1.left();
-            }
-            if (e.getKeyCode() == 40) {
-                salle1.down();
-            }
-        }
-        if(getContentPane()==salle2) {
-            if (e.getKeyCode() == 39) {
-                salle2.right();
-            }
-            if (e.getKeyCode() == 38) {
-                salle2.up();
-            }
-            if (e.getKeyCode() == 37) {
-                salle2.left();
-            }
-            if (e.getKeyCode() == 40) {
-                salle2.down();
-            }
-        }
+                if (e.getKeyCode() == 39) {
+                    tabsalles[i].right();
+                }
+                if (e.getKeyCode() == 38) {
+                    tabsalles[i].up();
+                }
+                if (e.getKeyCode() == 37) {
+                    tabsalles[i].left();
+                }
+                if (e.getKeyCode() == 40) {
+                    tabsalles[i].down();
+                }
+
+
+
     }
 
     public void keyReleased(KeyEvent e) {
@@ -161,6 +175,7 @@ public class Salles extends JFrame implements KeyListener {
 
         this.setContentPane( tabsalles[i] );
         this.pack();
+        this.i = i;
         setSize(width,width+30);
         setResizable( false );
         this.revalidate();
