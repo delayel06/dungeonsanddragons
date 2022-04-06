@@ -2,13 +2,13 @@ public class Squelette extends Monstre {
     public Squelette (){
 
         super();
-        this.nom = "Squelette";
+
 
 
     }
 
     public void atk(Personnage p){
-        int j = getRandomInt(4);
+        int j = getRandomInt(8);
         p.HP -=j;
 
     }

@@ -234,7 +234,7 @@ public class PanelSalles extends JPanel {
                 }
             }
             if(b){
-                laSalle[18][3] = 102;
+                laSalle[18][3] = 106;
             }
 
     }

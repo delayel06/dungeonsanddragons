@@ -9,7 +9,6 @@ import java.io.IOException;
 public class Monstre {
 
     public int HP;
-    public int CA;
     public int HPmax;
     public Icon icon;
     public String nom;
