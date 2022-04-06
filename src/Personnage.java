@@ -22,8 +22,8 @@ public abstract class Personnage{
     public String texteA; //description de l'attaque
     public Icon icon;
     public Icon aIcon;
-    public Icon d1Icon;
-    public Icon d2Icon;
+    public Icon dIcon;
+
 
 
     public Personnage(){

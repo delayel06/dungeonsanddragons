@@ -415,14 +415,14 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 		}
 		else if (personnage.HP<=0){
-			PERSO_ICON.setIcon(personnage.d1Icon);
+			PERSO_ICON.setIcon(personnage.dIcon);
 			controle.removeAll();
 			controle.revalidate();
 			controle.repaint();
 			JButton bDef = new JButton("La partie s'arrête ici pour vous,... Ce monstre a eu raison du puissant guerrier que vous étiez ! ");
 			bDef.addActionListener(e -> {this.dispose();});
 			controle.add(bDef);
-			PERSO_ICON.setIcon(personnage.d2Icon);
+
 		}
 
 	}

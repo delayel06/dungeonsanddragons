@@ -4,7 +4,9 @@ public class Paladin extends Personnage {
     public Paladin() {
         super();
         this.classe = "paladin";
-        this.icon = new ImageIcon("paladin.gif");
+        this.icon = new ImageIcon("Paladin.gif");
+        this.aIcon = new ImageIcon("PaladinA.gif");
+        this.dIcon = new ImageIcon("PaladinD.gif");
     }
 
     public void setStats(){
