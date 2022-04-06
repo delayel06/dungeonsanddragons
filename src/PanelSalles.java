@@ -41,12 +41,14 @@ public class PanelSalles extends JPanel {
 
                 }
                 if(laSalle[i][j]>=100 && laSalle[i][j]<200){
-                    g.setColor(Color.yellow);
+                    g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    (new ImageIcon("door.png")).paintIcon(this, g, evolutionX-30, evolutionY-30);
+
                 }if(laSalle[i][j]>=200){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("goblin.gif")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
 
                 }
                 if(laSalle[i][j]==4){
