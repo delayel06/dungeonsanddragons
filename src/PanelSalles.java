@@ -72,6 +72,9 @@ public class PanelSalles extends JPanel {
 
                 }
                 if(laSalle[i][j]==13){
+                    g.setColor(new Color( 145, 107, 100 ));
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+
                     (new ImageIcon("lava.png")).paintIcon(this,g,evolutionX,evolutionY);
                 }if(laSalle[i][j]==14){
 
