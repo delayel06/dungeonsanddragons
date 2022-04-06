@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class Salles extends JFrame implements KeyListener {
     int width ;
     int heigth;
-    PanelSalles salle1, salle2, salle3, salle4, salle5, salle6;
+    PanelSalles salle0, salle1, salle2, salle3, salle4, salle5, salle6;
 
     Monstre[] tabmonstre = {new Gobelin(), new Gobelin(), new Squelette()};
     PanelSalles[] tabsalles;
@@ -28,6 +28,28 @@ public class Salles extends JFrame implements KeyListener {
         // Monsieur les csv ne veulent pas de nous comme les meufs
         // 0=neant , 1 = MUR , 2 = sol, >100= porte, 4= monstre
         // TOUT CE QUI EST SUPERIEUR A 100 C'EST DES PORTES ON VA SUREMENT FAIRE LA MEME POUR LES MONSTRES ET >200
+        int [][] caseSalle0={   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 1, 1, 1, 6, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 6, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 200, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 101, 2, 2, 2, 1, 1, 1, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 9, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 1, 0, 0, 0, 0},
+                { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        };
+
         int [][] caseSalle1={   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                                 { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
                                 { 0, 0, 1, 1, 1, 1, 6, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
@@ -135,15 +157,15 @@ public class Salles extends JFrame implements KeyListener {
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                         };
 
-
+        salle0 = new PanelSalles(caseSalle0, width, this);
         salle1 =new PanelSalles(caseSalle1,width, this) ;
         salle2 =new PanelSalles(caseSalle2,width, this) ;
         salle3 = new PanelSalles(caseSalle3, width, this);
         salle4 = new PanelSalles(caseSalle4, width, this);
         salle5 = new PanelSalles(caseSalle5, width, this);
 
-        tabsalles = new PanelSalles[]{salle1, salle2,salle3, salle4, salle5};
-        this.setContentPane(this.salle1);
+        tabsalles = new PanelSalles[]{salle0, salle1, salle2,salle3, salle4, salle5};
+        this.setContentPane(this.salle0);
         addKeyListener(this);
         setVisible(true);
     }
