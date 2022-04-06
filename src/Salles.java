@@ -8,6 +8,7 @@ public class Salles extends JFrame implements KeyListener {
     int heigth;
     PanelSalles salle1, salle2, salle3, salle4, salle5, salle6;
 
+    Monstre[] tabmonstre = {new Gobelin(), new Gobelin(), new Squelette()};
     PanelSalles[] tabsalles;
 
     int i = 0;
@@ -33,7 +34,7 @@ public class Salles extends JFrame implements KeyListener {
                                 { 0, 0, 1, 6, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
                                 { 0, 0, 1, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
                                 { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
-                                { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
+                                { 0, 0, 1, 2, 2, 2, 200, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
                                 { 0, 0, 1, 2, 2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0},
                                 { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0, 0},
                                 { 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0},

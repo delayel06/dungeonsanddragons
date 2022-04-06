@@ -40,8 +40,11 @@ public class PanelSalles extends JPanel {
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
 
                 }
-                if(laSalle[i][j]>=100){
+                if(laSalle[i][j]>=100 && laSalle[i][j]<200){
                     g.setColor(Color.yellow);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                }if(laSalle[i][j]>=200){
+                    g.setColor(Color.green);
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                 }
                 if(laSalle[i][j]==4){
@@ -81,7 +84,7 @@ public class PanelSalles extends JPanel {
 
 
     }
-
+// MOVEMENT
     public void right(){
         icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] == 2 ){
@@ -92,22 +95,25 @@ public class PanelSalles extends JPanel {
 
 
             }
-        else if(laSalle[posX][posY+1] >= 100){
+        else if(laSalle[posX][posY+1] >= 100 && laSalle[posX][posY+1] < 200){
             main.changeSalle( laSalle[posX][posY+1] -100  );
 
-        }else if (laSalle[posX][posY+1] == 5){
+        }else if (laSalle[posX][posY+1] == 5){ // Barils bouger
             if(laSalle[posX][posY+2] == 2){
                 laSalle[posX][posY+2] = 5;
                 laSalle[posX][posY+1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
-            }else if(laSalle[posX][posY+2] == 3){
+            }else if(laSalle[posX][posY+2] == 3){ // Puzzle 1
                 laSalle[posX][posY+2] = 4;
                 laSalle[posX][posY+1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
                 checkPuzzle1();
             }
+        }else if (laSalle[posX][posY+1] >= 200){
+            
+            new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
         }
         repaint();
     }
@@ -120,7 +126,7 @@ public class PanelSalles extends JPanel {
             laSalle[posX][posY] = 2;
             posY -= 1;
         }
-        else if(laSalle[posX][posY-1] >= 100){
+        else if(laSalle[posX][posY-1] >= 100 && laSalle[posX][posY-1] < 200){
             main.changeSalle( laSalle[posX][posY-1] -100  );
 
         }else if (laSalle[posX][posY-1] == 5){
@@ -152,7 +158,7 @@ public class PanelSalles extends JPanel {
             posX -= 1;
             System.out.println("apres: "+posX);
         }
-             else if(laSalle[posX-1][posY] >= 100){
+             else if(laSalle[posX-1][posY] >= 100 && laSalle[posX-1][posY] < 200){
                 main.changeSalle( laSalle[posX-1][posY] -100  );
 
         }else if (laSalle[posX-1][posY] == 5){
@@ -181,7 +187,7 @@ public class PanelSalles extends JPanel {
             laSalle[posX][posY] = 2;
             posX += 1;
         }
-        else if(laSalle[posX+1][posY] >= 100){
+        else if(laSalle[posX+1][posY] >= 100  && laSalle[posX+1][posY] < 200){
             main.changeSalle( laSalle[posX+1][posY] -100  );
 
         }else if (laSalle[posX+1][posY] == 5){
