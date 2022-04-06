@@ -427,6 +427,13 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	}
 
+	public void testReussite( double x){
+		double y = Math.random();
+		if (y<x){
+
+		}
+	}
+
 
 	public void music(String path){
 		if(clip != null){
