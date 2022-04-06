@@ -16,10 +16,10 @@ public class Mage extends Personnage{
     public Mage(){
         super();
         this.classe = "mage";
-        this.icon = new ImageIcon("wizzard.gif");
-        this.aIcon = new ImageIcon("wizzardA.gif");
-        this.d1Icon=new ImageIcon("wizzardD1.gif");
-        this.d2Icon=new ImageIcon("wizzardD2.gif");
+        this.icon = new ImageIcon("Wizard.gif");
+        this.aIcon = new ImageIcon("WizardA.gif");
+        this.dIcon=new ImageIcon("WizardD.gif");
+
     }
     public void setStats(){
         this.Str = 8 + this.stats[0];

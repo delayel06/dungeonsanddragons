@@ -4,10 +4,10 @@ public class Guerrier extends Personnage {
     public Guerrier(){
         super();
         this.classe = "guerrier";
-        this.icon = new ImageIcon("warriors.gif");
-        this.aIcon = new ImageIcon("warriorAt.gif");
-        this.d1Icon = new ImageIcon("warriorD1.gif");
-        this.d2Icon = new ImageIcon("warriorD2.gif");
+        this.icon = new ImageIcon("Warrior.gif");
+        this.aIcon = new ImageIcon("WarriorA.gif");
+        this.dIcon = new ImageIcon("WarriorD1.gif");
+
     }
 
     public void setStats(){
