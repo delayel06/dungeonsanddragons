@@ -85,21 +85,118 @@ public class PanelSalles extends JPanel implements MouseListener {
 
                 }
                 if(laSalle[i][j] == 8){
-
                     (new ImageIcon("backpack.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
 
-                }if(laSalle[i][j] == 7){//crystal
+                //CRISTALS
+                if(laSalle[i][j] == 7){//crystal
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                     (new ImageIcon("crystal.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
-                if(laSalle[i][j]==13){
+                if(laSalle[i][j] == 10){//OMBRE
+                    g.setColor(new Color( 145, 107, 100 ));
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    (new ImageIcon("ombre.png")).paintIcon(this, g, evolutionX, evolutionY);
+
+                }
+
+
+                //LAVES DIFFERENTES
+                if(laSalle[i][j]==60){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
 
-                    (new ImageIcon("lava.png")).paintIcon(this,g,evolutionX,evolutionY);
-                }if(laSalle[i][j]==14){
+                    (new ImageIcon("lava1.png")).paintIcon(this,g,evolutionX,evolutionY);
+                }
+                if(laSalle[i][j]==61) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava2.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==62) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava3.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==63) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava4.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==64) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava5.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==65) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava6.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==66) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava7.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==67) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava8.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==68) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava9.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==69) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava10.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==70) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava11.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==71) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava12.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==72) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava13.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==73) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava14.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+                if(laSalle[i][j]==74) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+
+
+                if(laSalle[i][j]==14){
 
                 }
 
