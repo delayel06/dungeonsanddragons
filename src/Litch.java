@@ -13,7 +13,6 @@ class Litch extends Monstre {
         this.nom = "Gobelin";
         this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
-        this.CA = 2;
         this.icon = new ImageIcon("Litch.gif");
         this.aIcon = new ImageIcon("LitchA.gif");
         this.dIcon = new ImageIcon("LitchD.gif");

@@ -10,7 +10,7 @@ public class Salles extends JFrame implements KeyListener {
 
     Monstre[] tabmonstre = {new Gobelin(), new Gobelin(), new Squelette()};
     PanelSalles[] tabsalles;
-
+    Inventaire notreInventaire;
     int i = 0;
     Personnage perso;
 
@@ -25,7 +25,6 @@ public class Salles extends JFrame implements KeyListener {
         setIconImage( (new ImageIcon("logo.png" )).getImage());
         setLocation((tailleMoniteur.width - getSize().width)/2,((tailleMoniteur.height - getSize().height)/2)-20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Monsieur les csv ne veulent pas de nous comme les meufs
         // 0=neant , 1 = MUR , 2 = sol, >100= porte, 4= monstre
         // TOUT CE QUI EST SUPERIEUR A 100 C'EST DES PORTES ON VA SUREMENT FAIRE LA MEME POUR LES MONSTRES ET >200
         int [][] caseSalle0={   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -187,7 +186,7 @@ public class Salles extends JFrame implements KeyListener {
         salle5 = new PanelSalles(caseSalle5, width, this);
         salle6 = new PanelSalles(caseSalle6, width, this);
 
-
+        notreInventaire = new Inventaire();
         tabsalles = new PanelSalles[]{salle0, salle1, salle2,salle3, salle4, salle5, salle6};
         this.setContentPane(this.salle0);
         addKeyListener(this);

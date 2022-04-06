@@ -1,27 +1,40 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class PanelSalles extends JPanel {
+public class PanelSalles extends JPanel implements MouseListener {
     int[][]laSalle;
     int longueur;
     int posX;
     int posY;
     Salles main;
     ImageIcon icon = new ImageIcon("knightidle.png");
-
+    JLabel labelTest ;
 
 
     public PanelSalles(int [][]s, int l, Salles salle){
         laSalle=s;
         longueur= l;
         main = salle;
-
-
+        setLayout(null);
+        labelTest = new JLabel();
+        labelTest.setBounds(0,0,longueur/20, longueur/20);
+        labelTest.addMouseListener(this);
+        add(labelTest);
 
 
 
     }
-
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("EAZPEAEPOAZDIOAZDAOZIDNAZOI");
+        main.notreInventaire.setVisible(true);
+    }
+    public void mouseEntered(MouseEvent e) {
+    }
+    public void mouseExited(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
     public  void paintComponent(Graphics g) {
         int evolutionX =0;
         int evolutionY =0;
@@ -69,6 +82,12 @@ public class PanelSalles extends JPanel {
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                     (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
+
+                }
+                if(laSalle[i][j] == 8){
+                    g.setColor(Color.orange);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                    //(new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if(laSalle[i][j]==13){
