@@ -11,6 +11,8 @@ public class Monstre {
     public int HP;
     public int HPmax;
     public Icon icon;
+    public Icon aIcon;
+    public Icon dIcon;
     public String nom;
     public int DMG;
     Color couleurMonstre;
@@ -18,6 +20,7 @@ public class Monstre {
     int posMonX =400;
     int posMonY =100;
     String texteAM; //description attaque + dégats
+    public Icon mapIcon;
 
 
     public Monstre(){
