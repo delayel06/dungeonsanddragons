@@ -17,11 +17,21 @@ public class Inventaire extends JFrame {
         conteneurDescription.setBounds(0,0 , longueurInventaire,largeurInventaire/2);
         conteneurDescription.setBackground(Color.red);
 
-        for (int i = 0; i<2;i++) {
+        /*for (int i = 0; i<2;i++) {
             for (int j = 0; j < 5; j++) {
                 lesObjets[i][j]=1;
             }
-        }lesObjets[i][j]=1;
+        }*/
+        lesObjets[1][1]=2;
+        lesObjets[1][2]=2;
+        lesObjets[1][3]=2;
+        lesObjets[1][4]=2;
+        lesObjets[1][0]=2;
+        lesObjets[0][1]=2;
+        lesObjets[0][2]=2;
+        lesObjets[0][3]=2;
+        lesObjets[0][4]=2;
+        lesObjets[0][0]=2;
 
         JPanel conteneurObject = new Panelinventaire(lesObjets,longueurInventaire,largeurInventaire);
 

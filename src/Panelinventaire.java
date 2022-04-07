@@ -18,19 +18,20 @@ public class Panelinventaire extends JPanel {
             for (int j = 0; j < objects[i].length; j++) {
                 if (objects[i][j] == 1) {
                     g.setColor(Color.blue);
-                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 2);
+                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4 -20);
                 }
-                if (objects[i][j] == 1) {
-                    g.setColor(Color.white);
-                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 2);
+                if (objects[i][j] ==2) {
+                    g.setColor(Color.orange);
+                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4-20);
                 }
                 if (objects[i][j] == 3) {
                     g.setColor(Color.red);
-                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 2);
+                    g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4-20);
                 }
                 evolutionXinventaire += longueur/5;
             }
-            evolutionYinventaire+=hauteur/2;
+            evolutionXinventaire=0;
+            evolutionYinventaire+=hauteur/4 -20;
         }
     }
 }
