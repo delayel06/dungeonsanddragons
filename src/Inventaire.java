@@ -22,16 +22,16 @@ public class Inventaire extends JFrame {
                 lesObjets[i][j]=1;
             }
         }*/
-        lesObjets[1][1]=2;
-        lesObjets[1][2]=2;
-        lesObjets[1][3]=2;
-        lesObjets[1][4]=2;
-        lesObjets[1][0]=2;
-        lesObjets[0][1]=2;
-        lesObjets[0][2]=2;
-        lesObjets[0][3]=2;
-        lesObjets[0][4]=2;
-        lesObjets[0][0]=2;
+        lesObjets[1][1]=0;
+        lesObjets[1][2]=0;
+        lesObjets[1][3]=0;
+        lesObjets[1][4]=0;
+        lesObjets[1][0]=0;
+        lesObjets[0][1]=0;
+        lesObjets[0][2]=0;
+        lesObjets[0][3]=0;
+        lesObjets[0][4]=0;
+        lesObjets[0][0]=0;
 
         JPanel conteneurObject = new Panelinventaire(lesObjets,longueurInventaire,largeurInventaire);
 

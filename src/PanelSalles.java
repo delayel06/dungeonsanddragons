@@ -198,10 +198,15 @@ public class PanelSalles extends JPanel implements MouseListener {
 
                 // OBJETS
                 if(laSalle[i][j]>=300) {
-                    g.setColor(Color.blue);
+                    g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                }
+                if (laSalle[i][j] ==321) {
+                    g.setColor(Color.orange);
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
+                    (new ImageIcon("bone.png")).paintIcon(this, g, evolutionX, evolutionY);
 
-                    //(new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
                 }
 
 
@@ -260,9 +265,14 @@ public class PanelSalles extends JPanel implements MouseListener {
             
             new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
         }
-        else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] < 400){
-            main.notreInventaire.lesObjets[1][3]=3;
+        else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] <= 320){
+            main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY+1]-300;
+            laSalle[posX][posY+1] =321;
+            repaint();
+            //System.out.println("ca marche "+ (laSalle[posX][posY+1]-300));
             main.notreInventaire.repaint();
+        }else if (laSalle[posX][posY+1] >= 321 && laSalle[posX][posY+1] <= 400){
+            laSalle[posX][posY+1] =2;
         }
 
         repaint();
@@ -294,7 +304,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
             }
         }else if (laSalle[posX][posY-1] >= 300 && laSalle[posX][posY-1] < 400){
-            main.notreInventaire.lesObjets[1][3]=3;
+            main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY-1] -300;
             main.notreInventaire.repaint();
         }
 
@@ -329,7 +339,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
         else if (laSalle[posX-2][posY] >= 300 && laSalle[posX-2][posY] < 400){
-            main.notreInventaire.lesObjets[1][3]=3;
+            main.notreInventaire.lesObjets[1][3]=laSalle[posX-2][posY]-300;
             main.notreInventaire.repaint();
         }
         repaint();
@@ -362,7 +372,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
         else if (laSalle[posX+2][posY] >= 300 && laSalle[posX+2][posY] < 400){
-            main.notreInventaire.lesObjets[1][3]=3;
+            main.notreInventaire.lesObjets[1][3]=laSalle[posX+2][posY] -300;
             main.notreInventaire.repaint();
         }
         repaint();

@@ -16,13 +16,14 @@ public class Panelinventaire extends JPanel {
         int evolutionYinventaire = 0;
         for (int i = 0; i<objects.length;i++) {
             for (int j = 0; j < objects[i].length; j++) {
-                if (objects[i][j] == 1) {
+                if (objects[i][j] == 0) {
                     g.setColor(Color.blue);
                     g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4 -20);
                 }
-                if (objects[i][j] ==2) {
+                if (objects[i][j] ==1) {
                     g.setColor(Color.orange);
                     g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4-20);
+                    (new ImageIcon("bone.png")).paintIcon(this, g, evolutionXinventaire, evolutionYinventaire);
                 }
                 if (objects[i][j] == 3) {
                     g.setColor(Color.red);
