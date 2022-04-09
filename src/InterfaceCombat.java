@@ -306,13 +306,26 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			chatC.setText(personnage.texteA);
 		}else if (e.getSource() == attaque2){
 			personnage.a2(m);
-			chatC.setText(personnage.texteA);
+			if (testReussite(0.8)==true){
+				chatC.setText(personnage.texteA);
+			} else {
+				chatC.setText("Votre attaque échoue !");
+			}
+
 		} else if (e.getSource() == attaque3){
 			personnage.a3(m);
-			chatC.setText(personnage.texteA);
+			if (testReussite(0.6)==true){
+				chatC.setText(personnage.texteA);
+			} else {
+				chatC.setText("Votre attaque échoue !");
+			}
 		} else if (e.getSource() == attaque4){
 			personnage.a4(m);
-			chatC.setText(personnage.texteA);
+			if (testReussite(0.4)==true){
+				chatC.setText(personnage.texteA);
+			} else {
+				chatC.setText("Votre attaque échoue !");
+			}
 		}
 		else if(e.getSource() == attaqueM){
 			m.atk(personnage);
@@ -427,11 +440,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	}
 
-	public void testReussite( double x){
+	public boolean testReussite( double x){
 		double y = Math.random();
-		if (y<x){
-
-		}
+		return (y>x);
 	}
 
 
