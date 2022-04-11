@@ -53,9 +53,8 @@ public class Mage extends Personnage{
         m.HP-=n;
     }
     public void aB(Monstre m){
-        int n = 0;
         texteA="Votre attaque ne touche pas !";
-        m.HP-=n;
+
     }
 
 

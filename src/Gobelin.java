@@ -14,14 +14,14 @@ class Gobelin extends Monstre {
         this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
         this.icon = new ImageIcon("goblin.gif");
-        this.DMG = (this.HPmax)%4;
+
         couleurMonstre=Color.green;
 
     }
 
     public void atk(Personnage p){
         texteRandom();
-        p.HP -= this.DMG;
+        p.HP -= 2;
 
     }
 

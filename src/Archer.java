@@ -39,8 +39,7 @@ public class Archer extends Personnage {
     }
 
     public void aB(Monstre m){
-        int n = 0;
         texteA="Votre attaque ne touche pas !";
-        m.HP-=n;
+
     }
 }

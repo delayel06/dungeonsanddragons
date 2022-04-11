@@ -14,7 +14,6 @@ public class Monstre {
     public Icon aIcon;
     public Icon dIcon;
     public String nom;
-    public int DMG;
     Color couleurMonstre;
     int rayonMon = 20;
     int posMonX =400;
