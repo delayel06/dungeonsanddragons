@@ -208,6 +208,12 @@ public class PanelSalles extends JPanel implements MouseListener {
                     (new ImageIcon("bone.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
+                if (laSalle[i][j] ==322) {
+                    g.setColor(Color.orange);
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
+                    (new ImageIcon("Epee.png")).paintIcon(this, g, evolutionX, evolutionY);
+
+                }
 
 
 
@@ -267,12 +273,16 @@ public class PanelSalles extends JPanel implements MouseListener {
         }
         else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] <= 320){
 
-            laSalle[posX][posY+1] =321;
+            laSalle[posX][posY+1] = laSalle[posX][posY+1]+20;
             repaint();
             //System.out.println("ca marche "+ (laSalle[posX][posY+1]-300));
             main.notreInventaire.repaint();
-        }else if (laSalle[posX][posY+1] >= 321 && laSalle[posX][posY+1] <= 400){
-            main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY+1]-300;
+        }else if (laSalle[posX][posY+1] == 321){
+            main.notreInventaire.lesObjets[0][0]=1;
+            laSalle[posX][posY+1] =2;
+        }
+        else if (laSalle[posX][posY+1] == 322){
+            main.notreInventaire.lesObjets[0][1]=2;
             laSalle[posX][posY+1] =2;
         }
 
