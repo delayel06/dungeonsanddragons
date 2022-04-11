@@ -13,6 +13,7 @@ public class Monstre {
     public Icon icon;
     public Icon aIcon;
     public Icon dIcon;
+    public ImageIcon imageM;
     public String nom;
     Color couleurMonstre;
     int rayonMon = 20;
@@ -23,7 +24,7 @@ public class Monstre {
 
 
     public Monstre(){
-
+        this.imageM = new ImageIcon("ombre.png");
 
     }
     public void dessineMonstre(Graphics g){
