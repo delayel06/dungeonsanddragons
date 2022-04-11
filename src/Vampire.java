@@ -1,14 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Fantome extends Monstre{
-
-
-    public Fantome (){
+public class Vampire extends Monstre{
+    public Vampire (){
 
         super();
-        this.nom = "Fantôme";
-        this.HPmax= (int)(7 + Math.random()*5);
+        this.nom = "Vampire";
+        this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
         this.icon = new ImageIcon("goblin.gif"); //CHANGER
         couleurMonstre= Color.white;
@@ -23,11 +21,11 @@ public class Fantome extends Monstre{
     public void texteRandom(int dmg){
         double n = Math.random();
         if(n>0.5){
-            texteAM = "Le fantome passe sa main spéctrale à travers votre ventre : "+dmg+" dégats !";
+            texteAM = "Le vampire plante ses crocs et aspire :" +dmg+" de vie !";
         } else if((0.5>n)||(n>0.25)){
-            texteAM = "La créature pousse un hurlement glaçant : "+dmg+" dégats !";
+            texteAM = "La créature dégage une aura de peur : "+dmg+" dégats !";
         } else if(n<=0.25) {
-            texteAM = "Vous recevez un coup de chaine : "+dmg+" dégats !";
+            texteAM = "Vous recevez un coup de griffe : "+dmg+" dégats !";
         }
     }
 
@@ -35,11 +33,11 @@ public class Fantome extends Monstre{
     public void atk(Personnage p){
         int j = getRandomInt(6) + 1;
         p.HP -=j;
+        this.HP +=(j-3);
         texteRandom(j);
     }
 
     public int getRandomInt(int n) {
-            return (int)(Math.random() * n);
-        }
+        return (int)(Math.random() * n);
+    }
 }
-

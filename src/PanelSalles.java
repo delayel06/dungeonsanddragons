@@ -62,7 +62,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 }if(laSalle[i][j]>=200 && laSalle[i][j]<=300 ){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                    (new ImageIcon("ombre.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
 
                 }
                 if(laSalle[i][j]==4){

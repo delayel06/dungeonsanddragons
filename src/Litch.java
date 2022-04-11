@@ -22,7 +22,7 @@ public class Litch extends Monstre {
     }
 
     public void atk(Personnage p){
-        int j = getRandomInt(4) + 1;
+        int j = getRandomInt(6) + 2;
         p.HP -=j;
         texteRandom(j);
     }
