@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PanelSalles extends JPanel implements MouseListener {
     int[][]laSalle;
@@ -11,6 +13,9 @@ public class PanelSalles extends JPanel implements MouseListener {
     Salles main;
     ImageIcon icon = new ImageIcon("knightidle.png");
     JLabel labelTest ;
+    int vsX = -1000;
+    int vsY = 0;
+    ImageIcon image = new ImageIcon("vsscreen.png");
 
 
     public PanelSalles(int [][]s, int l, Salles salle){
@@ -27,7 +32,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
     public void mouseClicked(MouseEvent e) {
-        System.out.println("EAZPEAEPOAZDIOAZDAOZIDNAZOI");
+
         main.notreInventaire.setVisible(true);
         main.notreInventaire.repaint();
     }
@@ -231,10 +236,44 @@ public class PanelSalles extends JPanel implements MouseListener {
             evolutionY=evolutionY+(longueur/20);
         }
 
+        g.drawImage(image.getImage(), vsX, vsY, null);
+
+
+
+
 
 
     }
-// MOVEMENT
+
+
+    public void startfight(Personnage perso, Monstre monstre) {
+        java.util.Timer t = new Timer();
+        TimerTask task = new TimerTask() {
+            int i = 0;
+            public void run()
+            {
+                vsX += 5;
+                repaint();
+
+                i++;
+                if (i == 190){
+
+                    new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
+                    t.cancel();
+
+
+
+                }
+            }
+
+
+        };
+
+        t.schedule( task,0, 10 );
+
+    }
+
+    // MOVEMENT
     public void right(){
         icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] == 2 ){
@@ -262,14 +301,13 @@ public class PanelSalles extends JPanel implements MouseListener {
                 checkPuzzle1();
             }
         }else if (laSalle[posX][posY+1] >= 200 && laSalle[posX][posY+1] < 300){
-            
-            new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
+            startfight(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]);
+            blockPerso();
         }
         else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] <= 320){
 
             laSalle[posX][posY+1] =321;
             repaint();
-            //System.out.println("ca marche "+ (laSalle[posX][posY+1]-300));
             main.notreInventaire.repaint();
         }else if (laSalle[posX][posY+1] >= 321 && laSalle[posX][posY+1] <= 400){
             main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY+1]-300;
@@ -278,6 +316,8 @@ public class PanelSalles extends JPanel implements MouseListener {
 
         repaint();
     }
+
+
     public void left(){
         icon = new ImageIcon("knightrun2.png");
 
@@ -399,4 +439,9 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
 
     }
+
+    public void blockPerso(){
+        main.mvmt = false;
+    }
+
 }

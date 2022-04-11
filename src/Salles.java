@@ -13,6 +13,7 @@ public class Salles extends JFrame implements KeyListener {
     Inventaire notreInventaire;
     int i = 0;
     Personnage perso;
+    boolean mvmt = true;
 
     public Salles(Personnage perso){
         this.perso = perso;
@@ -216,7 +217,7 @@ public class Salles extends JFrame implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-
+            if(mvmt) {
                 if (e.getKeyCode() == 39) {
                     tabsalles[i].right();
                 }
@@ -230,7 +231,7 @@ public class Salles extends JFrame implements KeyListener {
                     tabsalles[i].down();
                 }
 
-
+            }
 
     }
 
