@@ -8,7 +8,7 @@ public class Salles extends JFrame implements KeyListener {
     int heigth;
     PanelSalles salle0, salle1, salle2, salle3, salle4, salle5, salle6;
 
-    Monstre[] tabmonstre = {new Squelette(), new Litch(), new Vampire(), new Mommy()};
+    Monstre[] tabmonstre = {new Dragon(), new Litch(), new Vampire(), new Mommy()};
     PanelSalles[] tabsalles;
     Inventaire notreInventaire;
     int i = 0;
