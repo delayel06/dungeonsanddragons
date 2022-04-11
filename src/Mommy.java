@@ -8,7 +8,9 @@ public class Mommy extends Monstre{
         this.nom = "Momie";
         this.HPmax= (int)(15 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("momie.gif");
+        this.aIcon = new ImageIcon("momieA.gif");
+        this.dIcon = new ImageIcon("momieD.gif");
         couleurMonstre= Color.white;
 
     }

@@ -13,7 +13,9 @@ class Gobelin extends Monstre {
         this.nom = "Gobelin";
         this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif");
+        this.icon = new ImageIcon("skeleton.gif");
+        this.aIcon = new ImageIcon("skeletonA.gif");
+        this.dIcon = new ImageIcon("skeletonD.gif");
 
         couleurMonstre=Color.green;
 

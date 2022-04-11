@@ -8,7 +8,9 @@ public class Vampire extends Monstre{
         this.nom = "Vampire";
         this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("vampire.gif");
+        this.aIcon = new ImageIcon("vampireA.gif");
+        this.dIcon = new ImageIcon("vampireD.gif");
         couleurMonstre= Color.white;
 
     }

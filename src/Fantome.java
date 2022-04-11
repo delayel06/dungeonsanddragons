@@ -10,7 +10,9 @@ public class Fantome extends Monstre{
         this.nom = "Fantôme";
         this.HPmax= (int)(7 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("ghost.gif");
+        this.aIcon = new ImageIcon("ghostA.gif");
+        this.dIcon = new ImageIcon("ghostD.gif");
         couleurMonstre= Color.white;
 
     }
