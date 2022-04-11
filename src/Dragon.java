@@ -9,7 +9,10 @@ public class Dragon extends Monstre{
         this.nom = "Dragon Squelette";
         this.HPmax= (int)(40 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("dragon.gif");
+        this.aIcon = new ImageIcon("dragonA.gif");
+        this.dIcon = new ImageIcon("dragonD.gif");
+        this.imageM = new ImageIcon("dragonM.png");
         couleurMonstre= Color.white;
 
     }

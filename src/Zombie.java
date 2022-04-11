@@ -9,7 +9,9 @@ public class Zombie extends Monstre{
         this.nom = "Zombie";
         this.HPmax= (int)(10 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("zombie.gif");
+        this.aIcon = new ImageIcon("zombieA.gif");
+        this.dIcon = new ImageIcon("zombieD.gif");
         couleurMonstre= Color.white;
 
     }

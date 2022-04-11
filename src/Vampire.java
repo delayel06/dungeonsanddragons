@@ -11,6 +11,7 @@ public class Vampire extends Monstre{
         this.icon = new ImageIcon("vampire.gif");
         this.aIcon = new ImageIcon("vampireA.gif");
         this.dIcon = new ImageIcon("vampireD.gif");
+        this.imageM = new ImageIcon("vampireM.png");
         couleurMonstre= Color.white;
 
     }

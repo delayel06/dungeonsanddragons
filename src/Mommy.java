@@ -11,6 +11,7 @@ public class Mommy extends Monstre{
         this.icon = new ImageIcon("momie.gif");
         this.aIcon = new ImageIcon("momieA.gif");
         this.dIcon = new ImageIcon("momieD.gif");
+        this.imageM = new ImageIcon("momieM.png");
         couleurMonstre= Color.white;
 
     }

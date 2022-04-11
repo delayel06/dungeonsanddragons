@@ -24,7 +24,7 @@ public class Monstre {
 
 
     public Monstre(){
-        this.imageM = new ImageIcon("ombre.png");
+
 
     }
     public void dessineMonstre(Graphics g){

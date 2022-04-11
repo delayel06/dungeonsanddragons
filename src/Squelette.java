@@ -8,7 +8,9 @@ public class Squelette extends Monstre {
         this.nom = "Squelette";
         this.HPmax= (int)(5 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("skeleton.gif");
+        this.aIcon = new ImageIcon("skeletonA.gif");
+        this.dIcon = new ImageIcon("skeletonD.gif");//CHANGER
         couleurMonstre= Color.white;
 
     }
