@@ -278,7 +278,14 @@ public class PanelSalles extends JPanel implements MouseListener {
         t.schedule( task,0, 10 );
 
     }
-
+    public void space(){
+        icon = new ImageIcon("knightrun.png");
+        if(laSalle[posX][posY+1] == 6){
+            System.out.println("AZBUEAOEAEA");
+            laSalle[posX][posY+1] = 2;
+        }
+        repaint();
+    }
     // MOVEMENT
     public void right(){
         icon = new ImageIcon("knightrun.png");
