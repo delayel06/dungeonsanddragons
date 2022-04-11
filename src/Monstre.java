@@ -13,8 +13,8 @@ public class Monstre {
     public Icon icon;
     public Icon aIcon;
     public Icon dIcon;
+    public ImageIcon imageM;
     public String nom;
-    public int DMG;
     Color couleurMonstre;
     int rayonMon = 20;
     int posMonX =400;
@@ -24,7 +24,7 @@ public class Monstre {
 
 
     public Monstre(){
-
+        this.imageM = new ImageIcon("ombre.png");
 
     }
     public void dessineMonstre(Graphics g){

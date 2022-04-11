@@ -52,6 +52,10 @@ public class Mage extends Personnage{
         texteA="Combustion spontanée : vous vous entourez d'un halo de flammes magiques et infligez "+n+" dégats à vos cibles";
         m.HP-=n;
     }
+    public void aB(Monstre m){
+        texteA="Votre attaque ne touche pas !";
+
+    }
 
 
 }

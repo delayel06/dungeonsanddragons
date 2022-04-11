@@ -25,9 +25,10 @@ public class Panelinventaire extends JPanel {
                     g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4-20);
                     (new ImageIcon("bone.png")).paintIcon(this, g, evolutionXinventaire, evolutionYinventaire);
                 }
-                if (objects[i][j] == 3) {
+                if (objects[i][j] == 2) {
                     g.setColor(Color.red);
                     g.fillRect(evolutionXinventaire, evolutionYinventaire, longueur / 5, hauteur/ 4-20);
+                    (new ImageIcon("Epee.png")).paintIcon(this, g, evolutionXinventaire, evolutionYinventaire);
                 }
                 evolutionXinventaire += longueur/5;
             }

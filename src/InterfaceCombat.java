@@ -259,7 +259,9 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 
 	public void BarreVieM(Monstre m){
-		if ((m.HP >= (int)(m.HPmax*0.8))&&(m.HP >= (int)(m.HPmax*0.6))){
+		if((m.HP >= (int)(m.HPmax*0.8))) {
+			BVM.setIcon(new ImageIcon("bv1.png"));
+		} else if ((m.HP >= (int)(m.HPmax*0.8))&&(m.HP >= (int)(m.HPmax*0.6))){
 			BVM.setIcon(new ImageIcon("bv2.png"));
 		}
 		else if ((m.HP > (int)(m.HPmax*0.6))&&(m.HP >= (int)(m.HPmax*0.4))){
@@ -279,7 +281,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	}
 
 	public void BarreVieP(Personnage p) {
-		if((p.HP >= (int)(p.HP_max*0.9))) {
+		if((p.HP >= (int)(p.HP_max*0.8))) {
 			BV.setIcon(new ImageIcon("bv1.png"));
 		}else if ((p.HP <= (int)(p.HP_max*0.8))&&(p.HP >= (int)(p.HP_max*0.6))){
 			BV.setIcon(new ImageIcon("bv2.png"));
@@ -305,26 +307,32 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			personnage.a1(m);
 			chatC.setText(personnage.texteA);
 		}else if (e.getSource() == attaque2){
-			personnage.a2(m);
-			if (testReussite(0.8)==true){
+
+			if (testReussite(0.2)==true){
+				personnage.a2(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 
 		} else if (e.getSource() == attaque3){
-			personnage.a3(m);
-			if (testReussite(0.6)==true){
+
+			if (testReussite(0.4)==true){
+				personnage.a3(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 		} else if (e.getSource() == attaque4){
-			personnage.a4(m);
-			if (testReussite(0.4)==true){
+
+			if (testReussite(0.6)==true){
+				personnage.a4(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 		}
 		else if(e.getSource() == attaqueM){
