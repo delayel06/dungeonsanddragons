@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-class Litch extends Monstre {
+public class Litch extends Monstre {
 
     public Litch (){
 
@@ -47,10 +47,6 @@ class Litch extends Monstre {
             texteAM = "Vous recevez un jet de glace : "+dmg+" dégats !";
         }
     }
-
-
-
-
 
 
 }
