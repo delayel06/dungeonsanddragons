@@ -266,12 +266,13 @@ public class PanelSalles extends JPanel implements MouseListener {
             new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
         }
         else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] <= 320){
-            main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY+1]-300;
+
             laSalle[posX][posY+1] =321;
             repaint();
             //System.out.println("ca marche "+ (laSalle[posX][posY+1]-300));
             main.notreInventaire.repaint();
         }else if (laSalle[posX][posY+1] >= 321 && laSalle[posX][posY+1] <= 400){
+            main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY+1]-300;
             laSalle[posX][posY+1] =2;
         }
 
