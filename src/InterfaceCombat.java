@@ -305,26 +305,32 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			personnage.a1(m);
 			chatC.setText(personnage.texteA);
 		}else if (e.getSource() == attaque2){
-			personnage.a2(m);
+
 			if (testReussite(0.8)==true){
+				personnage.a2(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 
 		} else if (e.getSource() == attaque3){
-			personnage.a3(m);
+
 			if (testReussite(0.6)==true){
+				personnage.a3(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 		} else if (e.getSource() == attaque4){
-			personnage.a4(m);
+
 			if (testReussite(0.4)==true){
+				personnage.a4(m);
 				chatC.setText(personnage.texteA);
 			} else {
-				chatC.setText("Votre attaque échoue !");
+				personnage.aB(m);
+				chatC.setText(personnage.texteA);
 			}
 		}
 		else if(e.getSource() == attaqueM){

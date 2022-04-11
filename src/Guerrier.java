@@ -40,6 +40,11 @@ public class Guerrier extends Personnage {
         texteA="Frappe surpuissante : Vous mobilisez votre force et mettez toute votre puissante dans ce coup qui fait "+n+" points de vie au monstre";
         m.HP-=n;
     }
+    public void aB(Monstre m){
+        int n = 0;
+        texteA="Votre attaque ne touche pas !";
+        m.HP-=n;
+    }
 
 
 

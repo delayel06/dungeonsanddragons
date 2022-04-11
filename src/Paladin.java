@@ -40,4 +40,9 @@ public class Paladin extends Personnage {
         texteA="Restauration supérieure : Votre dieu vous accorde sa bénédiction: récuperez "+n+" points de vie";
         this.HP+=n;
     }
+    public void aB(Monstre m){
+        int n = 0;
+        texteA="Votre attaque ne touche pas !";
+        m.HP-=n;
+    }
 }

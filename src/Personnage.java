@@ -56,6 +56,7 @@ public abstract class Personnage{
     public void a2(Monstre m){}
     public void a3(Monstre m){}
     public void a4(Monstre m){}
+    public void aB(Monstre m){}
 
     public int Mod(int Stat){
         int Mod;

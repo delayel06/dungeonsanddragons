@@ -37,4 +37,10 @@ public class Archer extends Personnage {
         texteA="Flèche du chasseur : Vous décochez une flèche qui touche et fait "+n+" dégats";
         m.HP-=n;
     }
+
+    public void aB(Monstre m){
+        int n = 0;
+        texteA="Votre attaque ne touche pas !";
+        m.HP-=n;
+    }
 }
