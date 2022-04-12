@@ -460,5 +460,8 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void blockPerso(){
         main.mvmt = false;
     }
+    public void deblockPerso(){
+        main.mvmt = true;
+    }
 
 }

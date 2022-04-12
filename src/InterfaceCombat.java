@@ -344,7 +344,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		compteur();
 		BarreVieM(m);
 		BarreVieP(personnage);
-		combatTerminé();
+		combatTermine();
 	}
 
 	private void removeAttackButtons() {
@@ -421,7 +421,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		}
 	}
 
-	public void combatTerminé(){
+	public void combatTermine(){
 		if (m.HP<=0){
 			controle.removeAll();
 			controle.revalidate();
