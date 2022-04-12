@@ -205,26 +205,21 @@ public class PanelSalles extends JPanel implements MouseListener {
                 if(laSalle[i][j]>=300) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                    (new ImageIcon("chest.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
                 }
                 if (laSalle[i][j] ==321) {
-                    g.setColor(Color.orange);
+                    g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
                     (new ImageIcon("bone.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] ==322) {
-                    g.setColor(Color.orange);
+                    g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
                     (new ImageIcon("Epee.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
 
-
-
-                if(laSalle[i][j]==14){
-
-                }
 
 
 
@@ -281,7 +276,6 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void space(){
         icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] == 6){
-            System.out.println("AZBUEAOEAEA");
             laSalle[posX][posY+1] = 2;
         }
         repaint();
@@ -322,14 +316,11 @@ public class PanelSalles extends JPanel implements MouseListener {
             laSalle[posX][posY+1] = laSalle[posX][posY+1]+20;
             repaint();
             main.notreInventaire.repaint();
-        }else if (laSalle[posX][posY+1] == 321){
-            main.notreInventaire.lesObjets[0][0]=1;
+        }else if (laSalle[posX][posY+1] > 320){
+            main.notreInventaire.lesObjets[0][0]= laSalle[posX][posY+1] - 320;
             laSalle[posX][posY+1] =2;
         }
-        else if (laSalle[posX][posY+1] == 322){
-            main.notreInventaire.lesObjets[0][1]=2;
-            laSalle[posX][posY+1] =2;
-        }
+
 
         repaint();
     }
