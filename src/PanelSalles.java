@@ -13,6 +13,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     Salles main;
     ImageIcon icon = new ImageIcon("knightidle.png");
     JLabel labelTest ;
+    //variables pour le déplacement de l'animation de lancement de combat
     int vsX = -1000;
     int vsY = 0;
     ImageIcon image = new ImageIcon("vsscreen.png");
@@ -41,6 +42,11 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {}
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
+
+    //Dans la méthode paintComponent, on va parcourir le tableau laSalle et testant chaque case du tableau
+    //pour associer chaque chiffre à un type de case : par exemple, 1 est un mur, 2 un plancher
+    // Les monstres sont entre 100 et 200, en enlevant 100, on trouve l'identité du monstre correspondant dans le tableau de monstre de la
+    //classe Salle
     public  void paintComponent(Graphics g) {
         int evolutionX =0;
         int evolutionY =0;
@@ -205,26 +211,21 @@ public class PanelSalles extends JPanel implements MouseListener {
                 if(laSalle[i][j]>=300) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                    (new ImageIcon("chest.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
                 }
                 if (laSalle[i][j] ==321) {
-                    g.setColor(Color.orange);
+                    g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
                     (new ImageIcon("bone.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] ==322) {
-                    g.setColor(Color.orange);
+                    g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
                     (new ImageIcon("Epee.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
 
-
-
-                if(laSalle[i][j]==14){
-
-                }
 
 
 
@@ -251,7 +252,8 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
-
+    //startfight est une méthode qui lance un combat après une courte animation de lancement de combat
+    //cette animation se déplace de la gauche à la droite et assombri l'écran, puis lance l'interface de combat ,pour un effet inutile mais agréable visuellement
     public void startfight(Personnage perso, Monstre monstre) {
         java.util.Timer t = new Timer();
         TimerTask task = new TimerTask() {
@@ -278,8 +280,25 @@ public class PanelSalles extends JPanel implements MouseListener {
         t.schedule( task,0, 10 );
 
     }
-
+    public void space(){
+        icon = new ImageIcon("knightrun.png");
+        if(laSalle[posX][posY+1] == 6){
+            laSalle[posX][posY+1] = 2;
+        }
+        repaint();
+    }
     // MOVEMENT
+
+    //Les 4 méthodes de mouvement sont appelées dans Salles, elle vérifie les cases de déplacement par rapprot au tableau et ce qu'il y a dedans
+    //Si c'est un plancher, on peut avancer, et la case du joueur (représenté par 9 ) est remplacé par un plancher
+    //Ces codes testent aussi pour tout type d'interaction : objet, monstre, baril qui est déplacable, etc..
+    //si l'attribut mvmt dans Salles n'est pas true, alors on ne peut pas accéder à ces méthodes ( permet de bloquer le joueur )
+    //on test également l'intéraction des cases rouges avec des barils, qui deviendront des cases vertes avec des barils dedans
+    //(on test a x+2 si à x+1 il y a un baril)
+    //Cette manipulation de tableau nous permet un déplacement facile, avec des intéractions rapides à coder sans problèmes. Le code est adapté
+    //avec un tableau de salles et un indice de salles pour que lorsqu'on change de salles, le même code est utilisé pour accéder aux méthodes de
+    //déplacement. Aussi, chaque déplacement correspond à un changement d'image pour que le personnage regarde dans des directions différentes
+    //selon la ou il se déplace
     public void right(){
         icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] == 2 ){
@@ -315,19 +334,14 @@ public class PanelSalles extends JPanel implements MouseListener {
             laSalle[posX][posY+1] = laSalle[posX][posY+1]+20;
             repaint();
             main.notreInventaire.repaint();
-        }else if (laSalle[posX][posY+1] == 321){
-            main.notreInventaire.lesObjets[0][0]=1;
+        }else if (laSalle[posX][posY+1] > 320){
+            main.notreInventaire.lesObjets[0][0]= laSalle[posX][posY+1] - 320;
             laSalle[posX][posY+1] =2;
         }
-        else if (laSalle[posX][posY+1] == 322){
-            main.notreInventaire.lesObjets[0][1]=2;
-            laSalle[posX][posY+1] =2;
-        }
+
 
         repaint();
     }
-
-
     public void left(){
         icon = new ImageIcon("knightrun2.png");
 
@@ -428,11 +442,15 @@ public class PanelSalles extends JPanel implements MouseListener {
         }
         repaint();
     }
+
+    //idle sert au niveau de l'animation du déplacement, lorsque aucune touche est appuyé le personnage revient à son état initial,
+    //il ne regarde pas de direction.
     public void idle(){
         icon = new ImageIcon("knightidle.png");
         repaint();
     }
 
+    //Cette méthode va vérifier après chaque baril placé dans un cadre rouge s'il reste des cases rouges. Si non, une porte secrète va s'ouvrir
     public void checkPuzzle1() {
         boolean b = true;
 
@@ -450,8 +468,13 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
+    //Ces méthodes simples changent la vairable mvmt pour permettre l'accès a right(), left(), etc. On a donc un moyen très simple, lors d'animations
+    // de bloquer le personnage.
     public void blockPerso(){
         main.mvmt = false;
+    }
+    public void deblockPerso(){
+        main.mvmt = true;
     }
 
 }

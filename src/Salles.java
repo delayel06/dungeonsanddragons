@@ -41,7 +41,7 @@ public class Salles extends JFrame implements KeyListener {
                                 { 0, 1, 2, 2, 2, 2, 2, 2, 70, 2, 2, 70, 2, 2, 2, 201, 2, 2, 1, 0},
                                 { 0, 1, 2, 2, 2, 2, 2, 70, 2, 2, 2, 2, 70, 2, 2, 2, 2, 2, 1, 0},
                                 { 0, 1, 1, 2, 2, 2, 70, 2, 2, 2, 2, 2, 2, 70, 2, 2, 2, 1, 1, 0},
-                                { 0, 0, 1, 1, 2, 70, 2, 2, 2, 2, 2, 2, 2, 2, 70, 2, 1, 1, 0, 0},
+                                { 0, 0, 1, 1, 2, 70, 2, 2, 6, 2, 6, 2, 2, 2, 70, 2, 1, 1, 0, 0},
                                 { 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0, 0, 0},
                                 { 0, 0, 0, 0, 1, 1, 2, 2, 2, 106, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0},
                                 { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
@@ -218,6 +218,9 @@ public class Salles extends JFrame implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
             if(mvmt) {
+                if (e.getKeyCode() == 32) {
+                    tabsalles[i].space();
+                }
                 if (e.getKeyCode() == 39) {
                     tabsalles[i].right();
                 }
