@@ -9,7 +9,10 @@ public class Demon extends Monstre {
         this.nom = "Démon Mineur";
         this.HPmax= (int)(20 + Math.random()*5);
         this.HP = this.HPmax;
-        this.icon = new ImageIcon("goblin.gif"); //CHANGER
+        this.icon = new ImageIcon("demon.gif");
+        this.aIcon = new ImageIcon("demonA.gif");
+        this.dIcon = new ImageIcon("demonD.gif");
+        this.imageM = new ImageIcon("demonM.png");
         couleurMonstre= Color.white;
 
     }

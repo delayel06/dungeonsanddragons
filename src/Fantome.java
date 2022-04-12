@@ -13,6 +13,7 @@ public class Fantome extends Monstre{
         this.icon = new ImageIcon("ghost.gif");
         this.aIcon = new ImageIcon("ghostA.gif");
         this.dIcon = new ImageIcon("ghostD.gif");
+        this.imageM = new ImageIcon("ghostM.png");
         couleurMonstre= Color.white;
 
     }
