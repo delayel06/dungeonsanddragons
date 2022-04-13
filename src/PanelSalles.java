@@ -37,8 +37,7 @@ public class PanelSalles extends JPanel implements MouseListener {
         main.notreInventaire.setVisible(true);
         main.notreInventaire.repaint();
     }
-    public void mouseEntered(MouseEvent e) {
-    }
+    public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
@@ -536,7 +535,12 @@ public class PanelSalles extends JPanel implements MouseListener {
         main.mvmt = true;
     }
 
-//
+    //Une méthode qui permet de "glisser" sur des blocs de glace, de n'importe quelle direction,
+    //peu importe le nombre de blocs de glace, en utilisant un timer et en bloquant le personnage afin d'avoir une pseudo animation
+    //de glissement. il a fallu faire des cas spécifiques pour chaque direction ainsi que pour les nombres différents de blocs de glace,
+    //sinon cela ne marchait pas. Nous pourrons donc ajouter ceci au moteur du jeu afin de créer des salles avec des puzzles de glace
+    // ou il faut prendre les bons chemins pour arriver à l'endroit voulu.
+    //Inspiration : https://gamerpillar.com/wp-content/uploads/2021/11/2-1024x576.jpeg
     public void ice(int direction){
         //1 right, 2 left, 3 down, 4 up
         if( direction == 1) {
