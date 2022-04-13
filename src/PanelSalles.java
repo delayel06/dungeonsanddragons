@@ -48,6 +48,15 @@ public class PanelSalles extends JPanel implements MouseListener {
     // Les monstres sont entre 100 et 200, en enlevant 100, on trouve l'identité du monstre correspondant dans le tableau de monstre de la
     //classe Salle
     public  void paintComponent(Graphics g) {
+
+        // 9 EST RESERVE POUR LE JOUEUR !!!
+        // 1 mur, 0 néant , 2 plancher (pour marcher) , 3 case rouge pour baril , 4 case verte avec baril, 5 baril
+        //6 rocher , 7 crystal , 8 sac a dos, 9 JOUEUR , 10 ombre
+        //60 - 74 : laves
+        //80 - 84  : glaces
+        //+100 : salles
+        //+200 : monstres
+        //+300 : objets
         int evolutionX =0;
         int evolutionY =0;
         // explication evoX
@@ -206,6 +215,33 @@ public class PanelSalles extends JPanel implements MouseListener {
 
                     (new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
                 }
+                //GLACES
+                if(laSalle[i][j]==80) {
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("ice.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }if(laSalle[i][j]==81) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("iceright.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }if(laSalle[i][j]==82) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("iceleft.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }if(laSalle[i][j]==83) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }if(laSalle[i][j]==84) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+
+                    (new ImageIcon("icetop.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+
 
                 // OBJETS
                 if(laSalle[i][j]>=300) {
@@ -229,7 +265,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
 
 
-                if(laSalle[i][j]==9){
+                if(laSalle[i][j]==9 ||laSalle[i][j]==85){
                     g.setColor(new Color( 145, 107, 100 ));
                     g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
                     icon.paintIcon( this, g, evolutionX-20, evolutionY-10 );
@@ -308,7 +344,12 @@ public class PanelSalles extends JPanel implements MouseListener {
             posY += 1;
 
 
-            }
+        }else if (laSalle[posX][posY+1] == 80 ){
+
+            ice( 1 );
+
+
+        }
         else if(laSalle[posX][posY+1] >= 100 && laSalle[posX][posY+1] < 200){
             main.changeSalle( laSalle[posX][posY+1] -100  );
 
@@ -325,6 +366,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 posY += 1;
                 checkPuzzle1();
             }
+
         }else if (laSalle[posX][posY+1] >= 200 && laSalle[posX][posY+1] < 300){
             startfight(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]);
             blockPerso();
@@ -371,6 +413,11 @@ public class PanelSalles extends JPanel implements MouseListener {
         }else if (laSalle[posX][posY-1] >= 300 && laSalle[posX][posY-1] < 400){
             main.notreInventaire.lesObjets[1][3]=laSalle[posX][posY-1] -300;
             main.notreInventaire.repaint();
+        }else if (laSalle[posX][posY-1] == 80 ){
+
+            ice( 2 );
+
+
         }
 
         repaint();
@@ -402,6 +449,12 @@ public class PanelSalles extends JPanel implements MouseListener {
                 checkPuzzle1();
 
             }
+        }
+        else if (laSalle[posX-1][posY] == 80 ){
+
+            ice( 4 );
+
+
         }
         else if (laSalle[posX-2][posY] >= 300 && laSalle[posX-2][posY] < 400){
             main.notreInventaire.lesObjets[1][3]=laSalle[posX-2][posY]-300;
@@ -440,6 +493,12 @@ public class PanelSalles extends JPanel implements MouseListener {
             main.notreInventaire.lesObjets[1][3]=laSalle[posX+2][posY] -300;
             main.notreInventaire.repaint();
         }
+        else if (laSalle[posX+1][posY] == 80 ){
+
+            ice( 3 );
+
+
+        }
         repaint();
     }
 
@@ -476,5 +535,335 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void deblockPerso(){
         main.mvmt = true;
     }
+
+//
+    public void ice(int direction){
+        //1 right, 2 left, 3 down, 4 up
+        if( direction == 1) {
+
+            blockPerso();
+
+            if (laSalle[posX][posY+2] == 2) {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+                    int i = 0;
+                    public void run() {
+
+
+                        if(i == 1){
+                            t.cancel();
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX][posY+1] = 9;
+                            posY += 1;
+                            repaint();
+                            deblockPerso();
+
+                        }else {
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX][posY+1] = 9;
+                            posY += 1;
+                            i++;
+                        }
+                        repaint();
+                    }
+                };
+                t.schedule( task, 0, 250 );
+            }
+
+
+            else {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+
+                    boolean a = true;
+                    boolean b = true;
+
+                    public void run() {
+                        if (b) {
+                            System.out.println( " premier deplacement" );
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX][posY+1] = 9;
+
+                            posY += 1;
+                            b = false;
+                        } else if (!a) {
+                            System.out.println( " dernier deplacement !a" );
+
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX ][posY+1] = 9;
+                            posY++;
+
+
+                            t.cancel();
+                            deblockPerso();
+                        } else if (a) {
+                            System.out.println( " else if normal : a" );
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX][posY+1] = 9;
+                            posY++;
+
+                            if (laSalle[posX][posY+1] != 80) {
+                                a = false;
+
+                            }
+                        }
+
+                        repaint();
+
+
+                    }
+                };
+                t.schedule( task, 0, 250 );
+
+            }
+        }
+
+        if( direction == 2) {
+
+            blockPerso();
+
+            if (laSalle[posX][posY-2] == 2) {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+                    int i = 0;
+                    public void run() {
+
+
+                        if(i == 1){
+                            t.cancel();
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX][posY-1] = 9;
+                            posY -= 1;
+                            repaint();
+                            deblockPerso();
+
+                        }else {
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX][posY-1] = 9;
+                            posY -= 1;
+                            i++;
+                        }
+                        repaint();
+                    }
+                };
+                t.schedule( task, 0, 250 );
+            }
+
+
+            else {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+
+                    boolean a = true;
+                    boolean b = true;
+
+                    public void run() {
+                        if (b) {
+                            System.out.println( " premier deplacement" );
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX][posY-1] = 9;
+
+                            posY -= 1;
+                            b = false;
+                        } else if (!a) {
+                            System.out.println( " dernier deplacement !a" );
+
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX ][posY-1] = 9;
+                            posY--;
+
+
+                            t.cancel();
+                            deblockPerso();
+                        } else if (a) {
+                            System.out.println( " else if normal : a" );
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX][posY-1] = 9;
+                            posY--;
+
+                            if (laSalle[posX][posY-1] != 80) {
+                                a = false;
+
+                            }
+                        }
+
+                        repaint();
+
+
+                    }
+                };
+                t.schedule( task, 0, 250 );
+
+            }
+        }
+
+        if( direction == 3) {
+
+            blockPerso();
+
+            if (laSalle[posX + 2][posY] == 2) {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+                    int i = 0;
+                    public void run() {
+
+
+                        if(i == 1){
+                            t.cancel();
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX+1][posY] = 9;
+                            posX += 1;
+                            repaint();
+                            deblockPerso();
+
+                        }else {
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX + 1][posY] = 9;
+                            posX += 1;
+                            i++;
+                        }
+                        repaint();
+                    }
+                };
+                t.schedule( task, 0, 250 );
+            }
+
+
+            else {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+
+                    boolean a = true;
+                    boolean b = true;
+
+                    public void run() {
+                        if (b) {
+                            System.out.println( " premier deplacement" );
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX + 1][posY] = 9;
+
+                            posX += 1;
+                            b = false;
+                        } else if (!a) {
+                            System.out.println( " dernier deplacement !a" );
+
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX + 1][posY] = 9;
+                            posX++;
+
+
+                            t.cancel();
+                            deblockPerso();
+                        } else if (a) {
+                            System.out.println( " else if normal : a" );
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX + 1][posY] = 9;
+                            posX++;
+
+                            if (laSalle[posX + 1][posY] != 80) {
+                                a = false;
+
+                            }
+                        }
+
+                        repaint();
+
+
+                    }
+                };
+                t.schedule( task, 0, 250 );
+
+            }
+        }
+
+        if( direction == 4) {
+
+            blockPerso();
+
+            if (laSalle[posX - 2][posY] == 2) {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+                    int i = 0;
+                    public void run() {
+
+
+                        if(i == 1){
+                            t.cancel();
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX-1][posY] = 9;
+                            posX -= 1;
+                            repaint();
+                            deblockPerso();
+
+                        }else {
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX - 1][posY] = 9;
+                            posX--;
+                            i++;
+                        }
+                        repaint();
+                    }
+                };
+                t.schedule( task, 0, 250 );
+            }
+
+
+            else {
+                java.util.Timer t = new Timer();
+                TimerTask task = new TimerTask() {
+
+                    boolean a = true;
+                    boolean b = true;
+
+                    public void run() {
+                        if (b) {
+                            System.out.println( " premier deplacement" );
+
+                            laSalle[posX][posY] = 2;
+                            laSalle[posX - 1][posY] = 9;
+                            posX--;
+
+                            b = false;
+                        } else if (!a) {
+                            System.out.println( " dernier deplacement !a" );
+
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX - 1][posY] = 9;
+                            posX--;
+
+
+                            t.cancel();
+                            deblockPerso();
+                        } else if (a) {
+                            System.out.println( " else if normal : a" );
+                            laSalle[posX][posY] = 80;
+                            laSalle[posX - 1][posY] = 9;
+                            posX--;
+
+                            if (laSalle[posX - 1][posY] != 80) {
+                                a = false;
+
+                            }
+                        }
+
+                        repaint();
+
+
+                    }
+                };
+                t.schedule( task, 0, 250 );
+
+            }
+        }
+
+    }
+
 
 }
