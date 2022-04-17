@@ -34,7 +34,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
         //Bouton Carte
         labelC = new JLabel();
-        labelC.setBounds(0,0,longueur*19/20, longueur/20);
+        labelC.setBounds(longueur*19/20,0,longueur/20, longueur/20);
         labelC.addMouseListener(this);
         add(labelC);
     }
@@ -114,7 +114,10 @@ public class PanelSalles extends JPanel implements MouseListener {
                     (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
-
+                if(laSalle[i][j]==11){
+                    g.setColor(Color.cyan);
+                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                }
 
                 //CRISTALS
                 if(laSalle[i][j] == 7){//crystal
@@ -324,13 +327,14 @@ public class PanelSalles extends JPanel implements MouseListener {
         t.schedule( task,0, 10 );
 
     }
-    public void space(){
+    /*public void space(){
         icon = new ImageIcon("knightrun.png");
         if(laSalle[posX][posY+1] == 6){
             laSalle[posX][posY+1] = 2;
         }
         repaint();
-    }
+    }*/
+
     // MOVEMENT
 
     //Les 4 méthodes de mouvement sont appelées dans Salles, elle vérifie les cases de déplacement par rapprot au tableau et ce qu'il y a dedans
