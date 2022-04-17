@@ -12,7 +12,8 @@ public class PanelSalles extends JPanel implements MouseListener {
     int posY;
     Salles main;
     ImageIcon icon = new ImageIcon("knightidle.png");
-    JLabel labelTest ;
+    JLabel labelI ;
+    JLabel labelC ;
     //variables pour le déplacement de l'animation de lancement de combat
     int vsX = -1000;
     int vsY = 0;
@@ -24,18 +25,27 @@ public class PanelSalles extends JPanel implements MouseListener {
         longueur= l;
         main = salle;
         setLayout(null);
-        labelTest = new JLabel();
-        labelTest.setBounds(0,0,longueur/20, longueur/20);
-        labelTest.addMouseListener(this);
-        add(labelTest);
 
+        // Bouton Inventaire
+        labelI = new JLabel(new ImageIcon("backpack.pnj"));
+        labelI.setBounds(0,0,longueur/20, longueur/20);
+        labelI.addMouseListener(this);
+        add(labelI);
 
-
+        //Bouton Carte
+        labelC = new JLabel();
+        labelC.setBounds(0,0,longueur*19/20, longueur/20);
+        labelC.addMouseListener(this);
+        add(labelC);
     }
     public void mouseClicked(MouseEvent e) {
-
-        main.notreInventaire.setVisible(true);
-        main.notreInventaire.repaint();
+        if(e.getSource()==labelI) {
+            main.notreInventaire.setVisible(true);
+            main.notreInventaire.repaint();
+        }
+        if(e.getSource()==labelC) {
+            new carte();
+        }
     }
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
@@ -104,9 +114,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
-                if(laSalle[i][j] == 8){
-                    (new ImageIcon("backpack.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }
+
 
                 //CRISTALS
                 if(laSalle[i][j] == 7){//crystal
@@ -260,6 +268,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     (new ImageIcon("Epee.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
+
 
 
 
@@ -534,7 +543,6 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void deblockPerso(){
         main.mvmt = true;
     }
-
     //Une méthode qui permet de "glisser" sur des blocs de glace, de n'importe quelle direction,
     //peu importe le nombre de blocs de glace, en utilisant un timer et en bloquant le personnage afin d'avoir une pseudo animation
     //de glissement. il a fallu faire des cas spécifiques pour chaque direction ainsi que pour les nombres différents de blocs de glace,
