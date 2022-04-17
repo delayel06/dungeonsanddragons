@@ -21,14 +21,14 @@ public class Salles extends JFrame implements KeyListener {
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
         width = tailleMoniteur.width * 1/2;
         heigth = tailleMoniteur.height * 1/2;
-        setSize(width,width+30);
+        setSize(width+12,width+30);
         setResizable( false );
         setIconImage( (new ImageIcon("logo.png" )).getImage());
         setLocation((tailleMoniteur.width - getSize().width)/2,((tailleMoniteur.height - getSize().height)/2)-20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // 0=neant , 1 = MUR , 2 = sol, >100= porte, 4= monstre
         // TOUT CE QUI EST SUPERIEUR A 100 C'EST DES PORTES ON VA SUREMENT FAIRE LA MEME POUR LES MONSTRES ET >200
-        int [][] caseSalle0={   { 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        int [][] caseSalle0={   { 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11},
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                                 { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
                                 { 0, 0, 0, 0, 1, 1, 2, 2, 2, 101, 2, 2, 2, 2, 1, 1, 0, 0, 0, 0},
