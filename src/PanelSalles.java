@@ -388,8 +388,9 @@ public class PanelSalles extends JPanel implements MouseListener {
             laSalle[posX][posY+1] = laSalle[posX][posY+1]+20;
             repaint();
             main.notreInventaire.repaint();
-        }else if (laSalle[posX][posY+1] > 320){
+        }else if (laSalle[posX][posY+1] == 321){
             main.notreInventaire.lesObjets[0][0]= laSalle[posX][posY+1] - 320;
+            main.notreInventaire.ajouterObjet(1);
             laSalle[posX][posY+1] =2;
         }
 
