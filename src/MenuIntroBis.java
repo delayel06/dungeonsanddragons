@@ -20,7 +20,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
     public JButton btn1;
     public JButton btnhelp;
     public JPanel helpPanel;
-    public JLabel helpLabel;
+    public JTextArea helpLabel;
     public JButton btnback;
     public JPanel bigpanel;
     public Font font;
@@ -77,7 +77,8 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         helpPanel.setLocation( 0,0 );
         helpPanel.setBackground( Color.WHITE );
 
-        helpLabel = new JLabel("Voici comment marche le jeu bla bla bla", SwingConstants.CENTER);
+        helpLabel = new JTextArea("Dans ce jeu, vous devrez:", 1,1);
+        helpLabel.setFont(font);
 
 
         btnback = new JButton("Retourner au menu principal!");
@@ -107,7 +108,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         mainPanel.add(btn1);
         mainPanel.add(btnhelp);
 
-        helpPanel.add(helpLabel, BorderLayout.CENTER);
+        helpPanel.add(helpLabel);
         helpPanel.add(btnback, BorderLayout.AFTER_LAST_LINE);
 
         bigpanel = new JPanel(new BorderLayout());

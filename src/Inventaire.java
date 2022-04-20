@@ -33,7 +33,7 @@ public class Inventaire extends JFrame implements ActionListener {
         JPanel conteneurDescription = new JPanel();
         conteneurDescription.setLayout(null);
         conteneurDescription.setBounds(0,0 , longueurInventaire,largeurInventaire/2);
-        conteneurDescription.setBackground(Color.red);
+        conteneurDescription.setBackground(new Color( 150, 66, 66 ));
         conteneurDescription.add(description);
 
         btn0 = new JButton(new ImageIcon("boneInventaire.png"));
@@ -61,7 +61,7 @@ public class Inventaire extends JFrame implements ActionListener {
         panelObjets = new JPanel();
         panelObjets.setLayout(new GridLayout(2,5,10,10));
         panelObjets.setBounds(0,largeurInventaire/2,longueurInventaire,largeurInventaire/2 );
-        panelObjets.setBackground(Color.blue);
+        panelObjets.setBackground(new Color( 56, 92, 143 ));
 
         panelObjets.add(btn0);
         panelObjets.add(btn1);

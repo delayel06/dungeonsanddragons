@@ -27,13 +27,13 @@ public class PanelSalles extends JPanel implements MouseListener {
         setLayout(null);
 
         // Bouton Inventaire
-        labelI = new JLabel(new ImageIcon("backpack.pnj"));
+        labelI = new JLabel(new ImageIcon("backpack.png"));
         labelI.setBounds(0,0,longueur/20, longueur/20);
         labelI.addMouseListener(this);
         add(labelI);
 
         //Bouton Carte
-        labelC = new JLabel();
+        labelC = new JLabel(new ImageIcon("backpack.png"));
         labelC.setBounds(longueur*19/20,0,longueur/20, longueur/20);
         labelC.addMouseListener(this);
         add(labelC);
@@ -327,13 +327,7 @@ public class PanelSalles extends JPanel implements MouseListener {
         t.schedule( task,0, 10 );
 
     }
-    /*public void space(){
-        icon = new ImageIcon("knightrun.png");
-        if(laSalle[posX][posY+1] == 6){
-            laSalle[posX][posY+1] = 2;
-        }
-        repaint();
-    }*/
+
 
     // MOVEMENT
 
@@ -540,7 +534,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
-    //Ces méthodes simples changent la vairable mvmt pour permettre l'accès a right(), left(), etc. On a donc un moyen très simple, lors d'animations
+    //Ces méthodes simples changent la variable mvmt pour permettre l'accès a right(), left(), etc. On a donc un moyen très simple, lors d'animations
     // de bloquer le personnage.
     public void blockPerso(){
         main.mvmt = false;
