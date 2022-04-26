@@ -16,7 +16,7 @@ public class Litch extends Monstre {
         this.icon = new ImageIcon("Litch.gif");
         this.aIcon = new ImageIcon("LitchA.gif");
         this.dIcon = new ImageIcon("LitchD.gif");
-        this.imageM = new ImageIcon("LitchM.gif");
+        this.imageM = new ImageIcon("LitchM.png");
         couleurMonstre=Color.white;
 
     }

@@ -12,7 +12,7 @@ public class Zombie extends Monstre{
         this.icon = new ImageIcon("zombie.gif");
         this.aIcon = new ImageIcon("zombieA.gif");
         this.dIcon = new ImageIcon("zombieD.gif");
-        this.imageM = new ImageIcon("zombieM.gif");
+        this.imageM = new ImageIcon("zombieM.png");
         couleurMonstre= Color.white;
 
     }

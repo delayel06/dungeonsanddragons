@@ -11,7 +11,7 @@ public class Squelette extends Monstre {
         this.icon = new ImageIcon("Skeleton.gif");
         this.aIcon = new ImageIcon("SkeletonA.gif");
         this.dIcon = new ImageIcon("SkeletonD.gif");
-        this.imageM = new ImageIcon("skeletonM.gif");
+        this.imageM = new ImageIcon("skeletonM.png");
         couleurMonstre= Color.white;
 
     }
