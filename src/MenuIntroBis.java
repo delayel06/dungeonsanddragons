@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -45,7 +44,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
         // on change pour un beau texte
         try{
-            // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
+            // on amene le font qui DOIT ETRE DANS LE FICHIER
             font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(30f); //taille ici
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")));

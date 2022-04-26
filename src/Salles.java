@@ -322,7 +322,7 @@ public class Salles extends JFrame implements KeyListener {
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 0},
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0},
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
-                { 0, 1, 2, 2, 2, 2, 2, 2, 2, 200, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
+                { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
                 { 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0},
@@ -355,9 +355,10 @@ public class Salles extends JFrame implements KeyListener {
         notreCarte = new carte();
 
         notreInventaire = new Inventaire();
-        tabsalles = new PanelSalles[]{salle0, salle11, salle12,salle13, salle21, salle22, salle23, salle31, salle32, salle33, salle41, salle42, salle43, sallef};
-        this.setContentPane(this.salle0);
-        i = 0;
+        tabsalles = new PanelSalles[]{salle0, salle11, salle12,salle13, salle21, salle22, salle23,
+                salle31, salle32, salle33, salle41, salle42, salle43, sallef};
+        this.setContentPane(this.sallef);
+        i = 13;
         addKeyListener(this);
         setVisible(true);
     }

@@ -1,61 +1,75 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PanelSalles extends JPanel implements MouseListener {
-    int[][]laSalle;
+    int[][] laSalle;
     int longueur;
     int posX;
     int posY;
     Salles main;
-    ImageIcon icon = new ImageIcon("knightidle.png");
-    JLabel labelI ;
-    JLabel labelC ;
+    ImageIcon icon = new ImageIcon( "knightidle.png" );
+    JLabel labelI;
+    JLabel labelC;
     //variables pour le déplacement de l'animation de lancement de combat
     int vsX = -1000;
     int vsY = 0;
-    ImageIcon image = new ImageIcon("vsscreen.png");
+    ImageIcon image = new ImageIcon( "vsscreen.png" );
+    Clip clip;
 
 
-    public PanelSalles(int [][]s, int l, Salles salle){
-        laSalle=s;
-        longueur= l;
+    public PanelSalles(int[][] s, int l, Salles salle) {
+        laSalle = s;
+        longueur = l;
         main = salle;
-        setLayout(null);
+        setLayout( null );
 
         // Bouton Inventaire
         labelI = new JLabel();
-        labelI.setBounds(0,0,longueur/20, longueur/20);
-        labelI.addMouseListener(this);
-        add(labelI);
+        labelI.setBounds( 0, 0, longueur / 20, longueur / 20 );
+        labelI.addMouseListener( this );
+        add( labelI );
 
         //Bouton Carte
         labelC = new JLabel();
-        labelC.setBounds(longueur*19/20,0,longueur/20, longueur/20);
-        labelC.addMouseListener(this);
-        add(labelC);
+        labelC.setBounds( longueur * 19 / 20, 0, longueur / 20, longueur / 20 );
+        labelC.addMouseListener( this );
+        add( labelC );
     }
+
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource()==labelI) {
-            main.notreInventaire.setVisible(true);
+        if (e.getSource() == labelI) {
+            main.notreInventaire.setVisible( true );
         }
-        if(e.getSource()==labelC) {
-            main.notreCarte.setVisible(true);
+        if (e.getSource() == labelC) {
+            main.notreCarte.setVisible( true );
+
         }
     }
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
 
     //Dans la méthode paintComponent, on va parcourir le tableau laSalle et testant chaque case du tableau
     //pour associer chaque chiffre à un type de case : par exemple, 1 est un mur, 2 un plancher
     // Les monstres sont entre 100 et 200, en enlevant 100, on trouve l'identité du monstre correspondant dans le tableau de monstre de la
     //classe Salle
-    public  void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
 
         // 9 EST RESERVE POUR LE JOUEUR !!!
         // 1 mur, 0 néant , 2 plancher (pour marcher) , 3 case rouge pour baril , 4 case verte avec baril, 5 baril
@@ -65,280 +79,285 @@ public class PanelSalles extends JPanel implements MouseListener {
         //+100 : salles
         //+200 : monstres
         //+300 : objets
-        int evolutionX =0;
-        int evolutionY =0;
+        int evolutionX = 0;
+        int evolutionY = 0;
         // explication evoX
-        for (int i = 0; i<laSalle.length;i++){
-            for (int j=0;j<laSalle.length; j++){
+        for (int i = 0; i < laSalle.length; i++) {
+            for (int j = 0; j < laSalle.length; j++) {
                 //Elements basiques du terrain
-                if(laSalle[i][j]==0){
-                        g.setColor(Color.black);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                if (laSalle[i][j] == 0) {
+                    g.setColor( Color.black );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
                 }
-                if(laSalle[i][j]==1){
-                    (new ImageIcon("stone.jpg")).paintIcon( this, g, evolutionX, evolutionY );
+                if (laSalle[i][j] == 1) {
+                    (new ImageIcon( "stone.jpg" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==2){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                if (laSalle[i][j] == 2) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
                 }
-                if(laSalle[i][j]==3){
-                    g.setColor(Color.red);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                if (laSalle[i][j] == 3) {
+                    g.setColor( Color.red );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
                 }
-                if(laSalle[i][j]==4){
-                    g.setColor(Color.green);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 4) {
+                    g.setColor( Color.green );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "barrel.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if(laSalle[i][j] == 5){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("barrel.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 5) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "barrel.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if(laSalle[i][j] == 6){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 6) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "rock.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if(laSalle[i][j] == 8){
-                    g.setColor(Color.black);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("backpack.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 8) {
+                    g.setColor( Color.black );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "backpack.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if(laSalle[i][j]==11){
-                    g.setColor(Color.black);
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("carte.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 11) {
+                    g.setColor( Color.black );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "carte.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]>=100 && laSalle[i][j]<200){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("door.png")).paintIcon(this, g, evolutionX-30, evolutionY-30);
+                if (laSalle[i][j] >= 100 && laSalle[i][j] < 200) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "door.png" )).paintIcon( this, g, evolutionX - 30, evolutionY - 30 );
 
-                }if(laSalle[i][j]>=200 && laSalle[i][j]<=300 ){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (main.tabmonstre[laSalle[i][j] - 200].imageM).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                }
+                if (laSalle[i][j] >= 200 && laSalle[i][j] <= 300) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (main.tabmonstre[laSalle[i][j] - 200].imageM).paintIcon( this, g, evolutionX - 10, evolutionY - 10 );
 
                 }
 
                 //CRISTALS
-                if(laSalle[i][j] == 7){//crystal
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("crystal.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 7) {//crystal
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "crystal.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if(laSalle[i][j] == 10){//OMBRE
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    (new ImageIcon("ombre.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 10) {//OMBRE
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "ombre.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
 
 
                 //LAVES DIFFERENTES
-                if(laSalle[i][j]==60){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
+                if (laSalle[i][j] == 60) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava1.png")).paintIcon(this,g,evolutionX,evolutionY);
+                    (new ImageIcon( "lava1.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==61) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 61) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava2.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava2.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==62) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 62) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava3.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava3.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==63) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 63) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava4.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava4.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==64) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 64) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava5.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava5.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==65) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 65) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava6.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava6.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==66) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 66) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava7.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava7.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==67) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 67) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava8.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava8.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==68) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 68) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava9.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava9.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==69) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 69) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava10.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava10.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==70) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 70) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava11.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava11.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==71) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 71) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava12.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava12.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==72) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 72) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava13.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava13.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==73) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 73) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava14.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava14.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
-                if(laSalle[i][j]==74) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 74) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "lava15.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
                 //GLACES
-                if(laSalle[i][j]==80) {
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                if (laSalle[i][j] == 80) {
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("ice.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }if(laSalle[i][j]==81) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon( "ice.png" )).paintIcon( this, g, evolutionX, evolutionY );
+                }
+                if (laSalle[i][j] == 81) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("iceright.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }if(laSalle[i][j]==82) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon( "iceright.png" )).paintIcon( this, g, evolutionX, evolutionY );
+                }
+                if (laSalle[i][j] == 82) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("iceleft.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }if(laSalle[i][j]==83) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon( "iceleft.png" )).paintIcon( this, g, evolutionX, evolutionY );
+                }
+                if (laSalle[i][j] == 83) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("lava15.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }if(laSalle[i][j]==84) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon( "lava15.png" )).paintIcon( this, g, evolutionX, evolutionY );
+                }
+                if (laSalle[i][j] == 84) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon("icetop.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon( "icetop.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
 
 
                 // OBJETS
-                if(laSalle[i][j]>=300) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("chest.png")).paintIcon(this, g, evolutionX-10, evolutionY-10);
+                if (laSalle[i][j] >= 300) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "chest.png" )).paintIcon( this, g, evolutionX - 10, evolutionY - 10 );
                 }
-                if (laSalle[i][j] ==321) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("epee.png")).paintIcon(this, g, evolutionX, evolutionY);
-
-                }
-                if (laSalle[i][j] ==322) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("casque.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 321) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "epee.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==323) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("hache.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 322) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "casque.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==324) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("armure.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 323) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "hache.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==325) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("collierMagique.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 324) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "armure.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==326) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("petiteDague.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 325) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "collierMagique.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==327) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("doubleSabre.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 326) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "petiteDague.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==328) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("bouclier.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 327) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "doubleSabre.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
-                if (laSalle[i][j] ==329) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur/ 20);
-                    (new ImageIcon("bottesMagiques.png")).paintIcon(this, g, evolutionX, evolutionY);
+                if (laSalle[i][j] == 328) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "bouclier.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 329) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "bottesMagiques.png" )).paintIcon( this, g, evolutionX, evolutionY );
 
                 }
 
 
-                if(laSalle[i][j]==9 ||laSalle[i][j]==85){
-                    g.setColor(new Color( 145, 107, 100 ));
-                    g.fillRect(evolutionX,evolutionY,longueur/20,longueur/20);
-                    icon.paintIcon( this, g, evolutionX-20, evolutionY-10 );
+                if (laSalle[i][j] == 9 || laSalle[i][j] == 85) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    icon.paintIcon( this, g, evolutionX - 20, evolutionY - 10 );
                     posX = i;
                     posY = j;
 
                 }
-                evolutionX=evolutionX+(longueur/20);
+                evolutionX = evolutionX + (longueur / 20);
             }
-            evolutionX=0;
-            evolutionY=evolutionY+(longueur/20);
+            evolutionX = 0;
+            evolutionY = evolutionY + (longueur / 20);
         }
 
-        g.drawImage(image.getImage(), vsX, vsY, null);
+        g.drawImage( image.getImage(), vsX, vsY, null );
 
     }
 
@@ -348,17 +367,16 @@ public class PanelSalles extends JPanel implements MouseListener {
         java.util.Timer t = new Timer();
         TimerTask task = new TimerTask() {
             int i = 0;
-            public void run()
-            {
+
+            public void run() {
                 vsX += 5;
                 repaint();
 
                 i++;
-                if (i == 190){
+                if (i == 190) {
 
-                    new InterfaceCombat(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]  );
+                    new InterfaceCombat( main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200] );
                     t.cancel();
-
 
 
                 }
@@ -367,7 +385,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
         };
 
-        t.schedule( task,0, 10 );
+        t.schedule( task, 0, 10 );
 
     }
 
@@ -384,152 +402,133 @@ public class PanelSalles extends JPanel implements MouseListener {
     //avec un tableau de salles et un indice de salles pour que lorsqu'on change de salles, le même code est utilisé pour accéder aux méthodes de
     //déplacement. Aussi, chaque déplacement correspond à un changement d'image pour que le personnage regarde dans des directions différentes
     //selon la ou il se déplace
-    public void right(){
-        icon = new ImageIcon("knightrun.png");
-        if(laSalle[posX][posY+1] == 2 ){
+    public void right() {
+        icon = new ImageIcon( "knightrun.png" );
+        if (laSalle[posX][posY + 1] == 2) {
 
-            laSalle[posX][posY+1] = 9;
+            laSalle[posX][posY + 1] = 9;
             laSalle[posX][posY] = 2;
             posY += 1;
 
 
-        }else if (laSalle[posX][posY+1] == 80 ){
+        } else if (laSalle[posX][posY + 1] == 80) {
 
             ice( 1 );
 
 
-        }
-        else if(laSalle[posX][posY+1] >= 100 && laSalle[posX][posY+1] < 200){
-            main.changeSalle( laSalle[posX][posY+1] -100  );
+        } else if (laSalle[posX][posY + 1] >= 100 && laSalle[posX][posY + 1] < 200) {
+            main.changeSalle( laSalle[posX][posY + 1] - 100 );
 
-        }else if (laSalle[posX][posY+1] == 5){ // Barils bouger
-            if(laSalle[posX][posY+2] == 2){
-                laSalle[posX][posY+2] = 5;
-                laSalle[posX][posY+1] = 9;
+        } else if (laSalle[posX][posY + 1] == 5) { // Barils bouger
+            if (laSalle[posX][posY + 2] == 2) {
+                laSalle[posX][posY + 2] = 5;
+                laSalle[posX][posY + 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
-            }else if(laSalle[posX][posY+2] == 3){ // Puzzle 1
-                laSalle[posX][posY+2] = 4;
-                laSalle[posX][posY+1] = 9;
+            } else if (laSalle[posX][posY + 2] == 3) { // Puzzle 1
+                laSalle[posX][posY + 2] = 4;
+                laSalle[posX][posY + 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
                 checkPuzzle1();
             }
 
-        }else if (laSalle[posX][posY+1] >= 200 && laSalle[posX][posY+1] < 300){
-            startfight(main.perso, main.tabmonstre[laSalle[posX][posY+ 1]- 200]);
+        } else if (laSalle[posX][posY + 1] >= 200 && laSalle[posX][posY + 1] < 300) {
+            startfight( main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200] );
             blockPerso();
-        }
-        else if (laSalle[posX][posY+1] >= 300 && laSalle[posX][posY+1] <= 320){
+        } else if (laSalle[posX][posY + 1] >= 300 && laSalle[posX][posY + 1] <= 320) {
 
-            laSalle[posX][posY+1] = laSalle[posX][posY+1]+20;
+            laSalle[posX][posY + 1] = laSalle[posX][posY + 1] + 20;
 
-        }else if (laSalle[posX][posY+1] == 321){
-            main.notreInventaire.ajouterObjet(1);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 322){
-            main.notreInventaire.ajouterObjet(2);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 323){
-            main.notreInventaire.ajouterObjet(3);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 324){
-            main.notreInventaire.ajouterObjet(4);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 325){
-            main.notreInventaire.ajouterObjet(5);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 326){
-            main.notreInventaire.ajouterObjet(6);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 327){
-            main.notreInventaire.ajouterObjet(7);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 328){
-            main.notreInventaire.ajouterObjet(8);
-            laSalle[posX][posY+1] =2;
-        }
-        else if (laSalle[posX][posY+1] == 329){
-            main.notreInventaire.ajouterObjet(9);
-            laSalle[posX][posY+1] =2;
+        } else if (laSalle[posX][posY + 1] == 321) {
+            main.notreInventaire.ajouterObjet( 1 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 322) {
+            main.notreInventaire.ajouterObjet( 2 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 323) {
+            main.notreInventaire.ajouterObjet( 3 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 324) {
+            main.notreInventaire.ajouterObjet( 4 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 325) {
+            main.notreInventaire.ajouterObjet( 5 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 326) {
+            main.notreInventaire.ajouterObjet( 6 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 327) {
+            main.notreInventaire.ajouterObjet( 7 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 328) {
+            main.notreInventaire.ajouterObjet( 8 );
+            laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 329) {
+            main.notreInventaire.ajouterObjet( 9 );
+            laSalle[posX][posY + 1] = 2;
         }
 
         repaint();
     }
-    public void left(){
-        icon = new ImageIcon("knightrun2.png");
 
-        if(laSalle[posX][posY-1] == 2){
+    public void left() {
+        icon = new ImageIcon( "knightrun2.png" );
 
-            laSalle[posX][posY-1] = 9;
+        if (laSalle[posX][posY - 1] == 2) {
+
+            laSalle[posX][posY - 1] = 9;
             laSalle[posX][posY] = 2;
             posY -= 1;
-        }
-        else if(laSalle[posX][posY-1] >= 100 && laSalle[posX][posY-1] < 200){
-            main.changeSalle( laSalle[posX][posY-1] -100  );
+        } else if (laSalle[posX][posY - 1] >= 100 && laSalle[posX][posY - 1] < 200) {
+            main.changeSalle( laSalle[posX][posY - 1] - 100 );
 
-        }else if (laSalle[posX][posY-1] == 5){
-            if(laSalle[posX][posY-2] == 2){
-                laSalle[posX][posY-2] = 5;
-                laSalle[posX][posY-1] = 9;
+        } else if (laSalle[posX][posY - 1] == 5) {
+            if (laSalle[posX][posY - 2] == 2) {
+                laSalle[posX][posY - 2] = 5;
+                laSalle[posX][posY - 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY -= 1;
-            }else if(laSalle[posX][posY-2] == 3){
-                laSalle[posX][posY-2] = 4;
-                laSalle[posX][posY-1] = 9;
+            } else if (laSalle[posX][posY - 2] == 3) {
+                laSalle[posX][posY - 2] = 4;
+                laSalle[posX][posY - 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY -= 1;
                 checkPuzzle1();
 
             }
-        }else if (laSalle[posX][posY-1] >= 300 && laSalle[posX][posY-1] <= 320){
+        } else if (laSalle[posX][posY - 1] >= 300 && laSalle[posX][posY - 1] <= 320) {
 
-            laSalle[posX][posY-1] = laSalle[posX][posY-1]+20;
+            laSalle[posX][posY - 1] = laSalle[posX][posY - 1] + 20;
 
-        }else if (laSalle[posX][posY-1] == 321){
-            main.notreInventaire.ajouterObjet(1);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 322){
-            main.notreInventaire.ajouterObjet(2);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 323){
-            main.notreInventaire.ajouterObjet(3);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 324){
-            main.notreInventaire.ajouterObjet(4);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 325){
-            main.notreInventaire.ajouterObjet(5);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 326){
-            main.notreInventaire.ajouterObjet(6);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 327){
-            main.notreInventaire.ajouterObjet(7);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 328){
-            main.notreInventaire.ajouterObjet(8);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 329){
-            main.notreInventaire.ajouterObjet(9);
-            laSalle[posX][posY-1] =2;
-        }
-        else if (laSalle[posX][posY-1] == 80 ){
+        } else if (laSalle[posX][posY - 1] == 321) {
+            main.notreInventaire.ajouterObjet( 1 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 322) {
+            main.notreInventaire.ajouterObjet( 2 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 323) {
+            main.notreInventaire.ajouterObjet( 3 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 324) {
+            main.notreInventaire.ajouterObjet( 4 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 325) {
+            main.notreInventaire.ajouterObjet( 5 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 326) {
+            main.notreInventaire.ajouterObjet( 6 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 327) {
+            main.notreInventaire.ajouterObjet( 7 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 328) {
+            main.notreInventaire.ajouterObjet( 8 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 329) {
+            main.notreInventaire.ajouterObjet( 9 );
+            laSalle[posX][posY - 1] = 2;
+        } else if (laSalle[posX][posY - 1] == 80) {
 
             ice( 2 );
 
@@ -538,150 +537,131 @@ public class PanelSalles extends JPanel implements MouseListener {
 
         repaint();
     }
-    public void up(){
-        icon = new ImageIcon("knightup.png");
-        System.out.println(posX);
-        if(laSalle[posX-1][posY] == 2){
 
-            laSalle[posX-1][posY] = 9;
+    public void up() {
+        icon = new ImageIcon( "knightup.png" );
+        System.out.println( posX );
+        if (laSalle[posX - 1][posY] == 2) {
+
+            laSalle[posX - 1][posY] = 9;
             laSalle[posX][posY] = 2;
             posX -= 1;
-            System.out.println("apres: "+posX);
-        }
-             else if(laSalle[posX-1][posY] >= 100 && laSalle[posX-1][posY] < 200){
-                main.changeSalle( laSalle[posX-1][posY] -100  );
+            System.out.println( "apres: " + posX );
+        } else if (laSalle[posX - 1][posY] >= 100 && laSalle[posX - 1][posY] < 200) {
+            main.changeSalle( laSalle[posX - 1][posY] - 100 );
 
-        }else if (laSalle[posX-1][posY] == 5){
-            if(laSalle[posX-2][posY] == 2){
-                laSalle[posX-2][posY] = 5;
-                laSalle[posX-1][posY] = 9;
+        } else if (laSalle[posX - 1][posY] == 5) {
+            if (laSalle[posX - 2][posY] == 2) {
+                laSalle[posX - 2][posY] = 5;
+                laSalle[posX - 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX -= 1;
-            }else if(laSalle[posX-2][posY] == 3){
-                laSalle[posX-2][posY] = 4;
-                laSalle[posX-1][posY] = 9;
+            } else if (laSalle[posX - 2][posY] == 3) {
+                laSalle[posX - 2][posY] = 4;
+                laSalle[posX - 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX -= 1;
                 checkPuzzle1();
 
             }
-        }
-        else if (laSalle[posX-1][posY] == 80 ){
+        } else if (laSalle[posX - 1][posY] == 80) {
 
             ice( 4 );
 
 
-        }
-        else if (laSalle[posX-1][posY] >= 300 && laSalle[posX-1][posY] <= 320){
+        } else if (laSalle[posX - 1][posY] >= 300 && laSalle[posX - 1][posY] <= 320) {
 
-            laSalle[posX-1][posY] = laSalle[posX-1][posY] +20;
+            laSalle[posX - 1][posY] = laSalle[posX - 1][posY] + 20;
 
-        }else if (laSalle[posX-1][posY] == 321){
-            main.notreInventaire.ajouterObjet(1);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 322){
-            main.notreInventaire.ajouterObjet(2);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 323){
-            main.notreInventaire.ajouterObjet(3);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 324){
-            main.notreInventaire.ajouterObjet(4);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 325){
-            main.notreInventaire.ajouterObjet(5);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 326){
-            main.notreInventaire.ajouterObjet(6);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 327){
-            main.notreInventaire.ajouterObjet(7);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 328){
-            main.notreInventaire.ajouterObjet(8);
-            laSalle[posX-1][posY] =2;
-        }
-        else if (laSalle[posX-1][posY] == 329){
-            main.notreInventaire.ajouterObjet(9);
-            laSalle[posX-1][posY] =2;
+        } else if (laSalle[posX - 1][posY] == 321) {
+            main.notreInventaire.ajouterObjet( 1 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 322) {
+            main.notreInventaire.ajouterObjet( 2 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 323) {
+            main.notreInventaire.ajouterObjet( 3 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 324) {
+            main.notreInventaire.ajouterObjet( 4 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 325) {
+            main.notreInventaire.ajouterObjet( 5 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 326) {
+            main.notreInventaire.ajouterObjet( 6 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 327) {
+            main.notreInventaire.ajouterObjet( 7 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 328) {
+            main.notreInventaire.ajouterObjet( 8 );
+            laSalle[posX - 1][posY] = 2;
+        } else if (laSalle[posX - 1][posY] == 329) {
+            main.notreInventaire.ajouterObjet( 9 );
+            laSalle[posX - 1][posY] = 2;
         }
         repaint();
     }
-    public void down(){
-        icon = new ImageIcon("knightdown.png");
 
-        if(laSalle[posX+1][posY] == 2){
+    public void down() {
+        finalboss();
+        icon = new ImageIcon( "knightdown.png" );
 
-            laSalle[posX+1][posY] = 9;
+        if (laSalle[posX + 1][posY] == 2) {
+
+            laSalle[posX + 1][posY] = 9;
             laSalle[posX][posY] = 2;
             posX += 1;
-        }
-        else if(laSalle[posX+1][posY] >= 100  && laSalle[posX+1][posY] < 200){
-            main.changeSalle( laSalle[posX+1][posY] -100  );
+        } else if (laSalle[posX + 1][posY] >= 100 && laSalle[posX + 1][posY] < 200) {
+            main.changeSalle( laSalle[posX + 1][posY] - 100 );
 
-        }else if (laSalle[posX+1][posY] == 5){
-            if(laSalle[posX+2][posY] == 2){
-                laSalle[posX+2][posY] = 5;
-                laSalle[posX+1][posY] = 9;
+        } else if (laSalle[posX + 1][posY] == 5) {
+            if (laSalle[posX + 2][posY] == 2) {
+                laSalle[posX + 2][posY] = 5;
+                laSalle[posX + 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX += 1;
-            }else if(laSalle[posX+2][posY] == 3){
-                laSalle[posX+2][posY] = 4;
-                laSalle[posX+1][posY] = 9;
+            } else if (laSalle[posX + 2][posY] == 3) {
+                laSalle[posX + 2][posY] = 4;
+                laSalle[posX + 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX += 1;
                 checkPuzzle1();
 
             }
-        }
-        else if (laSalle[posX+1][posY] >= 300 && laSalle[posX+1][posY] <= 320){
+        } else if (laSalle[posX + 1][posY] >= 300 && laSalle[posX + 1][posY] <= 320) {
 
-            laSalle[posX+1][posY] = laSalle[posX+1][posY] +20;
+            laSalle[posX + 1][posY] = laSalle[posX + 1][posY] + 20;
 
-        }else if (laSalle[posX+1][posY] == 321){
-            main.notreInventaire.ajouterObjet(1);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 322){
-            main.notreInventaire.ajouterObjet(2);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 323){
-            main.notreInventaire.ajouterObjet(3);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 324){
-            main.notreInventaire.ajouterObjet(4);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 325){
-            main.notreInventaire.ajouterObjet(5);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 326){
-            main.notreInventaire.ajouterObjet(6);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 327){
-            main.notreInventaire.ajouterObjet(7);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 328){
-            main.notreInventaire.ajouterObjet(8);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 329){
-            main.notreInventaire.ajouterObjet(9);
-            laSalle[posX+1][posY] =2;
-        }
-        else if (laSalle[posX+1][posY] == 80 ){
+        } else if (laSalle[posX + 1][posY] == 321) {
+            main.notreInventaire.ajouterObjet( 1 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 322) {
+            main.notreInventaire.ajouterObjet( 2 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 323) {
+            main.notreInventaire.ajouterObjet( 3 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 324) {
+            main.notreInventaire.ajouterObjet( 4 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 325) {
+            main.notreInventaire.ajouterObjet( 5 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 326) {
+            main.notreInventaire.ajouterObjet( 6 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 327) {
+            main.notreInventaire.ajouterObjet( 7 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 328) {
+            main.notreInventaire.ajouterObjet( 8 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 329) {
+            main.notreInventaire.ajouterObjet( 9 );
+            laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX + 1][posY] == 80) {
 
             ice( 3 );
 
@@ -692,8 +672,8 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     //idle sert au niveau de l'animation du déplacement, lorsque aucune touche est appuyé le personnage revient à son état initial,
     //il ne regarde pas de direction.
-    public void idle(){
-        icon = new ImageIcon("knightidle.png");
+    public void idle() {
+        icon = new ImageIcon( "knightidle.png" );
         repaint();
     }
 
@@ -701,59 +681,62 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void checkPuzzle1() {
         boolean b = true;
 
-            for (int i = 0; i < laSalle.length; i++) {
-                for (int j = 0; j < 20; j++) {
-                    if(laSalle[i][j] == 3){
-                        b = false;
-                        break;
-                    }
+        for (int i = 0; i < laSalle.length; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (laSalle[i][j] == 3) {
+                    b = false;
+                    break;
                 }
             }
-            if(b){
-                laSalle[18][3] = 106;
-            }
+        }
+        if (b) {
+            laSalle[18][3] = 106;
+        }
 
     }
 
     //Ces méthodes simples changent la variable mvmt pour permettre l'accès a right(), left(), etc. On a donc un moyen très simple, lors d'animations
     // de bloquer le personnage.
-    public void blockPerso(){
+    public void blockPerso() {
         main.mvmt = false;
     }
-    public void deblockPerso(){
+
+    public void deblockPerso() {
         main.mvmt = true;
     }
+
     //Une méthode qui permet de "glisser" sur des blocs de glace, de n'importe quelle direction,
     //peu importe le nombre de blocs de glace, en utilisant un timer et en bloquant le personnage afin d'avoir une pseudo animation
     //de glissement. il a fallu faire des cas spécifiques pour chaque direction ainsi que pour les nombres différents de blocs de glace,
     //sinon cela ne marchait pas. Nous pourrons donc ajouter ceci au moteur du jeu afin de créer des salles avec des puzzles de glace
     // ou il faut prendre les bons chemins pour arriver à l'endroit voulu.
     //Inspiration : https://gamerpillar.com/wp-content/uploads/2021/11/2-1024x576.jpeg
-    public void ice(int direction){
+    public void ice(int direction) {
         //1 right, 2 left, 3 down, 4 up
-        if( direction == 1) {
+        if (direction == 1) {
 
             blockPerso();
 
-            if (laSalle[posX][posY+2] == 2) {
+            if (laSalle[posX][posY + 2] == 2) {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
                     int i = 0;
+
                     public void run() {
 
 
-                        if(i == 1){
+                        if (i == 1) {
                             t.cancel();
                             laSalle[posX][posY] = 80;
-                            laSalle[posX][posY+1] = 9;
+                            laSalle[posX][posY + 1] = 9;
                             posY += 1;
                             repaint();
                             deblockPerso();
 
-                        }else {
+                        } else {
 
                             laSalle[posX][posY] = 2;
-                            laSalle[posX][posY+1] = 9;
+                            laSalle[posX][posY + 1] = 9;
                             posY += 1;
                             i++;
                         }
@@ -761,10 +744,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     }
                 };
                 t.schedule( task, 0, 250 );
-            }
-
-
-            else {
+            } else {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
 
@@ -776,7 +756,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                             System.out.println( " premier deplacement" );
 
                             laSalle[posX][posY] = 2;
-                            laSalle[posX][posY+1] = 9;
+                            laSalle[posX][posY + 1] = 9;
 
                             posY += 1;
                             b = false;
@@ -784,7 +764,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                             System.out.println( " dernier deplacement !a" );
 
                             laSalle[posX][posY] = 80;
-                            laSalle[posX ][posY+1] = 9;
+                            laSalle[posX][posY + 1] = 9;
                             posY++;
 
 
@@ -793,10 +773,10 @@ public class PanelSalles extends JPanel implements MouseListener {
                         } else if (a) {
                             System.out.println( " else if normal : a" );
                             laSalle[posX][posY] = 80;
-                            laSalle[posX][posY+1] = 9;
+                            laSalle[posX][posY + 1] = 9;
                             posY++;
 
-                            if (laSalle[posX][posY+1] != 80) {
+                            if (laSalle[posX][posY + 1] != 80) {
                                 a = false;
 
                             }
@@ -812,29 +792,30 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
 
-        if( direction == 2) {
+        if (direction == 2) {
 
             blockPerso();
 
-            if (laSalle[posX][posY-2] == 2) {
+            if (laSalle[posX][posY - 2] == 2) {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
                     int i = 0;
+
                     public void run() {
 
 
-                        if(i == 1){
+                        if (i == 1) {
                             t.cancel();
                             laSalle[posX][posY] = 80;
-                            laSalle[posX][posY-1] = 9;
+                            laSalle[posX][posY - 1] = 9;
                             posY -= 1;
                             repaint();
                             deblockPerso();
 
-                        }else {
+                        } else {
 
                             laSalle[posX][posY] = 2;
-                            laSalle[posX][posY-1] = 9;
+                            laSalle[posX][posY - 1] = 9;
                             posY -= 1;
                             i++;
                         }
@@ -842,10 +823,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     }
                 };
                 t.schedule( task, 0, 250 );
-            }
-
-
-            else {
+            } else {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
 
@@ -857,7 +835,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                             System.out.println( " premier deplacement" );
 
                             laSalle[posX][posY] = 2;
-                            laSalle[posX][posY-1] = 9;
+                            laSalle[posX][posY - 1] = 9;
 
                             posY -= 1;
                             b = false;
@@ -865,7 +843,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                             System.out.println( " dernier deplacement !a" );
 
                             laSalle[posX][posY] = 80;
-                            laSalle[posX ][posY-1] = 9;
+                            laSalle[posX][posY - 1] = 9;
                             posY--;
 
 
@@ -874,10 +852,10 @@ public class PanelSalles extends JPanel implements MouseListener {
                         } else if (a) {
                             System.out.println( " else if normal : a" );
                             laSalle[posX][posY] = 80;
-                            laSalle[posX][posY-1] = 9;
+                            laSalle[posX][posY - 1] = 9;
                             posY--;
 
-                            if (laSalle[posX][posY-1] != 80) {
+                            if (laSalle[posX][posY - 1] != 80) {
                                 a = false;
 
                             }
@@ -893,7 +871,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
 
-        if( direction == 3) {
+        if (direction == 3) {
 
             blockPerso();
 
@@ -901,18 +879,19 @@ public class PanelSalles extends JPanel implements MouseListener {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
                     int i = 0;
+
                     public void run() {
 
 
-                        if(i == 1){
+                        if (i == 1) {
                             t.cancel();
                             laSalle[posX][posY] = 80;
-                            laSalle[posX+1][posY] = 9;
+                            laSalle[posX + 1][posY] = 9;
                             posX += 1;
                             repaint();
                             deblockPerso();
 
-                        }else {
+                        } else {
 
                             laSalle[posX][posY] = 2;
                             laSalle[posX + 1][posY] = 9;
@@ -923,10 +902,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     }
                 };
                 t.schedule( task, 0, 250 );
-            }
-
-
-            else {
+            } else {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
 
@@ -974,7 +950,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
 
-        if( direction == 4) {
+        if (direction == 4) {
 
             blockPerso();
 
@@ -982,18 +958,19 @@ public class PanelSalles extends JPanel implements MouseListener {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
                     int i = 0;
+
                     public void run() {
 
 
-                        if(i == 1){
+                        if (i == 1) {
                             t.cancel();
                             laSalle[posX][posY] = 80;
-                            laSalle[posX-1][posY] = 9;
+                            laSalle[posX - 1][posY] = 9;
                             posX -= 1;
                             repaint();
                             deblockPerso();
 
-                        }else {
+                        } else {
 
                             laSalle[posX][posY] = 2;
                             laSalle[posX - 1][posY] = 9;
@@ -1004,10 +981,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     }
                 };
                 t.schedule( task, 0, 250 );
-            }
-
-
-            else {
+            } else {
                 java.util.Timer t = new Timer();
                 TimerTask task = new TimerTask() {
 
@@ -1057,5 +1031,84 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
+    public void finalboss() {
+        blockPerso();
+        java.util.Timer t = new Timer();
+        TimerTask task = new TimerTask() {
+            int a = 0;
+            int b = 0;
+
+            public void run() {
+                if(a <= 4) {
+                    laSalle[8 - b][6] = 6;
+                    a++;
+                    b++;
+                    repaint();
+                }else if(a <= 9){
+                    laSalle[4][7+(b-5)] = 6;
+                    a++;
+                    b++;
+                    repaint();
+                }else if(a < 14){
+                    laSalle[4+(b-9)][11] = 6;
+                    a++;
+                    b++;
+                    repaint();
+                }else if( a == 14){
+                    laSalle[7][8] = 200;
+                    repaint();
+                    a++;
+                }else if(a == 15){
+                    vibratemonstre();
+                    deblockPerso();
+                    t.cancel();
+                }
+
+
+            }
+
+        };
+        t.schedule( task, 0, 300 );
+
+
+    }
+
+    public void vibratemonstre(){
+        int locX = 0;
+        int locY = 0;
+        blockPerso();
+        music("dragonson.wav");
+        //un try car on utilise thread.sleep
+        try {
+
+            for (int i = 0; i < 15; i++) {
+                Thread.sleep( 30 );
+                setLocation( locX,locY +15 );
+                Thread.sleep( 30 );
+                setLocation( locX,locY -15);
+                Thread.sleep( 30 );
+                setLocation( locX+15,locY );
+                Thread.sleep( 30 );
+                setLocation( locX,locY);
+            }
+        }catch(InterruptedException e){
+            //aille.
+        }
+
+    }
+
+    public void music(String path){
+
+        File music = new File(path);
+        try {
+            clip = AudioSystem.getClip();
+            clip.open( AudioSystem.getAudioInputStream( music ) );
+            clip.start();
+        }catch(Exception e){
+            // :(((
+        }
+    }
 
 }
+
+
