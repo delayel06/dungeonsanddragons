@@ -12,7 +12,7 @@ public class DarkKnight extends Monstre{
         this.icon = new ImageIcon("darkNight.gif");
         this.aIcon = new ImageIcon("darkNightA.gif");
         this.dIcon = new ImageIcon("darkNightD.gif");
-        this.mapIcon = new ImageIcon("darkNightM.png");
+        this.imageM = new ImageIcon("darkNightM.png");
         couleurMonstre= Color.white;
 
     }
