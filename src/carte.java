@@ -8,7 +8,7 @@ public class carte extends JFrame {
         this.setTitle("CARTE DU DONJON");
         this.setLocation(300,200);
         this.setSize(630,380);
-        this.setVisible(true);
+        this.setVisible(false);
 
         JLabel labelCarte = new JLabel(new ImageIcon("MapDonjon.png"), JLabel.CENTER);
 

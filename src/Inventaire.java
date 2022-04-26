@@ -33,19 +33,19 @@ public class Inventaire extends JFrame implements ActionListener {
         JPanel conteneurDescription = new JPanel();
         conteneurDescription.setLayout(null);
         conteneurDescription.setBounds(0,0 , longueurInventaire,largeurInventaire/2);
-        conteneurDescription.setBackground(new Color( 150, 66, 66 ));
+        conteneurDescription.setBackground(Color.gray);
         conteneurDescription.add(description);
 
         btn0 = new JButton(new ImageIcon("boneInventaire.png"));
         btn1 = new JButton(new ImageIcon("epeeInventaire.png"));
-        btn2 = new JButton("B");
-        btn3 = new JButton("C");
-        btn4 = new JButton("D");
-        btn5 = new JButton("E");
-        btn6 = new JButton("F");
-        btn7 = new JButton("G");
-        btn8 = new JButton("H");
-        btn9 = new JButton("I");
+        btn2 = new JButton(new ImageIcon("casqueInventaire.png"));
+        btn3 = new JButton(new ImageIcon("hacheInventaire.png"));
+        btn4 = new JButton(new ImageIcon("armureInventaire.png"));
+        btn5 = new JButton(new ImageIcon("collierMagiqueInventaire.png"));
+        btn6 = new JButton(new ImageIcon("petiteDagueInventaire.png"));
+        btn7 = new JButton(new ImageIcon("doubleSabreInventaire.png"));
+        btn8 = new JButton(new ImageIcon("bouclierInventaire.png"));
+        btn9 = new JButton(new ImageIcon("bottesMagiquesInventaire.png"));
 
         btn0.addActionListener(this);
         btn1.addActionListener(this);
@@ -61,7 +61,7 @@ public class Inventaire extends JFrame implements ActionListener {
         panelObjets = new JPanel();
         panelObjets.setLayout(new GridLayout(2,5,10,10));
         panelObjets.setBounds(0,largeurInventaire/2,longueurInventaire,largeurInventaire/2 );
-        panelObjets.setBackground(new Color( 56, 92, 143 ));
+        panelObjets.setBackground(Color.gray);
 
         panelObjets.add(btn0);
         panelObjets.add(btn1);
@@ -104,6 +104,27 @@ public class Inventaire extends JFrame implements ActionListener {
         if(a==2){
             btn2.setVisible(true);
         }
+        if(a==3){
+            btn3.setVisible(true);
+        }
+        if(a==4){
+            btn4.setVisible(true);
+        }
+        if(a==5){
+            btn5.setVisible(true);
+        }
+        if(a==6){
+            btn6.setVisible(true);
+        }
+        if(a==7){
+            btn7.setVisible(true);
+        }
+        if(a==8){
+            btn8.setVisible(true);
+        }
+        if(a==9){
+            btn9.setVisible(true);
+        }
 
     }
 
@@ -113,6 +134,30 @@ public class Inventaire extends JFrame implements ActionListener {
         }
         if (e.getSource()==btn1){
             JOptionPane.showMessageDialog(this,"Une épée augmentant considerablement les stats");
+        }
+        if (e.getSource()==btn2){
+            JOptionPane.showMessageDialog(this,"Vous avez toujours eu la tête dure ");
+        }
+        if (e.getSource()==btn3){
+            JOptionPane.showMessageDialog(this," Hache stylée ");
+        }
+        if (e.getSource()==btn4){
+            JOptionPane.showMessageDialog(this,"Une armure belle et solide en plus");
+        }
+        if (e.getSource()==btn5){
+            JOptionPane.showMessageDialog(this,"Un collier magique qui booste vos stats");
+        }
+        if (e.getSource()==btn6){
+            JOptionPane.showMessageDialog(this,"Une petite dague pas très performante on va pas se mentir");
+        }
+        if (e.getSource()==btn7){
+            JOptionPane.showMessageDialog(this,"Pas un sabre mais bien deux ;) ");
+        }
+        if (e.getSource()==btn8){
+            JOptionPane.showMessageDialog(this,"Qu'es ce que le bouclier de Capitain America fait ici ? Vous avez beacoup de chance ");
+        }
+        if (e.getSource()==btn9){
+            JOptionPane.showMessageDialog(this,"Oh des bottes, vous pourrez fuire les monstres encore plus vite");
         }
     }
 }
