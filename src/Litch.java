@@ -11,7 +11,7 @@ public class Litch extends Monstre {
 
         super();
         this.nom = "Lich";
-        this.HPmax= (int)(10 + Math.random()*5);
+        this.HPmax= (int)(15 + Math.random()*5);
         this.HP = this.HPmax;
         this.icon = new ImageIcon("Litch.gif");
         this.aIcon = new ImageIcon("LitchA.gif");
@@ -22,7 +22,7 @@ public class Litch extends Monstre {
     }
 
     public void atk(Personnage p){
-        int j = getRandomInt(6) + 2;
+        int j = getRandomInt(10) + 2;
         p.HP -=j;
         texteRandom(j);
     }

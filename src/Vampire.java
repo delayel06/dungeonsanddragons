@@ -6,7 +6,7 @@ public class Vampire extends Monstre{
 
         super();
         this.nom = "Vampire";
-        this.HPmax= (int)(10 + Math.random()*5);
+        this.HPmax= (int)(15 + Math.random()*5);
         this.HP = this.HPmax;
         this.icon = new ImageIcon("vampire.gif");
         this.aIcon = new ImageIcon("vampireA.gif");
@@ -36,7 +36,7 @@ public class Vampire extends Monstre{
     public void atk(Personnage p){
         int j = getRandomInt(6) + 1;
         p.HP -=j;
-        this.HP +=(j-3);
+        this.HP +=(j-1);
         texteRandom(j);
     }
 

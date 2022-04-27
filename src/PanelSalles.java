@@ -13,6 +13,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     int longueur;
     int posX;
     int posY;
+    int i;
     Salles main;
     ImageIcon icon = new ImageIcon( "knightidle.png" );
     JLabel labelI;
@@ -28,6 +29,7 @@ public class PanelSalles extends JPanel implements MouseListener {
         laSalle = s;
         longueur = l;
         main = salle;
+        i = main.i;
         setLayout( null );
 
         // Bouton Inventaire
@@ -41,6 +43,10 @@ public class PanelSalles extends JPanel implements MouseListener {
         labelC.setBounds( longueur * 19 / 20, 0, longueur / 20, longueur / 20 );
         labelC.addMouseListener( this );
         add( labelC );
+
+        /*if(main.tabsalles[i] == main.sallef){
+            finalboss();
+        }*/
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -271,7 +277,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     g.setColor( new Color( 145, 107, 100 ) );
                     g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
 
-                    (new ImageIcon( "lava15.png" )).paintIcon( this, g, evolutionX, evolutionY );
+                    (new ImageIcon( "icebottom.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
                 if (laSalle[i][j] == 84) {
                     g.setColor( new Color( 145, 107, 100 ) );
@@ -279,6 +285,60 @@ public class PanelSalles extends JPanel implements MouseListener {
 
                     (new ImageIcon( "icetop.png" )).paintIcon( this, g, evolutionX, evolutionY );
                 }
+
+                //PONDS
+                if (laSalle[i][j] == 90) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond1.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 91) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond2.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 92) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond3.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 93) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond4.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 94) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond5.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 95) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond6.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 96) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond7.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+                if (laSalle[i][j] == 97) {
+                    g.setColor( new Color( 145, 107, 100 ) );
+                    g.fillRect( evolutionX, evolutionY, longueur / 20, longueur / 20 );
+                    (new ImageIcon( "pond8.png" )).paintIcon( this, g, evolutionX, evolutionY );
+
+                }
+
+
+
+
 
 
                 // OBJETS
@@ -375,7 +435,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 i++;
                 if (i == 190) {
 
-                    new InterfaceCombat( main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200] );
+                    new InterfaceCombat(perso, monstre );
                     t.cancel();
 
 
@@ -483,6 +543,9 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX][posY - 1] >= 100 && laSalle[posX][posY - 1] < 200) {
             main.changeSalle( laSalle[posX][posY - 1] - 100 );
 
+        } else if (laSalle[posX][posY - 1] >= 200 && laSalle[posX][posY - 1] < 300) {
+            startfight( main.perso, main.tabmonstre[laSalle[posX][posY - 1] - 200] );
+            blockPerso();
         } else if (laSalle[posX][posY - 1] == 5) {
             if (laSalle[posX][posY - 2] == 2) {
                 laSalle[posX][posY - 2] = 5;
@@ -550,6 +613,9 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX - 1][posY] >= 100 && laSalle[posX - 1][posY] < 200) {
             main.changeSalle( laSalle[posX - 1][posY] - 100 );
 
+        }else if (laSalle[posX-1][posY] >= 200 && laSalle[posX-1][posY] < 300) {
+            startfight( main.perso, main.tabmonstre[laSalle[posX-1][posY] - 200] );
+            blockPerso();
         } else if (laSalle[posX - 1][posY] == 5) {
             if (laSalle[posX - 2][posY] == 2) {
                 laSalle[posX - 2][posY] = 5;
@@ -605,7 +671,6 @@ public class PanelSalles extends JPanel implements MouseListener {
     }
 
     public void down() {
-        finalboss();
         icon = new ImageIcon( "knightdown.png" );
 
         if (laSalle[posX + 1][posY] == 2) {
@@ -616,6 +681,9 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX + 1][posY] >= 100 && laSalle[posX + 1][posY] < 200) {
             main.changeSalle( laSalle[posX + 1][posY] - 100 );
 
+        } else if (laSalle[posX+ 1][posY ] >= 200 && laSalle[posX+ 1][posY ] < 300) {
+            startfight(main.perso, main.tabmonstre[laSalle[posX+ 1][posY ] - 200]);
+            blockPerso();
         } else if (laSalle[posX + 1][posY] == 5) {
             if (laSalle[posX + 2][posY] == 2) {
                 laSalle[posX + 2][posY] = 5;
