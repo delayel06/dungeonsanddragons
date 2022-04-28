@@ -424,7 +424,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     //startfight est une méthode qui lance un combat après une courte animation de lancement de combat
     //cette animation se déplace de la gauche à la droite et assombri l'écran, puis lance l'interface de combat ,pour un effet inutile mais agréable visuellement
-    public void startfight(Personnage perso, Monstre monstre) {
+    public void startfight(Personnage perso, Monstre monstre,PanelSalles salle, int x , int y) {
         java.util.Timer t = new Timer();
         TimerTask task = new TimerTask() {
             int i = 0;
@@ -436,7 +436,14 @@ public class PanelSalles extends JPanel implements MouseListener {
                 i++;
                 if (i == 190) {
 
-                    new InterfaceCombat(perso, monstre );
+                    new InterfaceCombat(perso, monstre, salle, x, y );
+                    try{
+                        Thread.sleep(500);
+                    }catch(Exception e){
+                            //t'inquiete
+                    }
+                    vsX = -1000;
+                    repaint();
                     t.cancel();
 
 
@@ -495,7 +502,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
 
         } else if (laSalle[posX][posY + 1] >= 200 && laSalle[posX][posY + 1] < 300) {
-            startfight( main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200] );
+            startfight( main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200],this, posX, posY+1 );
             blockPerso();
         } else if (laSalle[posX][posY + 1] >= 300 && laSalle[posX][posY + 1] <= 320) {
 
@@ -552,7 +559,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             main.changeSalle( laSalle[posX][posY - 1] - 100 );
 
         } else if (laSalle[posX][posY - 1] >= 200 && laSalle[posX][posY - 1] < 300) {
-            startfight( main.perso, main.tabmonstre[laSalle[posX][posY - 1] - 200] );
+            startfight( main.perso, main.tabmonstre[laSalle[posX][posY - 1] - 200], this, posX, posY-1 );
             blockPerso();
         } else if (laSalle[posX][posY - 1] == 5) {
             if (laSalle[posX][posY - 2] == 2) {
@@ -622,7 +629,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             main.changeSalle( laSalle[posX - 1][posY] - 100 );
 
         }else if (laSalle[posX-1][posY] >= 200 && laSalle[posX-1][posY] < 300) {
-            startfight( main.perso, main.tabmonstre[laSalle[posX-1][posY] - 200] );
+            startfight( main.perso, main.tabmonstre[laSalle[posX-1][posY] - 200], this, posX-1, posY );
             blockPerso();
         } else if (laSalle[posX - 1][posY] == 5) {
             if (laSalle[posX - 2][posY] == 2) {
@@ -690,7 +697,7 @@ public class PanelSalles extends JPanel implements MouseListener {
             main.changeSalle( laSalle[posX + 1][posY] - 100 );
 
         } else if (laSalle[posX+ 1][posY ] >= 200 && laSalle[posX+ 1][posY ] < 300) {
-            startfight(main.perso, main.tabmonstre[laSalle[posX+ 1][posY ] - 200]);
+            startfight(main.perso, main.tabmonstre[laSalle[posX+ 1][posY ] - 200], this, posX+1, posY);
             blockPerso();
         } else if (laSalle[posX + 1][posY] == 5) {
             if (laSalle[posX + 2][posY] == 2) {
@@ -1183,6 +1190,21 @@ public class PanelSalles extends JPanel implements MouseListener {
         }catch(Exception e){
             // :(((
         }
+    }
+
+    public void battlewin(int coordx, int coordy){
+        laSalle[coordx][coordy] = 2;
+        deblockPerso();
+        repaint();
+        clip.stop();
+
+    }
+
+
+    public void battlelose(){
+        main.changeSalle( main.i );
+        deblockPerso();
+
     }
 
 }

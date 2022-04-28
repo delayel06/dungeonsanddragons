@@ -24,6 +24,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public Personnage personnage;
 	public Monstre m;
 
+	PanelSalles salle;
 
 	//Contient les informations dédiées au monstre (divisé en trois colonnes)
 	public JPanel Monstre;
@@ -73,6 +74,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JLabel tourM;
 	public JButton attaqueM;
 
+	public int coordx;
+	public int coordy;
 
 	//compteur de tour
 	public int compte = 1;
@@ -82,8 +85,11 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 
 	Clip clip;
 
-	public InterfaceCombat(Personnage personnage, Monstre m) {
+	public InterfaceCombat(Personnage personnage, Monstre m, PanelSalles salle, int coordx, int coordy) {
 		super();
+		this.salle = salle;
+		this.coordy = coordy;
+		this.coordx = coordx;
 		this.m=m; //attribut à monstre le monstre avec lequel le jouer lance le combat
 		this.personnage = personnage; //définit comme personnage celui que le joueur a choisi
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);//la taille de l'interface de combat est celle de la fenêtre
@@ -393,6 +399,8 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			});
 			controle.add(bVic);
 			music("victory.wav");
+			salle.battlewin( coordx, coordy );
+
 
 		}
 		else if (personnage.HP<=0){ //si défaite du joueur
@@ -406,6 +414,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 				//ajouter une ligne qui relance le jeu et ferme la feêntre de la salle
 			});
 			controle.add(bDef);
+			salle.battlelose( );
 
 		}
 
