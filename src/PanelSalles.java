@@ -1114,6 +1114,9 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
+
+    //méthode d'animation qui fait apparaitre une a une les pierres autour du dragon squelettique, puis le dragon squelettique au milieu
+    // c'est le grand boss!
     public void finalboss() {
         blockPerso();
         java.util.Timer t = new Timer();
@@ -1156,6 +1159,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
+    //fait vibrer l'écran et rugir le dragon une fois qu'il a été apparu
     public void vibratemonstre(){
         int locX = 0;
         int locY = 0;
@@ -1180,6 +1184,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
+    //méthode qui joue du son au format wav
     public void music(String path){
 
         File music = new File(path);
@@ -1192,11 +1197,16 @@ public class PanelSalles extends JPanel implements MouseListener {
         }
     }
 
+    //Les methodes ci dessous sont le trigger de la victoire et de la défaite dans InterfaceCombat. La méthode
+    //win enleve le monstre ( spécial si c'est le boss ) et lose relance la salle
     public void battlewin(int coordx, int coordy){
         laSalle[coordx][coordy] = 2;
         deblockPerso();
         repaint();
         clip.stop();
+        if(main.i == 13){
+            winwholegame();
+        }
 
     }
 
@@ -1204,6 +1214,9 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void battlelose(){
         main.changeSalle( main.i );
         deblockPerso();
+
+    }
+    public void winwholegame(){
 
     }
 
