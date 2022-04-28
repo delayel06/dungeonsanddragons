@@ -22,6 +22,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     int vsX = -1000;
     int vsY = 0;
     ImageIcon image = new ImageIcon( "vsscreen.png" );
+    boolean bossawakened = false;
     Clip clip;
 
 
@@ -533,6 +534,13 @@ public class PanelSalles extends JPanel implements MouseListener {
     }
 
     public void left() {
+        if(main.tabsalles[main.i] == main.sallef) {
+            if(!bossawakened) {
+                finalboss();
+                bossawakened = true;
+            }
+        }
+
         icon = new ImageIcon( "knightrun2.png" );
 
         if (laSalle[posX][posY - 1] == 2) {

@@ -358,8 +358,8 @@ public class Salles extends JFrame implements KeyListener {
         notreInventaire = new Inventaire();
         tabsalles = new PanelSalles[]{salle0, salle11, salle12,salle13, salle21, salle22, salle23,
                 salle31, salle32, salle33, salle41, salle42, salle43, sallef};
-        this.setContentPane(this.salle21);
-        i = 4;
+        this.setContentPane(this.sallef);
+        i = 13;
         addKeyListener(this);
         setVisible(true);
 
