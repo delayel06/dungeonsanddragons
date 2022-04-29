@@ -17,22 +17,22 @@ public class Inventaire extends JFrame implements ActionListener {
     JButton btn8;
     JButton btn9;
 
-    public Inventaire (){
-        setTitle( " INVENTAIRE");
+    public Inventaire() {
+        setTitle(" INVENTAIRE");
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
-        int longueurInventaire = tailleMoniteur.width * 1/2;
-        int largeurInventaire  = tailleMoniteur.height * 1/2;
-        setSize(longueurInventaire+12,largeurInventaire+39);
-        setResizable( false );
-        setLocation((tailleMoniteur.width - getSize().width)/2,((tailleMoniteur.height - getSize().height)/2)-20);
+        int longueurInventaire = tailleMoniteur.width * 1 / 2;
+        int largeurInventaire = tailleMoniteur.height * 1 / 2;
+        setSize(longueurInventaire + 12, largeurInventaire + 39);
+        setResizable(false);
+        setLocation((tailleMoniteur.width - getSize().width) / 2, ((tailleMoniteur.height - getSize().height) / 2) - 20);
 
         JLabel description = new JLabel("Voici les objets dont vous disposez : ");
-        description.setBounds(longueurInventaire /2 -150 ,largeurInventaire/4 - 30,320,30);
+        description.setBounds(longueurInventaire / 2 - 150, largeurInventaire / 4 - 30, 320, 30);
         description.setFont(new Font("Serif", Font.BOLD, 20));
 
         JPanel conteneurDescription = new JPanel();
         conteneurDescription.setLayout(null);
-        conteneurDescription.setBounds(0,0 , longueurInventaire,largeurInventaire/2);
+        conteneurDescription.setBounds(0, 0, longueurInventaire, largeurInventaire / 2);
         conteneurDescription.setBackground(Color.gray);
         conteneurDescription.add(description);
 
@@ -59,8 +59,8 @@ public class Inventaire extends JFrame implements ActionListener {
         btn9.addActionListener(this);
 
         panelObjets = new JPanel();
-        panelObjets.setLayout(new GridLayout(2,5,10,10));
-        panelObjets.setBounds(0,largeurInventaire/2,longueurInventaire,largeurInventaire/2 );
+        panelObjets.setLayout(new GridLayout(2, 5, 10, 10));
+        panelObjets.setBounds(0, largeurInventaire / 2, longueurInventaire, largeurInventaire / 2);
         panelObjets.setBackground(Color.gray);
 
         panelObjets.add(btn0);
@@ -94,70 +94,70 @@ public class Inventaire extends JFrame implements ActionListener {
 
         setVisible(false);
     }
-    public void ajouterObjet(int a){
+    public void ajouterObjet(int a) {
         // ici on boost les stats et autre
         // on aurait pu ajouter les boutons au panal ici mais c'est moche a cause des dimension
 
-        if(a==1){
+        if (a == 1) {
             btn1.setVisible(true);
         }
-        if(a==2){
+        if (a == 2) {
             btn2.setVisible(true);
         }
-        if(a==3){
+        if (a == 3) {
             btn3.setVisible(true);
         }
-        if(a==4){
+        if (a == 4) {
             btn4.setVisible(true);
         }
-        if(a==5){
+        if (a == 5) {
             btn5.setVisible(true);
         }
-        if(a==6){
+        if (a == 6) {
             btn6.setVisible(true);
         }
-        if(a==7){
+        if (a == 7) {
             btn7.setVisible(true);
         }
-        if(a==8){
+        if (a == 8) {
             btn8.setVisible(true);
         }
-        if(a==9){
+        if (a == 9) {
             btn9.setVisible(true);
         }
 
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==btn0){
-            JOptionPane.showMessageDialog(this,"Os robuste");
+        if (e.getSource() == btn0) {
+            JOptionPane.showMessageDialog(this, "Os robuste");
         }
-        if (e.getSource()==btn1){
-            JOptionPane.showMessageDialog(this,"Une épée augmentant considerablement les stats");
+        if (e.getSource() == btn1) {
+            JOptionPane.showMessageDialog(this, "Une épée augmentant considerablement les stats");
         }
-        if (e.getSource()==btn2){
-            JOptionPane.showMessageDialog(this,"Vous avez toujours eu la tête dure ");
+        if (e.getSource() == btn2) {
+            JOptionPane.showMessageDialog(this, "Vous avez toujours eu la tête dure ");
         }
-        if (e.getSource()==btn3){
-            JOptionPane.showMessageDialog(this," Hache stylée ");
+        if (e.getSource() == btn3) {
+            JOptionPane.showMessageDialog(this, " Hache stylée ");
         }
-        if (e.getSource()==btn4){
-            JOptionPane.showMessageDialog(this,"Une armure belle et solide en plus");
+        if (e.getSource() == btn4) {
+            JOptionPane.showMessageDialog(this, "Une armure belle et solide en plus");
         }
-        if (e.getSource()==btn5){
-            JOptionPane.showMessageDialog(this,"Un collier magique qui booste vos stats");
+        if (e.getSource() == btn5) {
+            JOptionPane.showMessageDialog(this, "Un collier magique qui booste vos stats");
         }
-        if (e.getSource()==btn6){
-            JOptionPane.showMessageDialog(this,"Une petite dague pas très performante on va pas se mentir");
+        if (e.getSource() == btn6) {
+            JOptionPane.showMessageDialog(this, "Une petite dague pas très performante on va pas se mentir");
         }
-        if (e.getSource()==btn7){
-            JOptionPane.showMessageDialog(this,"Pas un sabre mais bien deux ;) ");
+        if (e.getSource() == btn7) {
+            JOptionPane.showMessageDialog(this, "Pas un sabre mais bien deux ;) ");
         }
-        if (e.getSource()==btn8){
-            JOptionPane.showMessageDialog(this,"Qu'es ce que le bouclier de Capitain America fait ici ? Vous avez beacoup de chance ");
+        if (e.getSource() == btn8) {
+            JOptionPane.showMessageDialog(this, "Qu'es ce que le bouclier de Capitain America fait ici ? Vous avez beacoup de chance ");
         }
-        if (e.getSource()==btn9){
-            JOptionPane.showMessageDialog(this,"Oh des bottes, vous pourrez fuire les monstres encore plus vite");
+        if (e.getSource() == btn9) {
+            JOptionPane.showMessageDialog(this, "Oh des bottes, vous pourrez fuire les monstres encore plus vite");
         }
     }
 }

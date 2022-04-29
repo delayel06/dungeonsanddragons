@@ -2,13 +2,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
 public class Salles extends JFrame implements KeyListener {
-    int width ;
+    int width;
     int heigth;
     PanelSalles salle0, salle11, salle12, salle13, salle21, salle22, salle23, salle31, salle32, salle33, salle41, salle42, salle43, sallef;
 
-    Monstre[] tabmonstre = {new Dragon(), new Litch(), new Vampire(),new Demon(), new DarkKnight(), new DarkKnight(), new Mommy(), new Mommy(), new Mommy(), new Mommy(), new Mommy(), new Zombie(), new Zombie(), new Zombie(), new Zombie(), new Zombie(), new Squelette(), new Squelette(), new Squelette(), new Squelette(), new Fantome(), new Fantome(),new Demon()};
+    Monstre[] tabmonstre = {
+            new Dragon(),
+            new Litch(),
+            new Vampire(),
+            new Demon(),
+            new DarkKnight(),
+            new DarkKnight(),
+            new Mommy(),
+            new Mommy(),
+            new Mommy(),
+            new Mommy(),
+            new Mommy(),
+            new Zombie(),
+            new Zombie(),
+            new Zombie(),
+            new Zombie(),
+            new Zombie(),
+            new Squelette(),
+            new Squelette(),
+            new Squelette(),
+            new Squelette(),
+            new Fantome(),
+            new Fantome(),
+            new Demon()
+    };
     PanelSalles[] tabsalles;
     Inventaire notreInventaire;
     carte notreCarte;
@@ -16,16 +39,16 @@ public class Salles extends JFrame implements KeyListener {
     Personnage perso;
     boolean mvmt = true;
 
-    public Salles(Personnage perso){
+    public Salles(Personnage perso) {
         this.perso = perso;
-        setTitle( " La carte du jeu ");
+        setTitle(" La carte du jeu ");
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
-        width = tailleMoniteur.width * 1/2;
-        heigth = tailleMoniteur.height * 1/2;
-        setSize(width+12,width+30);
-        setResizable( false );
-        setIconImage( (new ImageIcon("logo.png" )).getImage());
-        setLocation((tailleMoniteur.width - getSize().width)/2,((tailleMoniteur.height - getSize().height)/2)-20);
+        width = tailleMoniteur.width * 1 / 2;
+        heigth = tailleMoniteur.height * 1 / 2;
+        setSize(width + 12, width + 30);
+        setResizable(false);
+        setIconImage((new ImageIcon("logo.png")).getImage());
+        setLocation((tailleMoniteur.width - getSize().width) / 2, ((tailleMoniteur.height - getSize().height) / 2) - 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // 0=neant , 1 = MUR , 2 = sol, >100= porte, 4= monstre
         // TOUT CE QUI EST SUPERIEUR A 100 C'EST DES PORTES ON VA SUREMENT FAIRE LA MEME POUR LES MONSTRES ET >200
@@ -339,77 +362,88 @@ public class Salles extends JFrame implements KeyListener {
 
 
         salle0 = new PanelSalles(caseSalle0, width, this);
-        salle11 =new PanelSalles(caseSalle11,width, this) ;
-        salle12 =new PanelSalles(caseSalle12,width, this) ;
+        salle11 = new PanelSalles(caseSalle11, width, this);
+        salle12 = new PanelSalles(caseSalle12, width, this);
         salle13 = new PanelSalles(caseSalle13, width, this);
-        salle21 =new PanelSalles(caseSalle21,width, this) ;
-        salle22 =new PanelSalles(caseSalle22,width, this) ;
+        salle21 = new PanelSalles(caseSalle21, width, this);
+        salle22 = new PanelSalles(caseSalle22, width, this);
         salle23 = new PanelSalles(caseSalle23, width, this);
-        salle31 =new PanelSalles(caseSalle31,width, this) ;
-        salle32 =new PanelSalles(caseSalle32,width, this) ;
+        salle31 = new PanelSalles(caseSalle31, width, this);
+        salle32 = new PanelSalles(caseSalle32, width, this);
         salle33 = new PanelSalles(caseSalle33, width, this);
-        salle41 =new PanelSalles(caseSalle41,width, this) ;
-        salle42 =new PanelSalles(caseSalle42,width, this) ;
+        salle41 = new PanelSalles(caseSalle41, width, this);
+        salle42 = new PanelSalles(caseSalle42, width, this);
         salle43 = new PanelSalles(caseSalle43, width, this);
         sallef = new PanelSalles(caseSallef, width, this);
 
         notreCarte = new carte();
 
         notreInventaire = new Inventaire();
-        tabsalles = new PanelSalles[]{salle0, salle11, salle12,salle13, salle21, salle22, salle23,
-                salle31, salle32, salle33, salle41, salle42, salle43, sallef};
+        tabsalles = new PanelSalles[] {
+                salle0,
+                salle11,
+                salle12,
+                salle13,
+                salle21,
+                salle22,
+                salle23,
+                salle31,
+                salle32,
+                salle33,
+                salle41,
+                salle42,
+                salle43,
+                sallef
+        };
         this.setContentPane(this.salle0);
         i = 0;
         addKeyListener(this);
         setVisible(true);
 
-
     }
 
     public void keyPressed(KeyEvent e) {
-            if(mvmt) {
-                if (e.getKeyCode() == 32) {
-                    //tabsalles[i].space();
-                }
-                if (e.getKeyCode() == 39) {
-                    tabsalles[i].right();
-                }
-                if (e.getKeyCode() == 38) {
-                    tabsalles[i].up();
-                }
-                if (e.getKeyCode() == 37) {
-                    tabsalles[i].left();
-                }
-                if (e.getKeyCode() == 40) {
-                    tabsalles[i].down();
-                }
-
+        if (mvmt) {
+            if (e.getKeyCode() == 32) {
+                //tabsalles[i].space();
             }
+            if (e.getKeyCode() == 39) {
+                tabsalles[i].right();
+            }
+            if (e.getKeyCode() == 38) {
+                tabsalles[i].up();
+            }
+            if (e.getKeyCode() == 37) {
+                tabsalles[i].left();
+            }
+            if (e.getKeyCode() == 40) {
+                tabsalles[i].down();
+            }
+
+        }
 
     }
 
     public void keyReleased(KeyEvent e) {
         tabsalles[i].idle();
-	}
+    }
 
-	public void keyTyped(KeyEvent e) {  }
+    public void keyTyped(KeyEvent e) {}
 
-    public void changeSalle(int i){
+    public void changeSalle(int i) {
 
-        this.setContentPane( tabsalles[i] );
+        this.setContentPane(tabsalles[i]);
         this.pack();
         this.i = i;
-        setSize(width+12,width+30);
-        setResizable( false );
+        setSize(width + 12, width + 30);
+        setResizable(false);
         this.revalidate();
 
-
-
     }
- 
-    public static void main (String[] args) {
+
+    public static void main(String[] args) {
         Mage a = new Mage();
-        Salles s = new Salles(a);}
+        Salles s = new Salles(a);
+    }
 
 }
-

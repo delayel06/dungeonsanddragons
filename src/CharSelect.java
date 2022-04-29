@@ -8,12 +8,11 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 
-
 public class CharSelect extends JFrame implements ActionListener {
 
-    public Icon iconmage,iconguerrier,iconarcher,iconpaladin;
+    public Icon iconmage, iconguerrier, iconarcher, iconpaladin;
 
-    public JButton mage,guerrier,archer,paladin;
+    public JButton mage, guerrier, archer, paladin;
 
     public int width = 800;
     public int height = 400;
@@ -35,30 +34,26 @@ public class CharSelect extends JFrame implements ActionListener {
     public Personnage perso;
     Clip clip;
 
-
-    public CharSelect(){
-        setSize(width,height);
+    public CharSelect() {
+        setSize(width, height);
         setTitle("Création de Personnage");
-        setLocation(getWidth()/2,getHeight()/2);
+        setLocation(getWidth() / 2, getHeight() / 2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        music( "othertheme.wav" );
-        setIconImage( new ImageIcon("logo.png").getImage() );
+        music("othertheme.wav");
+        setIconImage(new ImageIcon("logo.png").getImage());
 
-
-        mainpanel = new JPanel(new GridLayout(2,2,20,20));
-
+        mainpanel = new JPanel(new GridLayout(2, 2, 20, 20));
 
         iconmage = new ImageIcon("mage.png");
-        iconpaladin = new ImageIcon( "paladin.png");
+        iconpaladin = new ImageIcon("paladin.png");
         iconguerrier = new ImageIcon("guerrier.png");
         iconarcher = new ImageIcon("archer.png");
 
-        mage = new JButton("Mage", iconmage );
-        guerrier = new JButton("Guerrier",iconguerrier);
-        archer = new JButton("Archer",iconarcher);
-        paladin = new JButton("Paladin",iconpaladin);
-
+        mage = new JButton("Mage", iconmage);
+        guerrier = new JButton("Guerrier", iconguerrier);
+        archer = new JButton("Archer", iconarcher);
+        paladin = new JButton("Paladin", iconpaladin);
 
         ImageIcon backicon = new ImageIcon("exit.png");
         back = new JButton(backicon);
@@ -66,21 +61,18 @@ public class CharSelect extends JFrame implements ActionListener {
         back.setContentAreaFilled(false);
         back.setBorderPainted(false);
 
-
         ImageIcon starticon = new ImageIcon("play.png");
         confirm = new JButton(starticon);
         confirm.setOpaque(false);
         confirm.setContentAreaFilled(false);
         confirm.setBorderPainted(false);
 
-
-        try{
+        try {
             // on amene le font qui DOIT ETRE DANS LE FICHIER LES GARS
             font = Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")).deriveFont(30f); //taille ici
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("dungeon.ttf")));
-        }
-        catch(IOException | FontFormatException e){
+        } catch (IOException | FontFormatException e) {
             // ca devrait pas arriver ici
         }
 
@@ -112,14 +104,12 @@ public class CharSelect extends JFrame implements ActionListener {
 
     }
 
-
-
     public void actionPerformed(ActionEvent e) {
-        classchoose( e );
+        classchoose(e);
     }
 
     private void classchoose(ActionEvent e) {
-        if(e.getSource() == mage){
+        if (e.getSource() == mage) {
             classchosen = "mage";
 
             mainpanel.remove(archer);
@@ -130,7 +120,7 @@ public class CharSelect extends JFrame implements ActionListener {
             mainpanel.add(confirm);
             mainpanel.revalidate();
 
-        }else if(e.getSource() == archer){
+        } else if (e.getSource() == archer) {
             classchosen = "archer";
 
             mainpanel.remove(mage);
@@ -141,7 +131,7 @@ public class CharSelect extends JFrame implements ActionListener {
             mainpanel.add(confirm);
             mainpanel.revalidate();
 
-        }else if(e.getSource() == guerrier){
+        } else if (e.getSource() == guerrier) {
             classchosen = "guerrier";
             mainpanel.remove(mage);
             mainpanel.remove(paladin);
@@ -151,7 +141,7 @@ public class CharSelect extends JFrame implements ActionListener {
             mainpanel.add(confirm);
             mainpanel.revalidate();
 
-        }else if(e.getSource() == paladin){
+        } else if (e.getSource() == paladin) {
             classchosen = "paladin";
             mainpanel.remove(mage);
             mainpanel.remove(archer);
@@ -162,17 +152,17 @@ public class CharSelect extends JFrame implements ActionListener {
             mainpanel.add(confirm);
             mainpanel.revalidate();
 
-        }else if (e.getSource() == back){
+        } else if (e.getSource() == back) {
             new CharSelect();
             this.dispose();
-        }else if(e.getSource() == confirm){
-            if(classchosen == "paladin"){
+        } else if (e.getSource() == confirm) {
+            if (classchosen == "paladin") {
                 perso = new Paladin();
-            }else if(classchosen == "mage"){
+            } else if (classchosen == "mage") {
                 perso = new Mage();
-            }else if (classchosen == "archer"){
+            } else if (classchosen == "archer") {
                 perso = new Archer();
-            }else{
+            } else {
                 perso = new Guerrier();
             }
 
@@ -181,17 +171,16 @@ public class CharSelect extends JFrame implements ActionListener {
             this.dispose();
         }
 
-
     }
 
-    public void music(String path){
+    public void music(String path) {
 
         File music = new File(path);
         try {
             clip = AudioSystem.getClip();
-            clip.open( AudioSystem.getAudioInputStream( music ) );
+            clip.open(AudioSystem.getAudioInputStream(music));
             clip.start();
-        }catch(Exception e){
+        } catch (Exception e) {
             // :(((
         }
     }

@@ -21,30 +21,27 @@ class StatDefine extends JFrame implements ActionListener {
     public JButton rollerwis = new JButton(rollbutton);
     public JButton rollerchar = new JButton(rollbutton);
 
-
-    public JPanel mainpanel ;
-    public JButton start ;
+    public JPanel mainpanel;
+    public JButton start;
     public JLabel label1;
 
-
-    public StatDefine(Personnage perso){
+    public StatDefine(Personnage perso) {
 
         this.personnage = perso;
-        setSize(width,height);
+        setSize(width, height);
         setTitle("Création de Personnage");
-        setLocation(getWidth()/2,getHeight()/2);
+        setLocation(getWidth() / 2, getHeight() / 2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        setIconImage( new ImageIcon("logo.png").getImage() );
-
+        setIconImage(new ImageIcon("logo.png").getImage());
 
         mainpanel = new JPanel(new BorderLayout());
 
         label1 = new JLabel("Vous allez maintenant déterminer vos stats avec un lancé de dés !", SwingConstants.CENTER);
 
         start = new JButton("Commencer le tirage!");
-        start.setBackground(new Color( 35, 133, 141 ));
-        start.setPreferredSize( new Dimension(200,100) );
+        start.setBackground(new Color(35, 133, 141));
+        start.setPreferredSize(new Dimension(200, 100));
         start.addActionListener(this);
 
         setButton(rollerstr);
@@ -54,76 +51,72 @@ class StatDefine extends JFrame implements ActionListener {
         setButton(rollerwis);
         setButton(rollercons);
 
-
         mainpanel.add(start, BorderLayout.PAGE_END);
         mainpanel.add(label1, BorderLayout.CENTER);
 
         this.add(mainpanel, BorderLayout.CENTER);
-        setResizable( false );
+        setResizable(false);
 
     }
     public void actionPerformed(ActionEvent e) {
-    if(e.getSource() == start){
+        if (e.getSource() == start) {
 
-        mainpanel.remove(label1);
-        mainpanel.remove(start);
-        mainpanel.revalidate();
+            mainpanel.remove(label1);
+            mainpanel.remove(start);
+            mainpanel.revalidate();
 
-        mainpanel.add(dice, BorderLayout.CENTER);
-        mainpanel.add(rollerstr, BorderLayout.SOUTH);
+            mainpanel.add(dice, BorderLayout.CENTER);
+            mainpanel.add(rollerstr, BorderLayout.SOUTH);
 
-    } else if(e.getSource() == rollerstr){
-        dice.manyroll();
-        mainpanel.revalidate();
-        mainpanel.remove(rollerstr);
-        mainpanel.add(rollerdex, BorderLayout.SOUTH);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollerstr) {
+            dice.manyroll();
+            mainpanel.revalidate();
+            mainpanel.remove(rollerstr);
+            mainpanel.add(rollerdex, BorderLayout.SOUTH);
+            mainpanel.revalidate();
 
-    }else if(e.getSource() == rollerdex){
-        dice.manyroll();
-        mainpanel.revalidate();
-        mainpanel.remove(rollerdex);
-        mainpanel.add(rollercons, BorderLayout.SOUTH);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollerdex) {
+            dice.manyroll();
+            mainpanel.revalidate();
+            mainpanel.remove(rollerdex);
+            mainpanel.add(rollercons, BorderLayout.SOUTH);
+            mainpanel.revalidate();
 
-    }else if(e.getSource() == rollercons){
-        dice.manyroll();
-        mainpanel.revalidate();
-        mainpanel.remove(rollercons);
-        mainpanel.add(rollerintel, BorderLayout.SOUTH);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollercons) {
+            dice.manyroll();
+            mainpanel.revalidate();
+            mainpanel.remove(rollercons);
+            mainpanel.add(rollerintel, BorderLayout.SOUTH);
+            mainpanel.revalidate();
 
-    }else if(e.getSource() == rollerintel){
-        dice.manyroll();
-        mainpanel.revalidate();
-        mainpanel.remove(rollerintel);
-        mainpanel.add(rollerwis, BorderLayout.SOUTH);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollerintel) {
+            dice.manyroll();
+            mainpanel.revalidate();
+            mainpanel.remove(rollerintel);
+            mainpanel.add(rollerwis, BorderLayout.SOUTH);
+            mainpanel.revalidate();
 
-    }else if(e.getSource() == rollerwis){
-        dice.manyroll();
-        mainpanel.revalidate();
-        mainpanel.remove(rollerwis);
-        mainpanel.add(rollerchar, BorderLayout.SOUTH);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollerwis) {
+            dice.manyroll();
+            mainpanel.revalidate();
+            mainpanel.remove(rollerwis);
+            mainpanel.add(rollerchar, BorderLayout.SOUTH);
+            mainpanel.revalidate();
 
-    }else if(e.getSource() == rollerchar){
-        dice.lastroll(this);
-        mainpanel.revalidate();
-        mainpanel.remove(rollerchar);
-        mainpanel.revalidate();
+        } else if (e.getSource() == rollerchar) {
+            dice.lastroll(this);
+            mainpanel.revalidate();
+            mainpanel.remove(rollerchar);
+            mainpanel.revalidate();
 
-        setStats();
+            setStats();
 
-
-
-    }
-
+        }
 
     }
     public void setStats() {
 
-        for(int i = 0 ; i < 6 ; i++){
+        for (int i = 0; i < 6; i++) {
 
             personnage.stats[i] = dice.valeurs[i];
             System.out.println(" ");
@@ -132,20 +125,17 @@ class StatDefine extends JFrame implements ActionListener {
             personnage.setPerso();
         }
 
-
-
     }
-    public void setButton(JButton a){
+    public void setButton(JButton a) {
         a.setOpaque(false);
         a.setContentAreaFilled(false);
         a.setBorderPainted(false);
         a.addActionListener(this);
     }
 
-    public void startgame(){
+    public void startgame() {
         new Salles(personnage);
 
     }
 
 }
-
