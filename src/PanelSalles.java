@@ -333,7 +333,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 }
 
                 // OBJETS
-                if (laSalle[i][j] >= 300) {
+                if (laSalle[i][j] >= 300 && laSalle[i][j] <= 308 ) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("chest.png")).paintIcon(this, g, evolutionX - 10, evolutionY - 10);
@@ -395,7 +395,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 if (laSalle[i][j] == 330) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("bottesMagiques.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("coffreSpecial.png")).paintIcon(this, g, evolutionX, evolutionY);
                 }
 
 
@@ -503,7 +503,7 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX][posY + 1] >= 200 && laSalle[posX][posY + 1] < 300) {
             startfight(main.perso, main.tabmonstre[laSalle[posX][posY + 1] - 200], this, posX, posY + 1);
             blockPerso();
-        } else if (laSalle[posX][posY + 1] >= 300 && laSalle[posX][posY + 1] <= 320) {
+        } else if (laSalle[posX][posY + 1] >= 300 && laSalle[posX][posY + 1] <= 308) {
 
             laSalle[posX][posY + 1] = laSalle[posX][posY + 1] + 20;
 
@@ -534,7 +534,10 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX][posY + 1] == 329) {
             main.notreInventaire.ajouterObjet(9);
             laSalle[posX][posY + 1] = 2;
+        } else if (laSalle[posX][posY + 1] == 330) {
+            laSalle[posX][posY + 1] = 329;
         }
+
 
         repaint();
     }
