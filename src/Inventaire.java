@@ -38,8 +38,8 @@ public class Inventaire extends JFrame implements ActionListener {
         conteneurDescription.setBackground(Color.gray);
         conteneurDescription.add(description);
 
-        btn0 = new JButton(new ImageIcon("shield.jpg"));
-        btn1 = new JButton(new ImageIcon("ying yang.jpg"));
+        btn0 = new JButton(new ImageIcon("bannière.jpg"));
+        btn1 = new JButton(new ImageIcon("shield.jpg"));
         btn2 = new JButton(new ImageIcon("bow.jpg"));
         btn3 = new JButton(new ImageIcon("axe.jpg"));
         btn4 = new JButton(new ImageIcon("crâne.jpg"));
@@ -47,7 +47,7 @@ public class Inventaire extends JFrame implements ActionListener {
         btn6 = new JButton(new ImageIcon("book.jpg"));
         btn7 = new JButton(new ImageIcon("crystal.jpg"));
         btn8 = new JButton(new ImageIcon("gold.jpg"));
-        btn9 = new JButton(new ImageIcon("bannière.jpg"));
+        btn9 = new JButton(new ImageIcon("ying yang.jpg"));
 
         btn0.addActionListener(this);
         btn1.addActionListener(this);
@@ -106,8 +106,6 @@ public class Inventaire extends JFrame implements ActionListener {
         if (a == 2) {
             btn2.setVisible(true);
             persoInventaire.HP = persoInventaire.HP + 100;
-            persoInventaire.HP_max = persoInventaire.HP_max +100;
-            System.out.println(" ca marche ");
         }
         if (a == 3) {
             btn3.setVisible(true);
