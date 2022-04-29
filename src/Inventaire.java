@@ -36,16 +36,16 @@ public class Inventaire extends JFrame implements ActionListener {
         conteneurDescription.setBackground(Color.gray);
         conteneurDescription.add(description);
 
-        btn0 = new JButton(new ImageIcon("boneInventaire.png"));
-        btn1 = new JButton(new ImageIcon("epeeInventaire.png"));
-        btn2 = new JButton(new ImageIcon("casqueInventaire.png"));
-        btn3 = new JButton(new ImageIcon("hacheInventaire.png"));
-        btn4 = new JButton(new ImageIcon("armureInventaire.png"));
-        btn5 = new JButton(new ImageIcon("collierMagiqueInventaire.png"));
-        btn6 = new JButton(new ImageIcon("petiteDagueInventaire.png"));
-        btn7 = new JButton(new ImageIcon("doubleSabreInventaire.png"));
-        btn8 = new JButton(new ImageIcon("bouclierInventaire.png"));
-        btn9 = new JButton(new ImageIcon("bottesMagiquesInventaire.png"));
+        btn0 = new JButton(new ImageIcon("shield.jpg"));
+        btn1 = new JButton(new ImageIcon("ying yang.jpg"));
+        btn2 = new JButton(new ImageIcon("bow.jpg"));
+        btn3 = new JButton(new ImageIcon("axe.jpg"));
+        btn4 = new JButton(new ImageIcon("crâne.jpg"));
+        btn5 = new JButton(new ImageIcon("longuevue.jpg"));
+        btn6 = new JButton(new ImageIcon("book.jpg"));
+        btn7 = new JButton(new ImageIcon("crystal.jpg"));
+        btn8 = new JButton(new ImageIcon("gold.jpg"));
+        btn9 = new JButton(new ImageIcon("bannière.jpg"));
 
         btn0.addActionListener(this);
         btn1.addActionListener(this);
