@@ -260,7 +260,7 @@ public class Salles extends JFrame implements KeyListener {
                 { 0, 1, 6, 6, 5, 2, 5, 5, 5, 5, 5, 2, 5, 3, 5, 2, 5, 5, 1, 0},
                 { 0, 1, 67, 7, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 1, 0},
                 { 0, 1, 66, 6, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 5, 6, 7, 6, 1, 0},
-                { 0, 1, 69, 7, 6, 5, 5, 2, 100, 5, 5, 5, 2, 2, 6, 73, 64, 65, 1, 0},
+                { 0, 1, 69, 7, 6, 5, 5, 2, 330, 5, 5, 5, 2, 2, 6, 73, 64, 65, 1, 0},
                 { 0, 1, 63, 65, 6, 5, 5, 2, 5, 5, 5, 5, 6, 6, 7, 7, 7, 69, 1, 0},
                 { 0, 1, 64, 65, 6, 6, 7, 7, 7, 6, 6, 6, 7, 7, 7, 64, 65, 60, 1, 0},
                 { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -395,8 +395,8 @@ public class Salles extends JFrame implements KeyListener {
                 salle43,
                 sallef
         };
-        this.setContentPane(this.salle13);
-        i = 3;
+        this.setContentPane(this.salle33);
+        i = 9;
         addKeyListener(this);
         setVisible(true);
 

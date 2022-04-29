@@ -390,8 +390,14 @@ public class PanelSalles extends JPanel implements MouseListener {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("bottesMagiques.png")).paintIcon(this, g, evolutionX, evolutionY);
-
                 }
+
+                if (laSalle[i][j] == 330) {
+                    g.setColor(new Color(145, 107, 100));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon("bottesMagiques.png")).paintIcon(this, g, evolutionX, evolutionY);
+                }
+
 
                 if (laSalle[i][j] == 9 || laSalle[i][j] == 85) {
                     g.setColor(new Color(145, 107, 100));
@@ -482,7 +488,16 @@ public class PanelSalles extends JPanel implements MouseListener {
                 laSalle[posX][posY + 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY += 1;
-                checkPuzzle1();
+                if (main.tabsalles[main.i] == main.salle13) {
+                    checkPuzzle1();
+                } else if (main.tabsalles[main.i] == main.salle23) {
+                    checkPuzzle2();
+                } else if (main.tabsalles[main.i] == main.salle33) {
+                    checkPuzzle3();
+                } else if (main.tabsalles[main.i] == main.salle43) {
+                    checkPuzzle4();
+                }
+
             }
 
         } else if (laSalle[posX][posY + 1] >= 200 && laSalle[posX][posY + 1] < 300) {
@@ -556,7 +571,15 @@ public class PanelSalles extends JPanel implements MouseListener {
                 laSalle[posX][posY - 1] = 9;
                 laSalle[posX][posY] = 2;
                 posY -= 1;
-                checkPuzzle1();
+                if (main.tabsalles[main.i] == main.salle13) {
+                    checkPuzzle1();
+                } else if (main.tabsalles[main.i] == main.salle23) {
+                    checkPuzzle2();
+                } else if (main.tabsalles[main.i] == main.salle33) {
+                    checkPuzzle3();
+                } else if (main.tabsalles[main.i] == main.salle43) {
+                    checkPuzzle4();
+                }
 
             }
         } else if (laSalle[posX][posY - 1] >= 300 && laSalle[posX][posY - 1] <= 320) {
@@ -625,7 +648,15 @@ public class PanelSalles extends JPanel implements MouseListener {
                 laSalle[posX - 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX -= 1;
-                checkPuzzle1();
+                if (main.tabsalles[main.i] == main.salle13) {
+                    checkPuzzle1();
+                } else if (main.tabsalles[main.i] == main.salle23) {
+                    checkPuzzle2();
+                } else if (main.tabsalles[main.i] == main.salle33) {
+                    checkPuzzle3();
+                } else if (main.tabsalles[main.i] == main.salle43) {
+                    checkPuzzle4();
+                }
 
             }
         } else if (laSalle[posX - 1][posY] == 80) {
@@ -692,7 +723,15 @@ public class PanelSalles extends JPanel implements MouseListener {
                 laSalle[posX + 1][posY] = 9;
                 laSalle[posX][posY] = 2;
                 posX += 1;
-                checkPuzzle1();
+                if (main.tabsalles[main.i] == main.salle13) {
+                    checkPuzzle1();
+                } else if (main.tabsalles[main.i] == main.salle23) {
+                    checkPuzzle2();
+                } else if (main.tabsalles[main.i] == main.salle33) {
+                    checkPuzzle3();
+                } else if (main.tabsalles[main.i] == main.salle43) {
+                    checkPuzzle4();
+                }
 
             }
         } else if (laSalle[posX + 1][posY] >= 300 && laSalle[posX + 1][posY] <= 320) {
