@@ -16,8 +16,10 @@ public class Inventaire extends JFrame implements ActionListener {
     JButton btn7;
     JButton btn8;
     JButton btn9;
+    Personnage persoInventaire;
 
-    public Inventaire() {
+    public Inventaire(Personnage p) {
+        persoInventaire = p;
         setTitle(" INVENTAIRE");
         Dimension tailleMoniteur = Toolkit.getDefaultToolkit().getScreenSize();
         int longueurInventaire = tailleMoniteur.width * 1 / 2;
@@ -103,6 +105,9 @@ public class Inventaire extends JFrame implements ActionListener {
         }
         if (a == 2) {
             btn2.setVisible(true);
+            persoInventaire.HP = persoInventaire.HP + 100;
+            persoInventaire.HP_max = persoInventaire.HP_max +100;
+            System.out.println(" ca marche ");
         }
         if (a == 3) {
             btn3.setVisible(true);

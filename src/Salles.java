@@ -248,11 +248,11 @@ public class Salles extends JFrame implements KeyListener {
         int [][] caseSalle33={   { 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11},
                 { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
                 { 0, 1, 7, 2, 2, 2, 2, 2, 2, 5, 2, 2, 2, 5, 1, 108, 6, 6, 1, 0},
-                { 0, 1, 7, 7, 2, 5, 5, 5, 5, 5, 5, 2, 2, 5, 1, 9, 2, 2, 1, 0},
+                { 0, 1, 7, 7, 2, 5, 5, 5, 5, 5, 5, 2, 2, 5, 1, 9, 2, 302, 1, 0},
                 { 0, 1, 7, 2, 5, 2, 5, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 1, 0},
                 { 0, 1, 6, 5, 5, 2, 5, 2, 5, 5, 2, 2, 2, 5, 5, 3, 5, 2, 1, 0},
                 { 0, 1, 6, 2, 5, 2, 2, 2, 2, 5, 5, 5, 2, 5, 5, 2, 5, 2, 1, 0},
-                { 0, 1, 6, 2, 5, 2, 5, 5, 5, 5, 2, 2, 5, 5, 5, 5, 5, 2, 1, 0},
+                { 0, 1, 6, 2, 5, 2, 2, 5, 5, 5, 2, 2, 5, 5, 5, 5, 5, 2, 1, 0},
                 { 0, 1, 7, 5, 5, 5, 5, 2, 5, 5, 3, 2, 5, 2, 2, 2, 2, 5, 1, 0},
                 { 0, 1, 7, 5, 2, 2, 2, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 1, 0},
                 { 0, 1, 6, 2, 5, 5, 5, 2, 5, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -378,7 +378,7 @@ public class Salles extends JFrame implements KeyListener {
 
         notreCarte = new carte();
 
-        notreInventaire = new Inventaire();
+        notreInventaire = new Inventaire(perso);
         tabsalles = new PanelSalles[] {
                 salle0,
                 salle11,
@@ -406,6 +406,8 @@ public class Salles extends JFrame implements KeyListener {
         if (mvmt) {
             if (e.getKeyCode() == 32) {
                 //tabsalles[i].space();
+                System.out.println(perso.HP_max);
+                System.out.println(perso.HP);
             }
             if (e.getKeyCode() == 39) {
                 tabsalles[i].right();
