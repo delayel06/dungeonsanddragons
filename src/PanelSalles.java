@@ -754,7 +754,58 @@ public class PanelSalles extends JPanel implements MouseListener {
             }
         }
         if (b) {
-            laSalle[18][3] = 106;
+            laSalle[8][2] = 100;
+        }
+
+    }
+
+    public void checkPuzzle2() {
+        boolean b = true;
+
+        for (int i = 0; i < laSalle.length; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (laSalle[i][j] == 3) {
+                    b = false;
+                    break;
+                }
+            }
+        }
+        if (b) {
+            laSalle[13][10] = 100;
+        }
+
+    }
+
+    public void checkPuzzle3() {
+        boolean b = true;
+
+        for (int i = 0; i < laSalle.length; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (laSalle[i][j] == 3) {
+                    b = false;
+                    break;
+                }
+            }
+        }
+        if (b) {
+            laSalle[15][13] = 100;
+        }
+
+    }
+
+    public void checkPuzzle4() {
+        boolean b = true;
+
+        for (int i = 0; i < laSalle.length; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (laSalle[i][j] == 3) {
+                    b = false;
+                    break;
+                }
+            }
+        }
+        if (b) {
+            laSalle[10][3] = 113;
         }
 
     }
