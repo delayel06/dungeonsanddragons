@@ -392,7 +392,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("ying yang.jpg")).paintIcon(this, g, evolutionX, evolutionY);
                 }
-                if (laSalle[i][j] == 330) {
+                if (laSalle[i][j] == 330)  {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("coffreSpecial.png")).paintIcon(this, g, evolutionX, evolutionY);
@@ -416,7 +416,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
 
-    //startfight est une méthode qui lance un combat après une courte animation de lancement de combat
+    // startfight est une méthode qui lance un combat après une courte animation de lancement de combat
     //cette animation se déplace de la gauche à la droite et assombri l'écran, puis lance l'interface de combat ,pour un effet inutile mais agréable visuellement
     public void startfight(Personnage perso, Monstre monstre, PanelSalles salle, int x, int y) {
         java.util.Timer t = new Timer();
