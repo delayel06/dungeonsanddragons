@@ -100,33 +100,70 @@ public class Inventaire extends JFrame implements ActionListener {
         // ici on boost les stats et autre
         // on aurait pu ajouter les boutons au panal ici mais c'est moche a cause des dimension
 
+
         if (a == 1) {
             btn1.setVisible(true);
+            persoInventaire.Wis += 2;
+            persoInventaire.Cha +=2;
+            persoInventaire.setPerso();
         }
         if (a == 2) {
             btn2.setVisible(true);
-            persoInventaire.HP = persoInventaire.HP + 100;
+            persoInventaire.Dex += 2;
+            persoInventaire.Con +=2;
+            persoInventaire.setPerso();
         }
         if (a == 3) {
             btn3.setVisible(true);
+            persoInventaire.Dex += 2;
+            persoInventaire.Str +=2;
+            persoInventaire.setPerso();
         }
         if (a == 4) {
             btn4.setVisible(true);
+            persoInventaire.Str += 2;
+            persoInventaire.Con +=2;
+            persoInventaire.setPerso();
         }
         if (a == 5) {
             btn5.setVisible(true);
+            persoInventaire.Cha += 2;
+            persoInventaire.Int +=2;
+            persoInventaire.setPerso();
         }
         if (a == 6) {
             btn6.setVisible(true);
+            persoInventaire.Dex += 2;
+            persoInventaire.Int +=2;
+            persoInventaire.setPerso();
         }
         if (a == 7) {
             btn7.setVisible(true);
+            persoInventaire.Int += 2;
+            persoInventaire.Cha +=2;
+            persoInventaire.setPerso();
         }
         if (a == 8) {
             btn8.setVisible(true);
+            persoInventaire.Dex += 2;
+            persoInventaire.Con +=2;
+            persoInventaire.setPerso();
         }
         if (a == 9) {
+            btn1.setVisible(true);
+            persoInventaire.Wis += 2;
+            persoInventaire.Con +=2;
+            persoInventaire.setPerso();
+        }
+        if (a == 10) {
             btn9.setVisible(true);
+            persoInventaire.Str += 2;
+            persoInventaire.Dex +=2;
+            persoInventaire.Con += 2;
+            persoInventaire.Wis +=2;
+            persoInventaire.Int += 2;
+            persoInventaire.Cha +=2;
+            persoInventaire.setPerso();
         }
 
     }

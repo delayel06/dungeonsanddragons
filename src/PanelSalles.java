@@ -341,61 +341,56 @@ public class PanelSalles extends JPanel implements MouseListener {
                 if (laSalle[i][j] == 321) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("epee.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("bannière.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 322) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("casque.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("shield.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 323) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("hache.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("bow.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 324) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("armure.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("axe.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 325) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("collierMagique.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("crâne.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 326) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("petiteDague.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("longuevue.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 327) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("doubleSabre.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("book.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
                 if (laSalle[i][j] == 328) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("bouclier.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("crystal.jpg")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
+
                 if (laSalle[i][j] == 329) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("bottesMagiques.png")).paintIcon(this, g, evolutionX, evolutionY);
-                }
-
-                if (laSalle[i][j] == 330) {
-                    g.setColor(new Color(145, 107, 100));
-                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
-                    (new ImageIcon("coffreSpecial.png")).paintIcon(this, g, evolutionX, evolutionY);
+                    (new ImageIcon("ying yang.jpg")).paintIcon(this, g, evolutionX, evolutionY);
                 }
 
 

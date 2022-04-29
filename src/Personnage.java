@@ -56,7 +56,15 @@ public abstract class Personnage {
 
     public int Mod(int Stat) {
         int Mod;
-        if (Stat == 21 || Stat == 22) {
+        if (Stat >= 29){
+            Mod = 10;
+        } else if (Stat == 27 || Stat == 28) {
+            Mod = 9;
+        } else if (Stat == 25 || Stat == 26) {
+            Mod = 8;
+        } else if (Stat == 23 || Stat == 24) {
+            Mod = 7;
+        } else if (Stat == 21 || Stat == 22) {
             Mod = 6;
         } else if (Stat == 19 || Stat == 20) {
             Mod = 5;
@@ -79,6 +87,7 @@ public abstract class Personnage {
     }
 
     public void setPerso() {
+        this.BonusRace();
         this.Mod_Str = Mod(this.Str);
         this.Mod_Dex = Mod(this.Dex);
         this.Mod_Con = Mod(this.Con);
@@ -91,26 +100,26 @@ public abstract class Personnage {
 
     public void BonusRace() {
         if (this.race.equals("human")) {
-            this.stats[0] = 1;
-            this.stats[1] = 1;
-            this.stats[2] = -1;
-            this.stats[3] = 1;
-            this.stats[4] = -1;
-            this.stats[5] = 1;
+            this.Str +=  1;
+            this.Dex += 1;
+            this.Con += -1;
+            this.Int += 1;
+            this.Wis += -1;
+            this.Cha += 1;
 
         } else if (this.race.equals("orc")) {
-            this.stats[0] += 2;
-            this.stats[2] += 1;
-            this.stats[3] += -1;
+            this.Str += 2;
+            this.Con += 1;
+            this.Int += -1;
 
         } else if (this.race.equals("dwarf")) {
-            this.stats[2] += 2;
-            this.stats[3] += 1;
-            this.stats[5] += -1;
+            this.Con += 2;
+            this.Int += 1;
+            this.Cha += -1;
         } else if (this.race.equals("elf")) {
-            this.stats[1] += 2;
-            this.stats[2] += -1;
-            this.stats[3] += 1;
+            this.Dex += 2;
+            this.Con += -1;
+            this.Int += 1;
         }
     }
 
