@@ -24,10 +24,10 @@ public class RaceSelect extends JFrame implements ActionListener {
     public JButton back;
     public Font font;
 
-    public JLabel labelhuman = new JLabel("explication humain");
-    public JLabel labelorc = new JLabel("explication orc");
-    public JLabel labelelf = new JLabel("explication elf");
-    public JLabel labeldwarf = new JLabel("explication nain");
+    public JLabel labelhuman = new JLabel(new ImageIcon("humantext.png"));
+    public JLabel labelorc = new JLabel(new ImageIcon("orctext.png"));
+    public JLabel labelelf = new JLabel(new ImageIcon("elftext.png"));
+    public JLabel labeldwarf = new JLabel(new ImageIcon("dwarftext.png"));
 
     public String racechoisie;
     public Personnage personnage;
