@@ -87,7 +87,7 @@ public abstract class Personnage {
     }
 
     public void setPerso() {
-        this.BonusRace();
+        //this.BonusRace();
         this.Mod_Str = Mod(this.Str);
         this.Mod_Dex = Mod(this.Dex);
         this.Mod_Con = Mod(this.Con);
