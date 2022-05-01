@@ -122,6 +122,12 @@ public class PanelSalles extends JPanel implements MouseListener {
                     (new ImageIcon("rock.png")).paintIcon(this, g, evolutionX, evolutionY);
 
                 }
+                if (laSalle[i][j] == 12) {
+                    g.setColor(new Color( 0, 0, 0 ));
+                    g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
+                    (new ImageIcon("coin.png")).paintIcon(this, g, evolutionX, evolutionY);
+
+                }
                 if (laSalle[i][j] == 8) {
                     g.setColor(Color.black);
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
@@ -462,6 +468,8 @@ public class PanelSalles extends JPanel implements MouseListener {
     //déplacement. Aussi, chaque déplacement correspond à un changement d'image pour que le personnage regarde dans des directions différentes
     //selon la ou il se déplace
     public void right() {
+        winwholegame();
+
         icon = new ImageIcon("knightrun.png");
         if (laSalle[posX][posY + 1] == 2) {
 
@@ -1277,6 +1285,32 @@ public class PanelSalles extends JPanel implements MouseListener {
 
     }
     public void winwholegame() {
+        blockPerso();
+        java.util.Timer t = new Timer();
+        TimerTask task = new TimerTask() {
+            int i = 0;
+            int j = 0;
+            public void run() {
+
+                laSalle[i][j] = 12;
+                repaint();
+                j++;
+                if(j % 20 == 0 && i < 19){
+                    //ici on vérifie si on a atteint la fin de la ligne de taille 20
+                    j=0;
+                    i++;
+
+                }else if (i == 19){
+
+                    JOptionPane.showMessageDialog(null, "Vous avez gagné! L'or est pour vous!");
+                    t.cancel();
+                }
+
+            }
+        };
+        t.schedule(task, 0, 10);
+
+
 
     }
 
