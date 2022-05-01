@@ -468,7 +468,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     //déplacement. Aussi, chaque déplacement correspond à un changement d'image pour que le personnage regarde dans des directions différentes
     //selon la ou il se déplace
     public void right() {
-        winwholegame();
+
 
         icon = new ImageIcon("knightrun.png");
         if (laSalle[posX][posY + 1] == 2) {
