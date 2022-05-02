@@ -422,6 +422,19 @@ public class Salles extends JFrame implements KeyListener {
                 tabsalles[i].down();
             }
 
+
+        }
+        if(e.getKeyCode() == 72){
+            //amene au boss
+            perso.Int += 20;
+
+            perso.Str += 20;
+
+            perso.Dex += 20;
+
+            perso.Con += 20;
+            perso.setPerso();
+            changeSalle( 13 );
         }
 
     }
