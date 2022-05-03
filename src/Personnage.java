@@ -31,6 +31,7 @@ public abstract class Personnage {
         this.Int = this.stats[3];
         this.Wis = this.stats[4];
         this.Cha = this.stats[5];
+        this.BonusRace();
         this.Mod_Str = Mod(this.Str);
         this.Mod_Dex = Mod(this.Dex);
         this.Mod_Con = Mod(this.Con);
