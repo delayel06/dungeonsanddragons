@@ -28,12 +28,12 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JPanel Monstre2; //contient nom+barre de vie du monstre
 	public JPanel Monstre3; // contient l'image du monstre
 	//CASE MONSTRE 2
-	public JPanel NM;
-	public JLabel NomM;
-	public JPanel BVmonstre;
-	public JLabel BVM;
+	public JPanel NM;//contient le nom du monstre
+	public JLabel NomM;//nom du monstre
+	public JPanel BVmonstre;//contient barre vie du monstre
+	public JLabel BVM;//barre de vie du monstre
 	//CASE MONSTRE 3
-	public JLabel ImMonstre;
+	public JLabel ImMonstre;//gif du monstre
 
 	//Contient les informations dédiées au personnage (divisée en 3 colonnes)
 	public JPanel Perso;
@@ -42,14 +42,14 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 	public JPanel Perso2; //contient barre de vie + nom du joueur
 	public JPanel Perso3; //contient descriptions des attaques
 	//CASE PERSO 1
-	public JLabel PERSO_ICON;
+	public JLabel PERSO_ICON; //gif perso
 	//CASE PERSO 2
-	private JPanel BVpanel;
-	public JLabel BV;
-	public JPanel NomPerso;
-	public JLabel Nom;
+	private JPanel BVpanel; //contient barre de vie perso
+	public JLabel BV; //barre de vie de perso
+	public JPanel NomPerso; //contient le nom du perso
+	public JLabel Nom; //nom du perso
 	//CASE PERSO 3
-	public JLabel chatC;
+	public JLabel chatC; //description attaque (avec dégats)
 
 	//POLICE
 	public Font font;
