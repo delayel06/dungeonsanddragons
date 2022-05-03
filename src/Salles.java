@@ -6,7 +6,7 @@ public class Salles extends JFrame implements KeyListener {
     int width;
     int heigth;
     PanelSalles salle0, salle11, salle12, salle13, salle21, salle22, salle23, salle31, salle32, salle33, salle41, salle42, salle43, sallef;
-
+    // tableau de mosntre permettant de choisir quel monstre apparait dans quelle salle grace à l'indice du tableau utilisé
     Monstre[] tabmonstre = {
             new Dragon(),
             new Litch(),
@@ -51,7 +51,9 @@ public class Salles extends JFrame implements KeyListener {
         setLocation((tailleMoniteur.width - getSize().width) / 2, ((tailleMoniteur.height - getSize().height) / 2) - 20);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // 0=neant , 1 = MUR , 2 = sol, >100= porte, 4= monstre
-        // TOUT CE QUI EST SUPERIEUR A 100 C'EST DES PORTES ON VA SUREMENT FAIRE LA MEME POUR LES MONSTRES ET >200
+        // chaque salle est un tableau de 20 par 20 et chaque élément de la salle est modélisé par un nombre définis dans PanelSalle ce qui permet de modifié et customiser les salles assez facilement
+        // on a créé un tableau de salles et on peut s'y balader
+
         int [][] caseSalle0={   { 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11},
                                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                                 { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},

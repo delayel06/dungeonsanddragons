@@ -22,7 +22,7 @@ public class Monstre {
     String texteAM; //description attaque + dégats
     public Icon mapIcon;
 
-
+    // création de différents monstre dont cette classe est mère : chaque monstre possède une barre de vie, des dégats variables, une image sur la carte et différentes animations de combat
     public Monstre(){
         this.imageM = new ImageIcon("ombre.png");
 

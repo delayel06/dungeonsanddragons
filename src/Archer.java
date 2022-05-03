@@ -8,6 +8,7 @@ public class Archer extends Personnage {
         this.aIcon = new ImageIcon("ArcherA.gif");
         this.dIcon = new ImageIcon("ArcherD.gif");
     }
+    // création de stats spécifique à l'archer
     public void setStats(){
         this.Str = 10 + this.stats[0];
         this.Dex = 14 + this.stats[1];
@@ -17,6 +18,8 @@ public class Archer extends Personnage {
         this.Cha = 8 + this.stats[5];
 
     }
+
+    // choix de 4 attaques avec description textuelle de chaque effet + dégats qui change selon l'attaque
     public void a1(Monstre m){
         int n = (2+this.Mod_Dex);
         texteA="Soins : Vous etes en symbiose avec la nature, récuperez "+n+" de vie";

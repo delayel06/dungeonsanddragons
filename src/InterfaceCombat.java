@@ -243,7 +243,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 			personnage.a1(m);
 			chatC.setText(personnage.texteA); //décrit l'attaque 1
 		} else if (e.getSource() == attaque2) { //lance l'attaque 2 qui a des chances d'échouer
-			if (testReussite(0.2) == true) {
+			if (testReussite(0.2) == true) { // 0,2 sont les chances de rater (20%)
 				personnage.a2(m);
 				chatC.setText(personnage.texteA);
 			} else {
