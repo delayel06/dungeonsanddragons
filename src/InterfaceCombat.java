@@ -103,7 +103,7 @@ public class InterfaceCombat extends JFrame implements ActionListener {
 		Perso1.setBackground(null);
 		Perso1.add(PERSO_ICON);
 		//CASE PERSO 2(contient la barre de vie du personnage et son nom)
-		Nom = new JLabel("Kevin ", SwingConstants.CENTER); // On crée un JLabel pour le nom du personnage
+		Nom = new JLabel("Vous", SwingConstants.CENTER); // On crée un JLabel pour le nom du personnage
 		Nom.setSize(400, 100);
 		Nom.setFont(fontNOM);
 		NomPerso = new JPanel(); //On crée un Jpanel qui contient le JLabel nom
