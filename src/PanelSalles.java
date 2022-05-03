@@ -50,6 +50,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     }*/
     }
 
+    // Methode qui lance l'inventaire et la carate quand on clique
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == labelI) {
             main.notreInventaire.setVisible(true);
@@ -139,12 +140,14 @@ public class PanelSalles extends JPanel implements MouseListener {
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("carte.png")).paintIcon(this, g, evolutionX, evolutionY);
                 }
+                //creation porte
                 if (laSalle[i][j] >= 100 && laSalle[i][j] < 200) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
                     (new ImageIcon("door.png")).paintIcon(this, g, evolutionX - 30, evolutionY - 30);
 
                 }
+                //creation monstre
                 if (laSalle[i][j] >= 200 && laSalle[i][j] <= 300) {
                     g.setColor(new Color(145, 107, 100));
                     g.fillRect(evolutionX, evolutionY, longueur / 20, longueur / 20);
@@ -592,7 +595,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 }
 
             }
-        } else if (laSalle[posX][posY - 1] >= 300 && laSalle[posX][posY - 1] <= 320) {
+        } else if (laSalle[posX][posY - 1] >= 300 && laSalle[posX][posY - 1] <= 308) {
 
             laSalle[posX][posY - 1] = laSalle[posX][posY - 1] + 20;
 
@@ -623,6 +626,8 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX][posY - 1] == 329) {
             main.notreInventaire.ajouterObjet(9);
             laSalle[posX][posY - 1] = 2;
+        }else if (laSalle[posX][posY-1] == 330) {
+            laSalle[posX][posY -1] = 329;
         } else if (laSalle[posX][posY - 1] == 80) {
 
             ice(2);
@@ -673,7 +678,7 @@ public class PanelSalles extends JPanel implements MouseListener {
 
             ice(4);
 
-        } else if (laSalle[posX - 1][posY] >= 300 && laSalle[posX - 1][posY] <= 320) {
+        } else if (laSalle[posX - 1][posY] >= 300 && laSalle[posX - 1][posY] <= 308) {
 
             laSalle[posX - 1][posY] = laSalle[posX - 1][posY] + 20;
 
@@ -701,7 +706,9 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX - 1][posY] == 328) {
             main.notreInventaire.ajouterObjet(8);
             laSalle[posX - 1][posY] = 2;
-        } else if (laSalle[posX - 1][posY] == 329) {
+        }else if (laSalle[posX-1][posY] == 330) {
+            laSalle[posX-1][posY] = 329;
+        }else if (laSalle[posX - 1][posY] == 329) {
             main.notreInventaire.ajouterObjet(9);
             laSalle[posX - 1][posY] = 2;
         }
@@ -744,7 +751,7 @@ public class PanelSalles extends JPanel implements MouseListener {
                 }
 
             }
-        } else if (laSalle[posX + 1][posY] >= 300 && laSalle[posX + 1][posY] <= 320) {
+        } else if (laSalle[posX + 1][posY] >= 300 && laSalle[posX + 1][posY] <= 308) {
 
             laSalle[posX + 1][posY] = laSalle[posX + 1][posY] + 20;
 
@@ -772,6 +779,8 @@ public class PanelSalles extends JPanel implements MouseListener {
         } else if (laSalle[posX + 1][posY] == 328) {
             main.notreInventaire.ajouterObjet(8);
             laSalle[posX + 1][posY] = 2;
+        } else if (laSalle[posX+1][posY] == 330) {
+            laSalle[posX+1][posY] = 329;
         } else if (laSalle[posX + 1][posY] == 329) {
             main.notreInventaire.ajouterObjet(9);
             laSalle[posX + 1][posY] = 2;
