@@ -170,34 +170,34 @@ public class Inventaire extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn0) {
-            JOptionPane.showMessageDialog(this, "Os robuste");
+            JOptionPane.showMessageDialog(this, "Un grand boost de courage");
         }
         if (e.getSource() == btn1) {
-            JOptionPane.showMessageDialog(this, "Une épée augmentant considerablement les stats");
+            JOptionPane.showMessageDialog(this, "Pour un max de défense !");
         }
         if (e.getSource() == btn2) {
-            JOptionPane.showMessageDialog(this, "Vous avez toujours eu la tête dure ");
+            JOptionPane.showMessageDialog(this, "Tire plus vite que son ombre !");
         }
         if (e.getSource() == btn3) {
             JOptionPane.showMessageDialog(this, " Hache stylée ");
         }
         if (e.getSource() == btn4) {
-            JOptionPane.showMessageDialog(this, "Une armure belle et solide en plus");
+            JOptionPane.showMessageDialog(this, "Un ami en or");
         }
         if (e.getSource() == btn5) {
-            JOptionPane.showMessageDialog(this, "Un collier magique qui booste vos stats");
+            JOptionPane.showMessageDialog(this, "Pour voir ...");
         }
         if (e.getSource() == btn6) {
-            JOptionPane.showMessageDialog(this, "Une petite dague pas très performante on va pas se mentir");
+            JOptionPane.showMessageDialog(this, "Petite lecture du soir : l'intégrale de Percy Jackson !");
         }
         if (e.getSource() == btn7) {
-            JOptionPane.showMessageDialog(this, "Pas un sabre mais bien deux ;) ");
+            JOptionPane.showMessageDialog(this, "Joli !!!");
         }
         if (e.getSource() == btn8) {
-            JOptionPane.showMessageDialog(this, "Qu'es ce que le bouclier de Capitain America fait ici ? Vous avez beacoup de chance ");
+            JOptionPane.showMessageDialog(this, "Ca peut toujours servir ");
         }
         if (e.getSource() == btn9) {
-            JOptionPane.showMessageDialog(this, "Oh des bottes, vous pourrez fuire les monstres encore plus vite");
+            JOptionPane.showMessageDialog(this, "Trouve la paix intérieur, c'est pas mal normalement !");
         }
     }
 }
