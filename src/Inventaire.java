@@ -16,6 +16,7 @@ public class Inventaire extends JFrame implements ActionListener {
     JButton btn7;
     JButton btn8;
     JButton btn9;
+    JLabel pv;
     Personnage persoInventaire;
 
     public Inventaire(Personnage p) {
@@ -32,11 +33,17 @@ public class Inventaire extends JFrame implements ActionListener {
         description.setBounds(longueurInventaire / 2 - 150, largeurInventaire / 4 - 30, 320, 30);
         description.setFont(new Font("Serif", Font.BOLD, 20));
 
+         pv = new JLabel("PV : " + persoInventaire.HP + "/"+persoInventaire.HP_max);
+        pv.setBounds(longueurInventaire / 2 - 35, largeurInventaire / 4 - 100, 320, 30);
+        pv.setFont(new Font("Serif", Font.BOLD, 20));
+
         JPanel conteneurDescription = new JPanel();
         conteneurDescription.setLayout(null);
         conteneurDescription.setBounds(0, 0, longueurInventaire, largeurInventaire / 2);
         conteneurDescription.setBackground(Color.gray);
         conteneurDescription.add(description);
+        conteneurDescription.add(pv);
+
 
         btn0 = new JButton(new ImageIcon("bannière.jpg"));
         btn1 = new JButton(new ImageIcon("shield.jpg"));
@@ -199,5 +206,9 @@ public class Inventaire extends JFrame implements ActionListener {
         if (e.getSource() == btn9) {
             JOptionPane.showMessageDialog(this, "Trouve la paix intérieur, c'est pas mal normalement !");
         }
+    }
+    public void refresh() {
+        this.revalidate();// va rafraichir l'affichage des pv lorsqu'on appuie sur le bouton
+        pv.setText("PV : " + persoInventaire.HP + "/"+persoInventaire.HP_max);
     }
 }

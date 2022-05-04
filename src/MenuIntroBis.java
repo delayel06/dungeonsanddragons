@@ -32,7 +32,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         setLocation(getWidth() / 2, getHeight() / 2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        music("introtheme.wav");
+        music("introtheme.wav"); //joue la musique
         setIconImage(new ImageIcon("logo.png").getImage());
 
         // on change pour un beau texte
@@ -44,14 +44,17 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         } catch (IOException | FontFormatException e) {
             // ca devrait pas arriver ici
         }
+        //Ici, on fais l'image qui bouge en arriere plan, ceci est le paint directement du panel derriere les boutons
         backgroundx = 0;
         backgroundy = -300;
         mainPanel = new JPanel(new GridLayout(1, 2, 10, 10)) {
             @Override
             public void paintComponent(Graphics g) {
-                g.drawImage(image.getImage(), backgroundx, backgroundy, null);
-                g.drawImage(titlescreen.getImage(), 00, -50, null);
 
+                g.drawImage(image.getImage(), backgroundx, backgroundy, null);//ici, l'image d'arriere plan va bouger grace a des variables qui
+                //vont etre modifiés
+                g.drawImage(titlescreen.getImage(), 00, -50, null);
+                //Ici, on peint par dessus tout le reste l'image du titre qui a été créé spécialement pour être au bon endroit
             }
             //Comment mettre l'image en background
             // ici on doit faire ce { } dans la définition du panel car paint ne marche que dans un jpanel
@@ -60,7 +63,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
         mainPanel.setSize(width, height);
         mainPanel.setLocation(0, 0);
-
+        //Ici, des différentes créations de tous les panels et boutons basique qu'il nous faut.
         helpPanel = new JPanel(new BorderLayout(20, 20));
         helpPanel.setSize(width, height);
         helpPanel.setLocation(0, 0);
@@ -94,7 +97,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
         mainPanel.add(btn1);
         mainPanel.add(btnhelp);
-
+        //on ajoute ce  qu'on a créé au rendu final
         helpPanel.add(helpLabel);
         helpPanel.add(btnback, BorderLayout.AFTER_LAST_LINE);
 
@@ -108,11 +111,11 @@ public class MenuIntroBis extends JFrame implements ActionListener {
         this.add(bigpanel, BorderLayout.CENTER);
 
         setVisible(true);
-        panBack();
+        panBack(); //la méthode appelée pour changer la variable du fond
     }
 
     private void panBack() {
-
+        //Cette animation utilise un timer + repaint, le fond est bougé de moins en moins un et change de sens toutes les 400 itérations
         Timer t = new Timer();
         TimerTask task = new TimerTask() {
             int i = 0;
@@ -161,7 +164,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
             setBounds(100, 100, (int) dim.getWidth() - 100, (int) dim.getHeight() - 100);
             setLocationRelativeTo(null);
 
-            /* En gros la le pb c'était que ca affichait les 2 panels en même temps, du coup j'ai obligé à ce que ca se resize comme ca ca reinitialise*/
+            /* En gros la le problème c'était que ca affichait les 2 panels en même temps, du coup j'ai obligé à ce que ca se resize comme ca ca reinitialise*/
 
         } else if (e.getSource() == btnback) {
             bigpanel.remove(helpPanel);
@@ -180,7 +183,7 @@ public class MenuIntroBis extends JFrame implements ActionListener {
 
         }
     }
-
+    // méthode simple musique
     public void music(String path) {
 
         File music = new File(path);

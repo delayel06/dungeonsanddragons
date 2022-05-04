@@ -54,6 +54,7 @@ public class PanelSalles extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == labelI) {
             main.notreInventaire.setVisible(true);
+            main.notreInventaire.refresh();
         }
         if (e.getSource() == labelC) {
             main.notreCarte.setVisible(true);
