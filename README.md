@@ -12,6 +12,10 @@ Dans l'archive nous avons :
 
 - Java SDK 16 _(celui utilisé pour notre jeu)_
 
+- Le pdf explicatif du jeu
+
+- Le diagram UML du jeu, si il n'est pas assez grand sur le PDF
+
 
 ### Démarrage
 
