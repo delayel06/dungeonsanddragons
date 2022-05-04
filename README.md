@@ -24,7 +24,7 @@ Pour exectuer le programme, on peut soit :
 ATTENTION : IL FAUT EXECUTER LE JEU AVEC LE SDK JAVA VERSION 16 ! En tout cas, le .jar ne marche pas si on n'utilise pas le JRE ou JDK version 16 pour l'executer
 
 
-##Gameplay
+## Gameplay
 
 Dans ce jeu, il faudra d'abord suiver la création du personnage, avant de se lancer.. Ensuite, 4 chemins s'offiront a vous, un seul menant au repère du dragon
 squelettique, détenteur de la gemme interdite. Il faudra donc parcourir chaque salle, résoudre chaque énigme et battre chaque monstre pour accéder a la salle finale.
