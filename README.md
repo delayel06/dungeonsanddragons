@@ -10,7 +10,7 @@ Dans l'archive nous avons :
 
 - Le JAR du jeu qu'il faudra exécuter avec une IDE.
 
--Java SDK 16 _(celui utilisé pour notre jeu)_
+- Java SDK 16 _(celui utilisé pour notre jeu)_
 
 
 ### Démarrage
