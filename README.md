@@ -49,5 +49,5 @@ Intellij IDEA Community Edition
 
 ## License
 
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+Ce projet est sous licence ``Creative Commons ( CC ) `` 
 
